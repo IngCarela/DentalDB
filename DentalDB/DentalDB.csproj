@@ -183,7 +183,6 @@
     <Compile Include="Controllers\ESTADOCUENTALABORATORIOsController.cs" />
     <Compile Include="Controllers\ESTADODECUENTAController.cs" />
     <Compile Include="Controllers\ESTADOTRABAJOesController.cs" />
-    <Compile Include="Controllers\HISTORIALCLINICOController.cs" />
     <Compile Include="Controllers\HistorialViewController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LABORATORIOController.cs" />
@@ -191,11 +190,6 @@
     <Compile Include="Controllers\RELACIONTRALAController.cs" />
     <Compile Include="Controllers\TRABAJOController.cs" />
     <Compile Include="Controllers\USUARIOController.cs" />
-    <Compile Include="DentalDBDataSet.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>DentalDBDataSet.xsd</DependentUpon>
-    </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -212,9 +206,6 @@
       <DependentUpon>Modelo.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\ESTADOTRABAJO.cs">
-      <DependentUpon>Modelo.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\HISTORIALCLINICO.cs">
       <DependentUpon>Modelo.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\HistorialView.cs">
@@ -251,15 +242,7 @@
       <DependentUpon>Modelo.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Reporte.aspx.cs">
-      <DependentUpon>Reporte.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Reporte.aspx.designer.cs">
-      <DependentUpon>Reporte.aspx</DependentUpon>
-    </Compile>
     <Compile Include="SqlServerTypes\Loader.cs" />
-    <Compile Include="ViewModel\HistorialClinico.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="bootstrap\css\bootstrap.css" />
@@ -345,7 +328,6 @@
       <DependentUpon>Modelo.edmx</DependentUpon>
       <LastGenOutput>Modelo.cs</LastGenOutput>
     </Content>
-    <Content Include="Reporte.aspx" />
     <Content Include="Rotativa\help-wkhtmltoimage.txt" />
     <Content Include="Rotativa\help-wkhtmltopdf.txt" />
     <Content Include="Rotativa\wkhtmltoimage.exe" />
@@ -453,17 +435,6 @@
       <DependentUpon>Modelo.edmx</DependentUpon>
     </Content>
     <Content Include="App_Browsers\qt.browser" />
-    <Content Include="DentalDBDataSet.xsc">
-      <DependentUpon>DentalDBDataSet.xsd</DependentUpon>
-    </Content>
-    <None Include="DentalDBDataSet.xsd">
-      <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>DentalDBDataSet.Designer.cs</LastGenOutput>
-      <SubType>Designer</SubType>
-    </None>
-    <Content Include="DentalDBDataSet.xss">
-      <DependentUpon>DentalDBDataSet.xsd</DependentUpon>
-    </Content>
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
@@ -550,11 +521,6 @@
     <Content Include="Views\ESTADOCUENTALABORATORIOs\Details.cshtml" />
     <Content Include="Views\ESTADOCUENTALABORATORIOs\Edit.cshtml" />
     <Content Include="Views\ESTADOCUENTALABORATORIOs\Index.cshtml" />
-    <Content Include="Views\HISTORIALCLINICO\Create.cshtml" />
-    <Content Include="Views\HISTORIALCLINICO\Delete.cshtml" />
-    <Content Include="Views\HISTORIALCLINICO\Details.cshtml" />
-    <Content Include="Views\HISTORIALCLINICO\Edit.cshtml" />
-    <Content Include="Views\HISTORIALCLINICO\Index.cshtml" />
     <Content Include="Views\HistorialView\Index.cshtml" />
     <Content Include="Views\Shared\_Menu.cshtml" />
   </ItemGroup>
@@ -576,9 +542,6 @@
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="reporteClinico.rdlc" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

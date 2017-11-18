@@ -54,7 +54,6 @@
     <NavigationProperty Name="CENTRO" Relationship="DentalDBModel.FK_PACIENTE_CENTRO" FromRole="PACIENTE" ToRole="CENTRO" />
     <NavigationProperty Name="ESTADODECUENTA" Relationship="DentalDBModel.FK_ESTADODECUENTA_PACIENTE" FromRole="PACIENTE" ToRole="ESTADODECUENTA" />
     <NavigationProperty Name="TRABAJO" Relationship="DentalDBModel.FK_TRABAJO_PACIENTE" FromRole="PACIENTE" ToRole="TRABAJO" />
-    <NavigationProperty Name="HISTORIALCLINICO" Relationship="DentalDBModel.FK_HISTORIALCLINICO_PACIENTE" FromRole="PACIENTE" ToRole="HISTORIALCLINICO" />
   </EntityType>
   <EntityType Name="USUARIO">
     <Key>
@@ -122,15 +121,6 @@
     <AssociationSet Name="FK_ESTADOCUENTALABORATORIO_LABORATORIO" Association="DentalDBModel.FK_ESTADOCUENTALABORATORIO_LABORATORIO">
       <End Role="LABORATORIO" EntitySet="LABORATORIO" />
       <End Role="ESTADOCUENTALABORATORIO" EntitySet="ESTADOCUENTALABORATORIO" />
-    </AssociationSet>
-    <EntitySet Name="HISTORIALCLINICO" EntityType="DentalDBModel.HISTORIALCLINICO" />
-    <AssociationSet Name="FK_HISTORIALCLINICO_PACIENTE" Association="DentalDBModel.FK_HISTORIALCLINICO_PACIENTE">
-      <End Role="PACIENTE" EntitySet="PACIENTE" />
-      <End Role="HISTORIALCLINICO" EntitySet="HISTORIALCLINICO" />
-    </AssociationSet>
-    <AssociationSet Name="FK_HISTORIALCLINICO_TRABAJO" Association="DentalDBModel.FK_HISTORIALCLINICO_TRABAJO">
-      <End Role="TRABAJO" EntitySet="TRABAJO" />
-      <End Role="HISTORIALCLINICO" EntitySet="HISTORIALCLINICO" />
     </AssociationSet>
     <EntitySet Name="HistorialView" EntityType="DentalDBModel.HistorialView" />
   </EntityContainer>
@@ -243,7 +233,6 @@
     <Property Name="Descripcion" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
     <NavigationProperty Name="PACIENTE" Relationship="DentalDBModel.FK_TRABAJO_PACIENTE" FromRole="TRABAJO" ToRole="PACIENTE" />
     <NavigationProperty Name="RELACIONTRALA" Relationship="DentalDBModel.FK_RELACIONTRALA_TRABAJO" FromRole="TRABAJO" ToRole="RELACIONTRALA" />
-    <NavigationProperty Name="HISTORIALCLINICO" Relationship="DentalDBModel.FK_HISTORIALCLINICO_TRABAJO" FromRole="TRABAJO" ToRole="HISTORIALCLINICO" />
   </EntityType>
   <Association Name="FK_TRABAJO_PACIENTE">
     <End Type="DentalDBModel.PACIENTE" Role="PACIENTE" Multiplicity="1" />
@@ -292,51 +281,22 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <EntityType Name="HISTORIALCLINICO">
-    <Key>
-      <PropertyRef Name="IdHistorial" />
-    </Key>
-    <Property Name="IdHistorial" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="IdPaciente" Type="Int32" Nullable="false" />
-    <Property Name="IdTrabajo" Type="Int32" Nullable="false" />
-    <Property Name="Descripcion" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-    <NavigationProperty Name="PACIENTE" Relationship="DentalDBModel.FK_HISTORIALCLINICO_PACIENTE" FromRole="HISTORIALCLINICO" ToRole="PACIENTE" />
-    <NavigationProperty Name="TRABAJO" Relationship="DentalDBModel.FK_HISTORIALCLINICO_TRABAJO" FromRole="HISTORIALCLINICO" ToRole="TRABAJO" />
-  </EntityType>
-  <Association Name="FK_HISTORIALCLINICO_PACIENTE">
-    <End Type="DentalDBModel.PACIENTE" Role="PACIENTE" Multiplicity="1" />
-    <End Type="DentalDBModel.HISTORIALCLINICO" Role="HISTORIALCLINICO" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="PACIENTE">
-        <PropertyRef Name="IdPaciente" />
-      </Principal>
-      <Dependent Role="HISTORIALCLINICO">
-        <PropertyRef Name="IdPaciente" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_HISTORIALCLINICO_TRABAJO">
-    <End Type="DentalDBModel.TRABAJO" Role="TRABAJO" Multiplicity="1" />
-    <End Type="DentalDBModel.HISTORIALCLINICO" Role="HISTORIALCLINICO" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="TRABAJO">
-        <PropertyRef Name="IdTrabajo" />
-      </Principal>
-      <Dependent Role="HISTORIALCLINICO">
-        <PropertyRef Name="IdTrabajo" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
   <EntityType Name="HistorialView">
     <Key>
       <PropertyRef Name="Nombre" />
       <PropertyRef Name="Apellido" />
       <PropertyRef Name="AntecedentesPatologicos" />
       <PropertyRef Name="Tratamiento" />
+      <PropertyRef Name="Monto" />
+      <PropertyRef Name="Abono" />
+      <PropertyRef Name="Faltante" />
     </Key>
     <Property Name="Nombre" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
     <Property Name="Apellido" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
     <Property Name="AntecedentesPatologicos" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
     <Property Name="Tratamiento" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Monto" Type="Int32" Nullable="false" />
+    <Property Name="Abono" Type="Int32" Nullable="false" />
+    <Property Name="Faltante" Type="Int32" Nullable="false" />
   </EntityType>
 </Schema>

@@ -18,7 +18,6 @@ namespace DentalDB.Models
         public TRABAJO()
         {
             this.RELACIONTRALA = new HashSet<RELACIONTRALA>();
-            this.HISTORIALCLINICO = new HashSet<HISTORIALCLINICO>();
         }
     
         public int IdTrabajo { get; set; }
@@ -33,7 +32,5 @@ namespace DentalDB.Models
         public virtual PACIENTE PACIENTE { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<RELACIONTRALA> RELACIONTRALA { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<HISTORIALCLINICO> HISTORIALCLINICO { get; set; }
     }
 }

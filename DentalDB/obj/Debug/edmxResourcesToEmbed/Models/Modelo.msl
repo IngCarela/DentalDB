@@ -117,19 +117,12 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="HISTORIALCLINICO">
-      <EntityTypeMapping TypeName="DentalDBModel.HISTORIALCLINICO">
-        <MappingFragment StoreEntitySet="HISTORIALCLINICO">
-          <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
-          <ScalarProperty Name="IdTrabajo" ColumnName="IdTrabajo" />
-          <ScalarProperty Name="IdPaciente" ColumnName="IdPaciente" />
-          <ScalarProperty Name="IdHistorial" ColumnName="IdHistorial" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
     <EntitySetMapping Name="HistorialView">
       <EntityTypeMapping TypeName="DentalDBModel.HistorialView">
         <MappingFragment StoreEntitySet="HistorialView">
+          <ScalarProperty Name="Faltante" ColumnName="Faltante" />
+          <ScalarProperty Name="Abono" ColumnName="Abono" />
+          <ScalarProperty Name="Monto" ColumnName="Monto" />
           <ScalarProperty Name="Tratamiento" ColumnName="Tratamiento" />
           <ScalarProperty Name="AntecedentesPatologicos" ColumnName="AntecedentesPatologicos" />
           <ScalarProperty Name="Apellido" ColumnName="Apellido" />

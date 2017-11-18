@@ -7,13 +7,13 @@
 
 <h2>Historial Clinico</h2>
 
-<div>
+@*<div>
     @using (Html.BeginForm())
     {
         @Html.TextBox("busqueda")
         <input type="submit" value="Buscar" class="btn btn-default" />
     }
-</div>
+</div>*@
 
 <br />
 <table class="table">
@@ -22,6 +22,9 @@
         <th>@Html.DisplayNameFor(m=>m.Apellido)</th>
         <th>@Html.DisplayNameFor(m=>m.AntecedentesPatologicos)</th>
         <th>@Html.DisplayNameFor(m=>m.Tratamiento)</th>
+        <th>@Html.DisplayNameFor(m=>m.Monto)</th>
+        <th>@Html.DisplayNameFor(m=>m.Abono)</th>
+        <th>@Html.DisplayNameFor(m=>m.Faltante)</th>
     </tr>
 
 @foreach (var item in Model) {
@@ -37,6 +40,15 @@
         </td>
         <td>
             @item.Tratamiento
+        </td>
+        <td>
+            @item.Monto
+        </td>
+        <td>
+            @item.Abono
+        </td>
+        <td>
+            @item.Faltante
         </td>
         
     </tr>

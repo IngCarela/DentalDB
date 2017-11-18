@@ -35,7 +35,6 @@ namespace DentalDB.Models
         public virtual DbSet<ESTADODECUENTA> ESTADODECUENTA { get; set; }
         public virtual DbSet<TRABAJO> TRABAJO { get; set; }
         public virtual DbSet<ESTADOCUENTALABORATORIO> ESTADOCUENTALABORATORIO { get; set; }
-        public virtual DbSet<HISTORIALCLINICO> HISTORIALCLINICO { get; set; }
         public virtual DbSet<HistorialView> HistorialView { get; set; }
     }
 }

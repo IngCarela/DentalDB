@@ -47,15 +47,6 @@
     <Property Name="IdEstadoT" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="Estado" Type="nvarchar" MaxLength="50" Nullable="false" />
   </EntityType>
-  <EntityType Name="HISTORIALCLINICO">
-    <Key>
-      <PropertyRef Name="IdHistorial" />
-    </Key>
-    <Property Name="IdHistorial" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="IdPaciente" Type="int" Nullable="false" />
-    <Property Name="IdTrabajo" Type="int" Nullable="false" />
-    <Property Name="Descripcion" Type="nvarchar" MaxLength="50" Nullable="false" />
-  </EntityType>
   <EntityType Name="LABORATORIO">
     <Key>
       <PropertyRef Name="IdLaboratorio" />
@@ -123,11 +114,17 @@ advertencia 6002: La tabla o vista 'DentalDB.dbo.HistorialView' no tiene definid
       <PropertyRef Name="Apellido" />
       <PropertyRef Name="AntecedentesPatologicos" />
       <PropertyRef Name="Tratamiento" />
+      <PropertyRef Name="Monto" />
+      <PropertyRef Name="Abono" />
+      <PropertyRef Name="Faltante" />
     </Key>
     <Property Name="Nombre" Type="nvarchar" MaxLength="50" Nullable="false" />
     <Property Name="Apellido" Type="nvarchar" MaxLength="50" Nullable="false" />
     <Property Name="AntecedentesPatologicos" Type="nvarchar" MaxLength="50" Nullable="false" />
     <Property Name="Tratamiento" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Monto" Type="int" Nullable="false" />
+    <Property Name="Abono" Type="int" Nullable="false" />
+    <Property Name="Faltante" Type="int" Nullable="false" />
   </EntityType>
   <Association Name="FK_CITA_CENTRO">
     <End Role="CENTRO" Type="Self.CENTRO" Multiplicity="1" />
@@ -174,30 +171,6 @@ advertencia 6002: La tabla o vista 'DentalDB.dbo.HistorialView' no tiene definid
       </Principal>
       <Dependent Role="ESTADODECUENTA">
         <PropertyRef Name="IdPaciente" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_HISTORIALCLINICO_PACIENTE">
-    <End Role="PACIENTE" Type="Self.PACIENTE" Multiplicity="1" />
-    <End Role="HISTORIALCLINICO" Type="Self.HISTORIALCLINICO" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="PACIENTE">
-        <PropertyRef Name="IdPaciente" />
-      </Principal>
-      <Dependent Role="HISTORIALCLINICO">
-        <PropertyRef Name="IdPaciente" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_HISTORIALCLINICO_TRABAJO">
-    <End Role="TRABAJO" Type="Self.TRABAJO" Multiplicity="1" />
-    <End Role="HISTORIALCLINICO" Type="Self.HISTORIALCLINICO" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="TRABAJO">
-        <PropertyRef Name="IdTrabajo" />
-      </Principal>
-      <Dependent Role="HISTORIALCLINICO">
-        <PropertyRef Name="IdTrabajo" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -267,7 +240,6 @@ advertencia 6002: La tabla o vista 'DentalDB.dbo.HistorialView' no tiene definid
     <EntitySet Name="ESTADOCUENTALABORATORIO" EntityType="Self.ESTADOCUENTALABORATORIO" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="ESTADODECUENTA" EntityType="Self.ESTADODECUENTA" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="ESTADOTRABAJO" EntityType="Self.ESTADOTRABAJO" Schema="dbo" store:Type="Tables" />
-    <EntitySet Name="HISTORIALCLINICO" EntityType="Self.HISTORIALCLINICO" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="LABORATORIO" EntityType="Self.LABORATORIO" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="PACIENTE" EntityType="Self.PACIENTE" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="RELACIONTRALA" EntityType="Self.RELACIONTRALA" Schema="dbo" store:Type="Tables" />
@@ -278,7 +250,10 @@ advertencia 6002: La tabla o vista 'DentalDB.dbo.HistorialView' no tiene definid
     [HistorialView].[Nombre] AS [Nombre], 
     [HistorialView].[Apellido] AS [Apellido], 
     [HistorialView].[AntecedentesPatologicos] AS [AntecedentesPatologicos], 
-    [HistorialView].[Tratamiento] AS [Tratamiento]
+    [HistorialView].[Tratamiento] AS [Tratamiento], 
+    [HistorialView].[Monto] AS [Monto], 
+    [HistorialView].[Abono] AS [Abono], 
+    [HistorialView].[Faltante] AS [Faltante]
     FROM [dbo].[HistorialView] AS [HistorialView]</DefiningQuery>
     </EntitySet>
     <AssociationSet Name="FK_CITA_CENTRO" Association="Self.FK_CITA_CENTRO">
@@ -296,14 +271,6 @@ advertencia 6002: La tabla o vista 'DentalDB.dbo.HistorialView' no tiene definid
     <AssociationSet Name="FK_ESTADODECUENTA_PACIENTE" Association="Self.FK_ESTADODECUENTA_PACIENTE">
       <End Role="PACIENTE" EntitySet="PACIENTE" />
       <End Role="ESTADODECUENTA" EntitySet="ESTADODECUENTA" />
-    </AssociationSet>
-    <AssociationSet Name="FK_HISTORIALCLINICO_PACIENTE" Association="Self.FK_HISTORIALCLINICO_PACIENTE">
-      <End Role="PACIENTE" EntitySet="PACIENTE" />
-      <End Role="HISTORIALCLINICO" EntitySet="HISTORIALCLINICO" />
-    </AssociationSet>
-    <AssociationSet Name="FK_HISTORIALCLINICO_TRABAJO" Association="Self.FK_HISTORIALCLINICO_TRABAJO">
-      <End Role="TRABAJO" EntitySet="TRABAJO" />
-      <End Role="HISTORIALCLINICO" EntitySet="HISTORIALCLINICO" />
     </AssociationSet>
     <AssociationSet Name="FK_PACIENTE_CENTRO" Association="Self.FK_PACIENTE_CENTRO">
       <End Role="CENTRO" EntitySet="CENTRO" />

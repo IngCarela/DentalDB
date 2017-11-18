@@ -24,9 +24,6 @@
         <AssociationConnector Association="DentalDBModel.FK_RELACIONTRALA_TRABAJO" />
         <EntityTypeShape EntityType="DentalDBModel.ESTADOCUENTALABORATORIO" Width="1.5" PointX="5.25" PointY="14.375" />
         <AssociationConnector Association="DentalDBModel.FK_ESTADOCUENTALABORATORIO_LABORATORIO" />
-        <EntityTypeShape EntityType="DentalDBModel.HISTORIALCLINICO" Width="1.5" PointX="8.375" PointY="6.875" />
-        <AssociationConnector Association="DentalDBModel.FK_HISTORIALCLINICO_PACIENTE" />
-        <AssociationConnector Association="DentalDBModel.FK_HISTORIALCLINICO_TRABAJO" />
         <EntityTypeShape EntityType="DentalDBModel.HistorialView" Width="1.5" PointX="7.375" PointY="0.75" />
         </Diagram>
     </edmx:Diagrams>
