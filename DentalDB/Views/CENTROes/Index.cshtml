@@ -1,0 +1,40 @@
+﻿@model IEnumerable<DentalDB.Models.CENTRO>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_MasterPrincipal.cshtml";
+}
+
+
+
+<p>
+    @Html.ActionLink("Crear Nuevo", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Centro1)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Lugar)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Centro1)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Lugar)
+        </td>
+        <td>
+            @Html.ActionLink("Editar", "Edit", new { id=item.IdCentro }) |
+            @Html.ActionLink("Detalle", "Details", new { id=item.IdCentro }) |
+            @Html.ActionLink("Eliminar", "Delete", new { id=item.IdCentro })
+        </td>
+    </tr>
+}
+
+</table>

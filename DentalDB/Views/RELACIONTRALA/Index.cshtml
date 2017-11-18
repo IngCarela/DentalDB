@@ -1,0 +1,58 @@
+﻿@model IEnumerable<DentalDB.Models.RELACIONTRALA>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_MasterPrincipal.cshtml";
+}
+
+
+
+<p>
+    @Html.ActionLink("Crear Nuevo", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Fecha)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Hora)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ESTADOTRABAJO.Estado)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.LABORATORIO.Nombre)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TRABAJO.Trabajo1)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Fecha)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Hora)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ESTADOTRABAJO.Estado)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.LABORATORIO.Nombre)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TRABAJO.Trabajo1)
+        </td>
+        <td>
+            @Html.ActionLink("Editar", "Edit", new { id=item.IdRelacion }) |
+            @Html.ActionLink("Detalle", "Details", new { id=item.IdRelacion }) |
+            @Html.ActionLink("Eliminar", "Delete", new { id=item.IdRelacion })
+        </td>
+    </tr>
+}
+
+</table>

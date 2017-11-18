@@ -1,0 +1,43 @@
+﻿@model DentalDB.Models.LABORATORIO
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_MasterPrincipal.cshtml";
+}
+
+
+
+<div>
+    <h4>LABORATORIO</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Nombre)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Nombre)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Fecha)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Fecha)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Hora)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Hora)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Editar", "Edit", new { id = Model.IdLaboratorio }) |
+    @Html.ActionLink("Volver al menu", "Index")
+</p>

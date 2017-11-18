@@ -1,0 +1,80 @@
+﻿@model DentalDB.Models.CITA
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_MasterPrincipal.cshtml";
+}
+
+
+
+<div id="formulario">
+    <script>
+        strid= ClientId
+        function CallPrint(strid) {
+            var prtContent = document.getElementById(strid);
+            var WinPrint = window.open("", "", "left=100,top=100,width=600,height=600");
+            WinPrint.document.write(prtContent.innerHTML);
+            WinPrint.document.close();
+            WinPrint.focus();
+            WinPrint.print();
+        }
+    </script>
+    <h4>CITA</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.NumeroCitas)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NumeroCitas)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Fecha)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Fecha)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Hora)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Hora)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Descripcion)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Descripcion)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PACIENTE.Nombre)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PACIENTE.Nombre)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CENTRO.Centro1)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CENTRO.Centro1)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Editar", "Edit", new { id = Model.IdCita }) |
+    @Html.ActionLink("Volver al menu", "Index")
+</p>
+
+<input type="button" onclick="CallPrint('formulario')" value="Imprimir"  class="btn btn-default" />

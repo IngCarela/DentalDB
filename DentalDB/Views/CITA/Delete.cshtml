@@ -1,0 +1,73 @@
+﻿@model DentalDB.Models.CITA
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Views/Shared/_MasterPrincipal.cshtml";
+}
+
+
+
+<h3>Esta segruro que desea eliminarlo?</h3>
+<div>
+    <h4>CITA</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.NumeroCitas)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NumeroCitas)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Fecha)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Fecha)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Hora)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Hora)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Descripcion)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Descripcion)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PACIENTE.Nombre)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PACIENTE.Nombre)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CENTRO.Centro1)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CENTRO.Centro1)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Borrar" class="btn btn-default" /> |
+            @Html.ActionLink("Volver al menu", "Index")
+        </div>
+    }
+</div>

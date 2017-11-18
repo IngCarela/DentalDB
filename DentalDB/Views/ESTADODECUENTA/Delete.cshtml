@@ -1,0 +1,57 @@
+﻿@model DentalDB.Models.ESTADODECUENTA
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Views/Shared/_MasterPrincipal.cshtml";
+}
+
+<h2>Delete</h2>
+
+<h3>Esta seguro que desea eliminarlo?</h3>
+<div>
+    <h4>ESTADO DE CUENTA</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Monto)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Monto)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Abono)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Abono)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Faltante)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Faltante)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PACIENTE.Nombre)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PACIENTE.Nombre)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Borrar" class="btn btn-default" /> |
+            @Html.ActionLink("Volver al menu", "Index")
+        </div>
+    }
+</div>

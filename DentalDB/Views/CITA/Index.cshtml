@@ -1,0 +1,74 @@
+﻿@model IEnumerable<DentalDB.Models.CITA>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_MasterPrincipal.cshtml";
+}
+
+<h3>CITAS</h3>
+
+<p>
+    @Html.ActionLink("Crear Nuevo", "Create")
+</p>
+
+<div>
+    @using (Html.BeginForm("Index","CITA",FormMethod.Get))
+    {
+        @Html.TextBox("busqueda")
+        <input type="submit" value="Buscar" class="btn btn-default" />
+    }
+</div>
+<br />
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.NumeroCitas)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Fecha)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Hora)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Descripcion)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PACIENTE.Nombre)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CENTRO.Centro1)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.NumeroCitas)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Fecha)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Hora)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Descripcion)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PACIENTE.Nombre)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CENTRO.Centro1)
+        </td>
+        <td>
+            @Html.ActionLink("Editar", "Edit", new { id=item.IdCita }) |
+            @Html.ActionLink("Detalle", "Details", new { id=item.IdCita }) |
+            @Html.ActionLink("Eliminar", "Delete", new { id=item.IdCita }) |
+            
+        </td>
+    </tr>
+}
+
+</table>

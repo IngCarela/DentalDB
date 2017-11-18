@@ -1,0 +1,45 @@
+﻿@model IEnumerable<DentalDB.Models.HistorialView>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_MasterPrincipal.cshtml";
+}
+
+<h2>Historial Clinico</h2>
+
+<div>
+    @using (Html.BeginForm())
+    {
+        @Html.TextBox("busqueda")
+        <input type="submit" value="Buscar" class="btn btn-default" />
+    }
+</div>
+
+<br />
+<table class="table">
+    <tr>
+        <th>@Html.DisplayNameFor(m=>m.Nombre)</th>
+        <th>@Html.DisplayNameFor(m=>m.Apellido)</th>
+        <th>@Html.DisplayNameFor(m=>m.AntecedentesPatologicos)</th>
+        <th>@Html.DisplayNameFor(m=>m.Tratamiento)</th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @item.Nombre
+        </td>
+        <td>
+            @item.Apellido
+        </td>
+        <td>
+            @item.AntecedentesPatologicos
+        </td>
+        <td>
+            @item.Tratamiento
+        </td>
+        
+    </tr>
+}
+
+</table>

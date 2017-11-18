@@ -1,0 +1,34 @@
+﻿@model IEnumerable<DentalDB.Models.ESTADOTRABAJO>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_MasterPrincipal.cshtml";
+}
+
+
+
+<p>
+    @Html.ActionLink("Crear Nuevo", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Estado)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Estado)
+        </td>
+        <td>
+            @Html.ActionLink("Editar", "Edit", new { id=item.IdEstadoT }) |
+            @Html.ActionLink("Detalle", "Details", new { id=item.IdEstadoT }) |
+            @Html.ActionLink("Eliminar", "Delete", new { id=item.IdEstadoT })
+        </td>
+    </tr>
+}
+
+</table>

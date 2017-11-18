@@ -1,0 +1,35 @@
+﻿@model DentalDB.Models.CENTRO
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_MasterPrincipal.cshtml";
+}
+
+
+
+<div>
+    <h4>CENTRO</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Centro1)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Centro1)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Lugar)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Lugar)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Editar", "Edit", new { id = Model.IdCentro }) |
+    @Html.ActionLink("Volver al menu", "Index")
+</p>

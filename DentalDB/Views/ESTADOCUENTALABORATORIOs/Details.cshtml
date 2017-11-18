@@ -1,0 +1,51 @@
+﻿@model DentalDB.Models.ESTADOCUENTALABORATORIO
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_MasterPrincipal.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>ESTADOCUENTALABORATORIO</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Monto)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Monto)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Abono)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Abono)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Faltante)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Faltante)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.LABORATORIO.Nombre)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.LABORATORIO.Nombre)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.IdEstadoL }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
