@@ -11,7 +11,8 @@ namespace DentalDB.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class LABORATORIO
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -21,9 +22,19 @@ namespace DentalDB.Models
             this.ESTADOCUENTALABORATORIO = new HashSet<ESTADOCUENTALABORATORIO>();
         }
     
+        [Key]
         public int IdLaboratorio { get; set; }
+
+        [Required(ErrorMessage = "No se aceptan campos vacios")]
+        [DataType(DataType.Text)]
         public string Nombre { get; set; }
+
+        [Required(ErrorMessage = "No se aceptan campos vacios")]
+        [DataType(DataType.Date)]
         public System.DateTime Fecha { get; set; }
+
+        [Required(ErrorMessage = "No se aceptan campos vacios")]
+        [DataType(DataType.Time)]
         public System.TimeSpan Hora { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

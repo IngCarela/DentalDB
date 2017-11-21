@@ -11,13 +11,25 @@ namespace DentalDB.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel;
+    using System.ComponentModel.DataAnnotations;
+
     public partial class ESTADOCUENTALABORATORIO
     {
+        [Key]
         public int IdEstadoL { get; set; }
+
+        [Required(ErrorMessage ="No se aceptan campos vacios")]
         public int Monto { get; set; }
+
+        [Required(ErrorMessage = "No se aceptan campos vacios")]
         public int Abono { get; set; }
+
+        [Required(ErrorMessage = "No se aceptan campos vacios")]
         public int Faltante { get; set; }
+
+        [Required(ErrorMessage = "No se aceptan campos vacios")]
+        [DisplayName("Laboratorio")]
         public int IdLaboratorio { get; set; }
     
         public virtual LABORATORIO LABORATORIO { get; set; }

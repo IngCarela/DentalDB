@@ -11,7 +11,9 @@ namespace DentalDB.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel;
+    using System.ComponentModel.DataAnnotations;
+
     public partial class CENTRO
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -21,8 +23,16 @@ namespace DentalDB.Models
             this.PACIENTE = new HashSet<PACIENTE>();
         }
     
+        [Key]
         public int IdCentro { get; set; }
+
+        [DisplayName("Centro")]
+        [Required(ErrorMessage ="No se aceptan campos vacios")]
+        [DataType(DataType.Text)]
         public string Centro1 { get; set; }
+
+        [DataType(DataType.Text)]
+        [Required(ErrorMessage = "No se aceptan campos vacios")]
         public string Lugar { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
