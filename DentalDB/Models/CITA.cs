@@ -37,7 +37,7 @@ namespace DentalDB.Models
         public System.TimeSpan Hora { get; set; }
 
         [Required(ErrorMessage = "No se aceptan campos vacios")]
-        [DataType(DataType.Text)]
+        [DataType(DataType.MultilineText)]
         public string Descripcion { get; set; }
 
         [Required(ErrorMessage = "No se aceptan campos vacios")]
