@@ -12,18 +12,17 @@ namespace DentalDB.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class ESTADOCUENTALABORATORIO
+    public partial class ESTADOCUENTADOCTOR
     {
-        public int IdEstadoL { get; set; }
-        public int IdLaboratorio { get; set; }
-        public int IdTrabajo { get; set; }
+        public int IdEstadoD { get; set; }
+        public System.DateTime Fecha { get; set; }
+        public int IdDoctor { get; set; }
         public int IdPaciente { get; set; }
-        public Nullable<System.DateTime> Fecha { get; set; }
         public int Monto { get; set; }
         public int Abono { get; set; }
         public int Faltante { get; set; }
     
-        public virtual LABORATORIO LABORATORIO { get; set; }
-        public virtual TRABAJO TRABAJO { get; set; }
+        public virtual DOCTOR DOCTOR { get; set; }
+        public virtual PACIENTE PACIENTE { get; set; }
     }
 }

@@ -11,32 +11,14 @@ namespace DentalDB.Models
 {
     using System;
     using System.Collections.Generic;
-    using System.ComponentModel;
-    using System.ComponentModel.DataAnnotations;
-
+    
     public partial class RELACIONTRALA
     {
-        [Key]
         public int IdRelacion { get; set; }
-
-        [Required(ErrorMessage = "No se aceptan campos vacios")]
-        [DisplayName("Pacientes")]
         public int IdTrabajo { get; set; }
-
-        [Required(ErrorMessage = "No se aceptan campos vacios")]
-        [DisplayName("Estado")]
         public int IdEstadoT { get; set; }
-
-        [Required(ErrorMessage = "No se aceptan campos vacios")]
-        [DataType(DataType.Date)]
         public System.DateTime Fecha { get; set; }
-
-        [Required(ErrorMessage = "No se aceptan campos vacios")]
-        [DataType(DataType.Time)]
         public System.TimeSpan Hora { get; set; }
-
-        [Required(ErrorMessage = "No se aceptan campos vacios")]
-        [DisplayName("Laboratorio")]
         public int IdLaboratorio { get; set; }
     
         public virtual ESTADOTRABAJO ESTADOTRABAJO { get; set; }

@@ -10,112 +10,112 @@ using DentalDB.Models;
 
 namespace DentalDB.Controllers
 {
-    public class ESTADODECUENTAController : Controller
+    public class DOCTORController : Controller
     {
         private DentalDBEntities1 db = new DentalDBEntities1();
 
-        // GET: ESTADODECUENTA
+        // GET: DOCTOR
         public ActionResult Index()
         {
-            var eSTADODECUENTA = db.ESTADODECUENTA.Include(e => e.PACIENTE);
-            return View(eSTADODECUENTA.ToList());
+            var dOCTOR = db.DOCTOR.Include(d => d.PACIENTE);
+            return View(dOCTOR.ToList());
         }
 
-        // GET: ESTADODECUENTA/Details/5
+        // GET: DOCTOR/Details/5
         public ActionResult Details(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            ESTADODECUENTA eSTADODECUENTA = db.ESTADODECUENTA.Find(id);
-            if (eSTADODECUENTA == null)
+            DOCTOR dOCTOR = db.DOCTOR.Find(id);
+            if (dOCTOR == null)
             {
                 return HttpNotFound();
             }
-            return View(eSTADODECUENTA);
+            return View(dOCTOR);
         }
 
-        // GET: ESTADODECUENTA/Create
+        // GET: DOCTOR/Create
         public ActionResult Create()
         {
             ViewBag.IdPaciente = new SelectList(db.PACIENTE, "IdPaciente", "Nombre");
             return View();
         }
 
-        // POST: ESTADODECUENTA/Create
+        // POST: DOCTOR/Create
         // Para protegerse de ataques de publicación excesiva, habilite las propiedades específicas a las que desea enlazarse. Para obtener 
         // más información vea https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "IdEstadoP,Fecha,IdPaciente,Monto,Abono,Faltante")] ESTADODECUENTA eSTADODECUENTA)
+        public ActionResult Create([Bind(Include = "IdDoctor,Nombre,IdPaciente")] DOCTOR dOCTOR)
         {
             if (ModelState.IsValid)
             {
-                db.ESTADODECUENTA.Add(eSTADODECUENTA);
+                db.DOCTOR.Add(dOCTOR);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            ViewBag.IdPaciente = new SelectList(db.PACIENTE, "IdPaciente", "Nombre", eSTADODECUENTA.IdPaciente);
-            return View(eSTADODECUENTA);
+            ViewBag.IdPaciente = new SelectList(db.PACIENTE, "IdPaciente", "Nombre", dOCTOR.IdPaciente);
+            return View(dOCTOR);
         }
 
-        // GET: ESTADODECUENTA/Edit/5
+        // GET: DOCTOR/Edit/5
         public ActionResult Edit(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            ESTADODECUENTA eSTADODECUENTA = db.ESTADODECUENTA.Find(id);
-            if (eSTADODECUENTA == null)
+            DOCTOR dOCTOR = db.DOCTOR.Find(id);
+            if (dOCTOR == null)
             {
                 return HttpNotFound();
             }
-            ViewBag.IdPaciente = new SelectList(db.PACIENTE, "IdPaciente", "Nombre", eSTADODECUENTA.IdPaciente);
-            return View(eSTADODECUENTA);
+            ViewBag.IdPaciente = new SelectList(db.PACIENTE, "IdPaciente", "Nombre", dOCTOR.IdPaciente);
+            return View(dOCTOR);
         }
 
-        // POST: ESTADODECUENTA/Edit/5
+        // POST: DOCTOR/Edit/5
         // Para protegerse de ataques de publicación excesiva, habilite las propiedades específicas a las que desea enlazarse. Para obtener 
         // más información vea https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "IdEstadoP,Fecha,IdPaciente,Monto,Abono,Faltante")] ESTADODECUENTA eSTADODECUENTA)
+        public ActionResult Edit([Bind(Include = "IdDoctor,Nombre,IdPaciente")] DOCTOR dOCTOR)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(eSTADODECUENTA).State = EntityState.Modified;
+                db.Entry(dOCTOR).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.IdPaciente = new SelectList(db.PACIENTE, "IdPaciente", "Nombre", eSTADODECUENTA.IdPaciente);
-            return View(eSTADODECUENTA);
+            ViewBag.IdPaciente = new SelectList(db.PACIENTE, "IdPaciente", "Nombre", dOCTOR.IdPaciente);
+            return View(dOCTOR);
         }
 
-        // GET: ESTADODECUENTA/Delete/5
+        // GET: DOCTOR/Delete/5
         public ActionResult Delete(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            ESTADODECUENTA eSTADODECUENTA = db.ESTADODECUENTA.Find(id);
-            if (eSTADODECUENTA == null)
+            DOCTOR dOCTOR = db.DOCTOR.Find(id);
+            if (dOCTOR == null)
             {
                 return HttpNotFound();
             }
-            return View(eSTADODECUENTA);
+            return View(dOCTOR);
         }
 
-        // POST: ESTADODECUENTA/Delete/5
+        // POST: DOCTOR/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            ESTADODECUENTA eSTADODECUENTA = db.ESTADODECUENTA.Find(id);
-            db.ESTADODECUENTA.Remove(eSTADODECUENTA);
+            DOCTOR dOCTOR = db.DOCTOR.Find(id);
+            db.DOCTOR.Remove(dOCTOR);
             db.SaveChanges();
             return RedirectToAction("Index");
         }

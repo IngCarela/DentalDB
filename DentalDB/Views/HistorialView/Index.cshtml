@@ -22,9 +22,9 @@
         <th>@Html.DisplayNameFor(m=>m.Apellido)</th>
         <th>@Html.DisplayNameFor(m=>m.AntecedentesPatologicos)</th>
         <th>@Html.DisplayNameFor(m=>m.Tratamiento)</th>
-        <th>@Html.DisplayNameFor(m=>m.Monto)</th>
-        <th>@Html.DisplayNameFor(m=>m.Abono)</th>
-        <th>@Html.DisplayNameFor(m=>m.Faltante)</th>
+        <th>@Html.DisplayNameFor(m=>m.Telefono)</th>
+        <th>@Html.DisplayNameFor(m=>m.Centro)</th>
+        
     </tr>
 
 @foreach (var item in Model) {
@@ -42,14 +42,12 @@
             @item.Tratamiento
         </td>
         <td>
-            @item.Monto
+            @item.Telefono
         </td>
         <td>
-            @item.Abono
+            @item.Centro
         </td>
-        <td>
-            @item.Faltante
-        </td>
+        
         
     </tr>
 }

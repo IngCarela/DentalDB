@@ -20,25 +20,49 @@
     <Property Name="Descripcion" Type="nvarchar" MaxLength="50" Nullable="false" />
     <Property Name="IdCentro" Type="int" Nullable="false" />
   </EntityType>
+  <EntityType Name="DOCTOR">
+    <Key>
+      <PropertyRef Name="IdDoctor" />
+    </Key>
+    <Property Name="IdDoctor" Type="int" Nullable="false" />
+    <Property Name="Nombre" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="IdPaciente" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ESTADOCUENTADOCTOR">
+    <Key>
+      <PropertyRef Name="IdEstadoD" />
+    </Key>
+    <Property Name="IdEstadoD" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Fecha" Type="date" Nullable="false" />
+    <Property Name="IdDoctor" Type="int" Nullable="false" />
+    <Property Name="IdPaciente" Type="int" Nullable="false" />
+    <Property Name="Monto" Type="int" Nullable="false" />
+    <Property Name="Abono" Type="int" Nullable="false" />
+    <Property Name="Faltante" Type="int" Nullable="false" />
+  </EntityType>
   <EntityType Name="ESTADOCUENTALABORATORIO">
     <Key>
       <PropertyRef Name="IdEstadoL" />
     </Key>
     <Property Name="IdEstadoL" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="IdLaboratorio" Type="int" Nullable="false" />
+    <Property Name="IdTrabajo" Type="int" Nullable="false" />
+    <Property Name="IdPaciente" Type="int" Nullable="false" />
+    <Property Name="Fecha" Type="date" />
     <Property Name="Monto" Type="int" Nullable="false" />
     <Property Name="Abono" Type="int" Nullable="false" />
     <Property Name="Faltante" Type="int" Nullable="false" />
-    <Property Name="IdLaboratorio" Type="int" Nullable="false" />
   </EntityType>
   <EntityType Name="ESTADODECUENTA">
     <Key>
       <PropertyRef Name="IdEstadoP" />
     </Key>
     <Property Name="IdEstadoP" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Fecha" Type="date" />
+    <Property Name="IdPaciente" Type="int" Nullable="false" />
     <Property Name="Monto" Type="int" Nullable="false" />
     <Property Name="Abono" Type="int" Nullable="false" />
     <Property Name="Faltante" Type="int" Nullable="false" />
-    <Property Name="IdPaciente" Type="int" Nullable="false" />
   </EntityType>
   <EntityType Name="ESTADOTRABAJO">
     <Key>
@@ -114,17 +138,15 @@ advertencia 6002: La tabla o vista 'DentalDB.dbo.HistorialView' no tiene definid
       <PropertyRef Name="Apellido" />
       <PropertyRef Name="AntecedentesPatologicos" />
       <PropertyRef Name="Tratamiento" />
-      <PropertyRef Name="Monto" />
-      <PropertyRef Name="Abono" />
-      <PropertyRef Name="Faltante" />
+      <PropertyRef Name="Telefono" />
+      <PropertyRef Name="Centro" />
     </Key>
     <Property Name="Nombre" Type="nvarchar" MaxLength="50" Nullable="false" />
     <Property Name="Apellido" Type="nvarchar" MaxLength="50" Nullable="false" />
     <Property Name="AntecedentesPatologicos" Type="nvarchar" MaxLength="50" Nullable="false" />
     <Property Name="Tratamiento" Type="nvarchar" MaxLength="50" Nullable="false" />
-    <Property Name="Monto" Type="int" Nullable="false" />
-    <Property Name="Abono" Type="int" Nullable="false" />
-    <Property Name="Faltante" Type="int" Nullable="false" />
+    <Property Name="Telefono" Type="bigint" Nullable="false" />
+    <Property Name="Centro" Type="nvarchar" MaxLength="50" Nullable="false" />
   </EntityType>
   <Association Name="FK_CITA_CENTRO">
     <End Role="CENTRO" Type="Self.CENTRO" Multiplicity="1" />
@@ -146,6 +168,42 @@ advertencia 6002: La tabla o vista 'DentalDB.dbo.HistorialView' no tiene definid
         <PropertyRef Name="IdPaciente" />
       </Principal>
       <Dependent Role="CITA">
+        <PropertyRef Name="IdPaciente" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_DOCTOR_PACIENTE">
+    <End Role="PACIENTE" Type="Self.PACIENTE" Multiplicity="1" />
+    <End Role="DOCTOR" Type="Self.DOCTOR" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PACIENTE">
+        <PropertyRef Name="IdPaciente" />
+      </Principal>
+      <Dependent Role="DOCTOR">
+        <PropertyRef Name="IdPaciente" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ESTADOCUENTADOCTOR_DOCTOR">
+    <End Role="DOCTOR" Type="Self.DOCTOR" Multiplicity="1" />
+    <End Role="ESTADOCUENTADOCTOR" Type="Self.ESTADOCUENTADOCTOR" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="DOCTOR">
+        <PropertyRef Name="IdDoctor" />
+      </Principal>
+      <Dependent Role="ESTADOCUENTADOCTOR">
+        <PropertyRef Name="IdDoctor" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ESTADOCUENTADOCTOR_PACIENTE">
+    <End Role="PACIENTE" Type="Self.PACIENTE" Multiplicity="1" />
+    <End Role="ESTADOCUENTADOCTOR" Type="Self.ESTADOCUENTADOCTOR" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PACIENTE">
+        <PropertyRef Name="IdPaciente" />
+      </Principal>
+      <Dependent Role="ESTADOCUENTADOCTOR">
         <PropertyRef Name="IdPaciente" />
       </Dependent>
     </ReferentialConstraint>
@@ -222,6 +280,18 @@ advertencia 6002: La tabla o vista 'DentalDB.dbo.HistorialView' no tiene definid
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="FK_TRABAJO_ESTADOTRABAJO">
+    <End Role="ESTADOTRABAJO" Type="Self.ESTADOTRABAJO" Multiplicity="1" />
+    <End Role="TRABAJO" Type="Self.TRABAJO" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ESTADOTRABAJO">
+        <PropertyRef Name="IdEstadoT" />
+      </Principal>
+      <Dependent Role="TRABAJO">
+        <PropertyRef Name="IdEstadoT" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Association Name="FK_TRABAJO_PACIENTE">
     <End Role="PACIENTE" Type="Self.PACIENTE" Multiplicity="1" />
     <End Role="TRABAJO" Type="Self.TRABAJO" Multiplicity="*" />
@@ -237,6 +307,8 @@ advertencia 6002: La tabla o vista 'DentalDB.dbo.HistorialView' no tiene definid
   <EntityContainer Name="DentalDBModelStoreContainer">
     <EntitySet Name="CENTRO" EntityType="Self.CENTRO" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="CITA" EntityType="Self.CITA" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="DOCTOR" EntityType="Self.DOCTOR" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ESTADOCUENTADOCTOR" EntityType="Self.ESTADOCUENTADOCTOR" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="ESTADOCUENTALABORATORIO" EntityType="Self.ESTADOCUENTALABORATORIO" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="ESTADODECUENTA" EntityType="Self.ESTADODECUENTA" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="ESTADOTRABAJO" EntityType="Self.ESTADOTRABAJO" Schema="dbo" store:Type="Tables" />
@@ -251,9 +323,8 @@ advertencia 6002: La tabla o vista 'DentalDB.dbo.HistorialView' no tiene definid
     [HistorialView].[Apellido] AS [Apellido], 
     [HistorialView].[AntecedentesPatologicos] AS [AntecedentesPatologicos], 
     [HistorialView].[Tratamiento] AS [Tratamiento], 
-    [HistorialView].[Monto] AS [Monto], 
-    [HistorialView].[Abono] AS [Abono], 
-    [HistorialView].[Faltante] AS [Faltante]
+    [HistorialView].[Telefono] AS [Telefono], 
+    [HistorialView].[Centro] AS [Centro]
     FROM [dbo].[HistorialView] AS [HistorialView]</DefiningQuery>
     </EntitySet>
     <AssociationSet Name="FK_CITA_CENTRO" Association="Self.FK_CITA_CENTRO">
@@ -263,6 +334,18 @@ advertencia 6002: La tabla o vista 'DentalDB.dbo.HistorialView' no tiene definid
     <AssociationSet Name="FK_CITA_PACIENTE" Association="Self.FK_CITA_PACIENTE">
       <End Role="PACIENTE" EntitySet="PACIENTE" />
       <End Role="CITA" EntitySet="CITA" />
+    </AssociationSet>
+    <AssociationSet Name="FK_DOCTOR_PACIENTE" Association="Self.FK_DOCTOR_PACIENTE">
+      <End Role="PACIENTE" EntitySet="PACIENTE" />
+      <End Role="DOCTOR" EntitySet="DOCTOR" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ESTADOCUENTADOCTOR_DOCTOR" Association="Self.FK_ESTADOCUENTADOCTOR_DOCTOR">
+      <End Role="DOCTOR" EntitySet="DOCTOR" />
+      <End Role="ESTADOCUENTADOCTOR" EntitySet="ESTADOCUENTADOCTOR" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ESTADOCUENTADOCTOR_PACIENTE" Association="Self.FK_ESTADOCUENTADOCTOR_PACIENTE">
+      <End Role="PACIENTE" EntitySet="PACIENTE" />
+      <End Role="ESTADOCUENTADOCTOR" EntitySet="ESTADOCUENTADOCTOR" />
     </AssociationSet>
     <AssociationSet Name="FK_ESTADOCUENTALABORATORIO_LABORATORIO" Association="Self.FK_ESTADOCUENTALABORATORIO_LABORATORIO">
       <End Role="LABORATORIO" EntitySet="LABORATORIO" />
@@ -287,6 +370,10 @@ advertencia 6002: La tabla o vista 'DentalDB.dbo.HistorialView' no tiene definid
     <AssociationSet Name="FK_RELACIONTRALA_TRABAJO" Association="Self.FK_RELACIONTRALA_TRABAJO">
       <End Role="TRABAJO" EntitySet="TRABAJO" />
       <End Role="RELACIONTRALA" EntitySet="RELACIONTRALA" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TRABAJO_ESTADOTRABAJO" Association="Self.FK_TRABAJO_ESTADOTRABAJO">
+      <End Role="ESTADOTRABAJO" EntitySet="ESTADOTRABAJO" />
+      <End Role="TRABAJO" EntitySet="TRABAJO" />
     </AssociationSet>
     <AssociationSet Name="FK_TRABAJO_PACIENTE" Association="Self.FK_TRABAJO_PACIENTE">
       <End Role="PACIENTE" EntitySet="PACIENTE" />

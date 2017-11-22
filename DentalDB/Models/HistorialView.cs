@@ -18,8 +18,7 @@ namespace DentalDB.Models
         public string Apellido { get; set; }
         public string AntecedentesPatologicos { get; set; }
         public string Tratamiento { get; set; }
-        public int Monto { get; set; }
-        public int Abono { get; set; }
-        public int Faltante { get; set; }
+        public long Telefono { get; set; }
+        public string Centro { get; set; }
     }
 }

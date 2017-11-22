@@ -1,4 +1,4 @@
-﻿@model DentalDB.Models.ESTADODECUENTA
+﻿@model DentalDB.Models.ESTADOCUENTADOCTOR
 
 @{
     ViewBag.Title = "Details";
@@ -8,7 +8,7 @@
 <h2>Details</h2>
 
 <div>
-    <h4>ESTADODECUENTA</h4>
+    <h4>ESTADOCUENTADOCTOR</h4>
     <hr />
     <dl class="dl-horizontal">
         <dt>
@@ -44,6 +44,14 @@
         </dd>
 
         <dt>
+            @Html.DisplayNameFor(model => model.DOCTOR.Nombre)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DOCTOR.Nombre)
+        </dd>
+
+        <dt>
             @Html.DisplayNameFor(model => model.PACIENTE.Nombre)
         </dt>
 
@@ -54,6 +62,6 @@
     </dl>
 </div>
 <p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.IdEstadoP }) |
+    @Html.ActionLink("Edit", "Edit", new { id = Model.IdEstadoD }) |
     @Html.ActionLink("Back to List", "Index")
 </p>

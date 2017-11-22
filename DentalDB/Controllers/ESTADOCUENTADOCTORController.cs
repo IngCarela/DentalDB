@@ -10,112 +10,116 @@ using DentalDB.Models;
 
 namespace DentalDB.Controllers
 {
-    public class ESTADODECUENTAController : Controller
+    public class ESTADOCUENTADOCTORController : Controller
     {
         private DentalDBEntities1 db = new DentalDBEntities1();
 
-        // GET: ESTADODECUENTA
+        // GET: ESTADOCUENTADOCTOR
         public ActionResult Index()
         {
-            var eSTADODECUENTA = db.ESTADODECUENTA.Include(e => e.PACIENTE);
-            return View(eSTADODECUENTA.ToList());
+            var eSTADOCUENTADOCTOR = db.ESTADOCUENTADOCTOR.Include(e => e.DOCTOR).Include(e => e.PACIENTE);
+            return View(eSTADOCUENTADOCTOR.ToList());
         }
 
-        // GET: ESTADODECUENTA/Details/5
+        // GET: ESTADOCUENTADOCTOR/Details/5
         public ActionResult Details(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            ESTADODECUENTA eSTADODECUENTA = db.ESTADODECUENTA.Find(id);
-            if (eSTADODECUENTA == null)
+            ESTADOCUENTADOCTOR eSTADOCUENTADOCTOR = db.ESTADOCUENTADOCTOR.Find(id);
+            if (eSTADOCUENTADOCTOR == null)
             {
                 return HttpNotFound();
             }
-            return View(eSTADODECUENTA);
+            return View(eSTADOCUENTADOCTOR);
         }
 
-        // GET: ESTADODECUENTA/Create
+        // GET: ESTADOCUENTADOCTOR/Create
         public ActionResult Create()
         {
+            ViewBag.IdDoctor = new SelectList(db.DOCTOR, "IdDoctor", "Nombre");
             ViewBag.IdPaciente = new SelectList(db.PACIENTE, "IdPaciente", "Nombre");
             return View();
         }
 
-        // POST: ESTADODECUENTA/Create
+        // POST: ESTADOCUENTADOCTOR/Create
         // Para protegerse de ataques de publicación excesiva, habilite las propiedades específicas a las que desea enlazarse. Para obtener 
         // más información vea https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "IdEstadoP,Fecha,IdPaciente,Monto,Abono,Faltante")] ESTADODECUENTA eSTADODECUENTA)
+        public ActionResult Create([Bind(Include = "IdEstadoD,Fecha,IdDoctor,IdPaciente,Monto,Abono,Faltante")] ESTADOCUENTADOCTOR eSTADOCUENTADOCTOR)
         {
             if (ModelState.IsValid)
             {
-                db.ESTADODECUENTA.Add(eSTADODECUENTA);
+                db.ESTADOCUENTADOCTOR.Add(eSTADOCUENTADOCTOR);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            ViewBag.IdPaciente = new SelectList(db.PACIENTE, "IdPaciente", "Nombre", eSTADODECUENTA.IdPaciente);
-            return View(eSTADODECUENTA);
+            ViewBag.IdDoctor = new SelectList(db.DOCTOR, "IdDoctor", "Nombre", eSTADOCUENTADOCTOR.IdDoctor);
+            ViewBag.IdPaciente = new SelectList(db.PACIENTE, "IdPaciente", "Nombre", eSTADOCUENTADOCTOR.IdPaciente);
+            return View(eSTADOCUENTADOCTOR);
         }
 
-        // GET: ESTADODECUENTA/Edit/5
+        // GET: ESTADOCUENTADOCTOR/Edit/5
         public ActionResult Edit(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            ESTADODECUENTA eSTADODECUENTA = db.ESTADODECUENTA.Find(id);
-            if (eSTADODECUENTA == null)
+            ESTADOCUENTADOCTOR eSTADOCUENTADOCTOR = db.ESTADOCUENTADOCTOR.Find(id);
+            if (eSTADOCUENTADOCTOR == null)
             {
                 return HttpNotFound();
             }
-            ViewBag.IdPaciente = new SelectList(db.PACIENTE, "IdPaciente", "Nombre", eSTADODECUENTA.IdPaciente);
-            return View(eSTADODECUENTA);
+            ViewBag.IdDoctor = new SelectList(db.DOCTOR, "IdDoctor", "Nombre", eSTADOCUENTADOCTOR.IdDoctor);
+            ViewBag.IdPaciente = new SelectList(db.PACIENTE, "IdPaciente", "Nombre", eSTADOCUENTADOCTOR.IdPaciente);
+            return View(eSTADOCUENTADOCTOR);
         }
 
-        // POST: ESTADODECUENTA/Edit/5
+        // POST: ESTADOCUENTADOCTOR/Edit/5
         // Para protegerse de ataques de publicación excesiva, habilite las propiedades específicas a las que desea enlazarse. Para obtener 
         // más información vea https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "IdEstadoP,Fecha,IdPaciente,Monto,Abono,Faltante")] ESTADODECUENTA eSTADODECUENTA)
+        public ActionResult Edit([Bind(Include = "IdEstadoD,Fecha,IdDoctor,IdPaciente,Monto,Abono,Faltante")] ESTADOCUENTADOCTOR eSTADOCUENTADOCTOR)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(eSTADODECUENTA).State = EntityState.Modified;
+                db.Entry(eSTADOCUENTADOCTOR).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.IdPaciente = new SelectList(db.PACIENTE, "IdPaciente", "Nombre", eSTADODECUENTA.IdPaciente);
-            return View(eSTADODECUENTA);
+            ViewBag.IdDoctor = new SelectList(db.DOCTOR, "IdDoctor", "Nombre", eSTADOCUENTADOCTOR.IdDoctor);
+            ViewBag.IdPaciente = new SelectList(db.PACIENTE, "IdPaciente", "Nombre", eSTADOCUENTADOCTOR.IdPaciente);
+            return View(eSTADOCUENTADOCTOR);
         }
 
-        // GET: ESTADODECUENTA/Delete/5
+        // GET: ESTADOCUENTADOCTOR/Delete/5
         public ActionResult Delete(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            ESTADODECUENTA eSTADODECUENTA = db.ESTADODECUENTA.Find(id);
-            if (eSTADODECUENTA == null)
+            ESTADOCUENTADOCTOR eSTADOCUENTADOCTOR = db.ESTADOCUENTADOCTOR.Find(id);
+            if (eSTADOCUENTADOCTOR == null)
             {
                 return HttpNotFound();
             }
-            return View(eSTADODECUENTA);
+            return View(eSTADOCUENTADOCTOR);
         }
 
-        // POST: ESTADODECUENTA/Delete/5
+        // POST: ESTADOCUENTADOCTOR/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            ESTADODECUENTA eSTADODECUENTA = db.ESTADODECUENTA.Find(id);
-            db.ESTADODECUENTA.Remove(eSTADODECUENTA);
+            ESTADOCUENTADOCTOR eSTADOCUENTADOCTOR = db.ESTADOCUENTADOCTOR.Find(id);
+            db.ESTADOCUENTADOCTOR.Remove(eSTADOCUENTADOCTOR);
             db.SaveChanges();
             return RedirectToAction("Index");
         }

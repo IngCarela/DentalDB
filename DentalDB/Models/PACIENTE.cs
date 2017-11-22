@@ -11,9 +11,7 @@ namespace DentalDB.Models
 {
     using System;
     using System.Collections.Generic;
-    using System.ComponentModel;
-    using System.ComponentModel.DataAnnotations;
-
+    
     public partial class PACIENTE
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -22,59 +20,22 @@ namespace DentalDB.Models
             this.CITA = new HashSet<CITA>();
             this.ESTADODECUENTA = new HashSet<ESTADODECUENTA>();
             this.TRABAJO = new HashSet<TRABAJO>();
+            this.DOCTOR = new HashSet<DOCTOR>();
+            this.ESTADOCUENTADOCTOR = new HashSet<ESTADOCUENTADOCTOR>();
         }
     
-        [Key]
         public int IdPaciente { get; set; }
-
-        [DataType(DataType.Text)]
-        [Required(ErrorMessage ="No se aceptan campos vacios")]
         public string Nombre { get; set; }
-
-        [DataType(DataType.Text)]
-        [Required(ErrorMessage = "No se aceptan campos vacios")]
         public string Apellido { get; set; }
-
-        [DataType(DataType.Text)]
-        [Required(ErrorMessage = "No se aceptan campos vacios")]
         public string Direccion { get; set; }
-
-        
-        [Required(ErrorMessage = "No se aceptan campos vacios")]
         public Nullable<int> Cedula { get; set; }
-
-        [DataType(DataType.Text)]
-        [Required(ErrorMessage = "No se aceptan campos vacios")]
         public string Sexo { get; set; }
-
-        
-        [Required(ErrorMessage = "No se aceptan campos vacios")]
         public int Edad { get; set; }
-
-        
-        [Required(ErrorMessage = "No se aceptan campos vacios")]
         public int Telefono { get; set; }
-
-        [DataType(DataType.Text)]
-        [Required(ErrorMessage = "No se aceptan campos vacios")]
         public string Estado { get; set; }
-
-        [DataType(DataType.EmailAddress)]
-        [Required(ErrorMessage = "No se aceptan campos vacios")]
         public string Correo { get; set; }
-
-        [DataType(DataType.Text)]
-        [DisplayName("Antecedentes Patologicos")]
-        [Required(ErrorMessage = "No se aceptan campos vacios")]
         public string AntecedentesPatologicos { get; set; }
-
-        [DataType(DataType.Text)]
-        [Required(ErrorMessage = "No se aceptan campos vacios")]
         public string Ocupacion { get; set; }
-
-        [DataType(DataType.Text)]
-        [Required(ErrorMessage = "No se aceptan campos vacios")]
-        [DisplayName("Centro")]
         public int IdCentro { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
@@ -84,5 +45,9 @@ namespace DentalDB.Models
         public virtual ICollection<ESTADODECUENTA> ESTADODECUENTA { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<TRABAJO> TRABAJO { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<DOCTOR> DOCTOR { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<ESTADOCUENTADOCTOR> ESTADOCUENTADOCTOR { get; set; }
     }
 }

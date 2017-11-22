@@ -1,4 +1,4 @@
-﻿@model IEnumerable<DentalDB.Models.ESTADODECUENTA>
+﻿@model IEnumerable<DentalDB.Models.ESTADOCUENTALABORATORIO>
 
 @{
     ViewBag.Title = "Index";
@@ -16,6 +16,12 @@
             @Html.DisplayNameFor(model => model.Fecha)
         </th>
         <th>
+            @Html.DisplayNameFor(model => model.IdTrabajo)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.IdPaciente)
+        </th>
+        <th>
             @Html.DisplayNameFor(model => model.Monto)
         </th>
         <th>
@@ -25,7 +31,7 @@
             @Html.DisplayNameFor(model => model.Faltante)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.PACIENTE.Nombre)
+            @Html.DisplayNameFor(model => model.LABORATORIO.Nombre)
         </th>
         <th></th>
     </tr>
@@ -34,6 +40,12 @@
     <tr>
         <td>
             @Html.DisplayFor(modelItem => item.Fecha)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.IdTrabajo)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.IdPaciente)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.Monto)
@@ -45,12 +57,12 @@
             @Html.DisplayFor(modelItem => item.Faltante)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.PACIENTE.Nombre)
+            @Html.DisplayFor(modelItem => item.LABORATORIO.Nombre)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.IdEstadoP }) |
-            @Html.ActionLink("Details", "Details", new { id=item.IdEstadoP }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.IdEstadoP })
+            @Html.ActionLink("Edit", "Edit", new { id=item.IdEstadoL }) |
+            @Html.ActionLink("Details", "Details", new { id=item.IdEstadoL }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.IdEstadoL })
         </td>
     </tr>
 }

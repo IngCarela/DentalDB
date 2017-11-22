@@ -11,48 +11,30 @@ namespace DentalDB.Models
 {
     using System;
     using System.Collections.Generic;
-    using System.ComponentModel;
-    using System.ComponentModel.DataAnnotations;
-
+    
     public partial class TRABAJO
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public TRABAJO()
         {
             this.RELACIONTRALA = new HashSet<RELACIONTRALA>();
+            this.ESTADOCUENTALABORATORIO = new HashSet<ESTADOCUENTALABORATORIO>();
         }
     
-        [Key]
         public int IdTrabajo { get; set; }
-
-        [Required(ErrorMessage = "No se aceptan campos vacios")]
-        [DataType(DataType.Text)]
         public string Tratamiento { get; set; }
-
-        [Required(ErrorMessage = "No se aceptan campos vacios")]
         public int Monto { get; set; }
-
-        [Required(ErrorMessage = "No se aceptan campos vacios")]
-        [DisplayName("Paciente")]
         public int IdPaciente { get; set; }
-
-        [Required(ErrorMessage = "No se aceptan campos vacios")]
-        [DataType(DataType.Date)]
         public System.DateTime Fecha { get; set; }
-
-        [Required(ErrorMessage = "No se aceptan campos vacios")]
-        [DataType(DataType.Time)]
         public System.TimeSpan Hora { get; set; }
-
-        [Required(ErrorMessage = "No se aceptan campos vacios")]
         public int IdEstadoT { get; set; }
-
-        [Required(ErrorMessage = "No se aceptan campos vacios")]
-        [DataType(DataType.Text)]
         public string Descripcion { get; set; }
     
         public virtual PACIENTE PACIENTE { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<RELACIONTRALA> RELACIONTRALA { get; set; }
+        public virtual ESTADOTRABAJO ESTADOTRABAJO { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<ESTADOCUENTALABORATORIO> ESTADOCUENTALABORATORIO { get; set; }
     }
 }

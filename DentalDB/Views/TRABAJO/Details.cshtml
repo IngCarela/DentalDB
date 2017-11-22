@@ -5,23 +5,25 @@
     Layout = "~/Views/Shared/_MasterPrincipal.cshtml";
 }
 
-
+<h2>Details</h2>
 
 <div id="formulario">
 
-    <script>
-        strid= ClientId
-        function CallPrint(strid) {
-            var prtContent = document.getElementById(strid);
-            var WinPrint = window.open("", "", "left=100,top=100,width=600,height=600");
-            WinPrint.document.write(prtContent.innerHTML);
-            WinPrint.document.close();
-            WinPrint.focus();
-            WinPrint.print();
-        }
-    </script>
+    
+        <script>
+            strid = ClientId
+            function CallPrint(strid) {
+                var prtContent = document.getElementById(strid);
+                var WinPrint = window.open("", "", "left=100,top=100,width=600,height=600");
+                WinPrint.document.write(prtContent.innerHTML);
+                WinPrint.document.close();
+                WinPrint.focus();
+                WinPrint.print();
+            }
+        </script>
+    
     <h4>TRABAJO</h4>
-    <hr />
+    
     <dl class="dl-horizontal">
         <dt>
             @Html.DisplayNameFor(model => model.Tratamiento)
@@ -82,7 +84,8 @@
     </dl>
 </div>
 <p>
-    @Html.ActionLink("Editar", "Edit", new { id = Model.IdTrabajo }) |
-    @Html.ActionLink("Volver al menu", "Index")
+    @Html.ActionLink("Edit", "Edit", new { id = Model.IdTrabajo }) |
+    @Html.ActionLink("Back to List", "Index")
 </p>
-<input type="button" value="Imprimir" onclick="CallPrint('formulario')" class="btn btn-default" />
+
+<input type="submit" value="Imprimir" onclick="CallPrint('formulario')" class="btn btn-default" />

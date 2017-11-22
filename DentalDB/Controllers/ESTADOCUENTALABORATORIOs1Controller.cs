@@ -10,18 +10,18 @@ using DentalDB.Models;
 
 namespace DentalDB.Controllers
 {
-    public class ESTADOCUENTALABORATORIOsController : Controller
+    public class ESTADOCUENTALABORATORIOs1Controller : Controller
     {
         private DentalDBEntities1 db = new DentalDBEntities1();
 
-        // GET: ESTADOCUENTALABORATORIOs
+        // GET: ESTADOCUENTALABORATORIOs1
         public ActionResult Index()
         {
             var eSTADOCUENTALABORATORIO = db.ESTADOCUENTALABORATORIO.Include(e => e.LABORATORIO);
             return View(eSTADOCUENTALABORATORIO.ToList());
         }
 
-        // GET: ESTADOCUENTALABORATORIOs/Details/5
+        // GET: ESTADOCUENTALABORATORIOs1/Details/5
         public ActionResult Details(int? id)
         {
             if (id == null)
@@ -36,19 +36,19 @@ namespace DentalDB.Controllers
             return View(eSTADOCUENTALABORATORIO);
         }
 
-        // GET: ESTADOCUENTALABORATORIOs/Create
+        // GET: ESTADOCUENTALABORATORIOs1/Create
         public ActionResult Create()
         {
             ViewBag.IdLaboratorio = new SelectList(db.LABORATORIO, "IdLaboratorio", "Nombre");
             return View();
         }
 
-        // POST: ESTADOCUENTALABORATORIOs/Create
+        // POST: ESTADOCUENTALABORATORIOs1/Create
         // Para protegerse de ataques de publicación excesiva, habilite las propiedades específicas a las que desea enlazarse. Para obtener 
         // más información vea https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "IdEstadoL,Monto,Abono,Faltante,IdLaboratorio")] ESTADOCUENTALABORATORIO eSTADOCUENTALABORATORIO)
+        public ActionResult Create([Bind(Include = "IdEstadoL,Fecha,IdLaboratorio,IdTrabajo,IdPaciente,Monto,Abono,Faltante")] ESTADOCUENTALABORATORIO eSTADOCUENTALABORATORIO)
         {
             if (ModelState.IsValid)
             {
@@ -61,7 +61,7 @@ namespace DentalDB.Controllers
             return View(eSTADOCUENTALABORATORIO);
         }
 
-        // GET: ESTADOCUENTALABORATORIOs/Edit/5
+        // GET: ESTADOCUENTALABORATORIOs1/Edit/5
         public ActionResult Edit(int? id)
         {
             if (id == null)
@@ -77,12 +77,12 @@ namespace DentalDB.Controllers
             return View(eSTADOCUENTALABORATORIO);
         }
 
-        // POST: ESTADOCUENTALABORATORIOs/Edit/5
+        // POST: ESTADOCUENTALABORATORIOs1/Edit/5
         // Para protegerse de ataques de publicación excesiva, habilite las propiedades específicas a las que desea enlazarse. Para obtener 
         // más información vea https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "IdEstadoL,Monto,Abono,Faltante,IdLaboratorio")] ESTADOCUENTALABORATORIO eSTADOCUENTALABORATORIO)
+        public ActionResult Edit([Bind(Include = "IdEstadoL,Fecha,IdLaboratorio,IdTrabajo,IdPaciente,Monto,Abono,Faltante")] ESTADOCUENTALABORATORIO eSTADOCUENTALABORATORIO)
         {
             if (ModelState.IsValid)
             {
@@ -94,7 +94,7 @@ namespace DentalDB.Controllers
             return View(eSTADOCUENTALABORATORIO);
         }
 
-        // GET: ESTADOCUENTALABORATORIOs/Delete/5
+        // GET: ESTADOCUENTALABORATORIOs1/Delete/5
         public ActionResult Delete(int? id)
         {
             if (id == null)
@@ -109,7 +109,7 @@ namespace DentalDB.Controllers
             return View(eSTADOCUENTALABORATORIO);
         }
 
-        // POST: ESTADOCUENTALABORATORIOs/Delete/5
+        // POST: ESTADOCUENTALABORATORIOs1/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)

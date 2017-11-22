@@ -1,4 +1,4 @@
-﻿@model IEnumerable<DentalDB.Models.ESTADOCUENTALABORATORIO>
+﻿@model IEnumerable<DentalDB.Models.ESTADOCUENTADOCTOR>
 
 @{
     ViewBag.Title = "Index";
@@ -13,6 +13,9 @@
 <table class="table">
     <tr>
         <th>
+            @Html.DisplayNameFor(model => model.Fecha)
+        </th>
+        <th>
             @Html.DisplayNameFor(model => model.Monto)
         </th>
         <th>
@@ -22,13 +25,19 @@
             @Html.DisplayNameFor(model => model.Faltante)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.LABORATORIO.Nombre)
+            @Html.DisplayNameFor(model => model.DOCTOR.Nombre)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PACIENTE.Nombre)
         </th>
         <th></th>
     </tr>
 
 @foreach (var item in Model) {
     <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Fecha)
+        </td>
         <td>
             @Html.DisplayFor(modelItem => item.Monto)
         </td>
@@ -39,12 +48,15 @@
             @Html.DisplayFor(modelItem => item.Faltante)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.LABORATORIO.Nombre)
+            @Html.DisplayFor(modelItem => item.DOCTOR.Nombre)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.IdEstadoL }) |
-            @Html.ActionLink("Details", "Details", new { id=item.IdEstadoL }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.IdEstadoL })
+            @Html.DisplayFor(modelItem => item.PACIENTE.Nombre)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.IdEstadoD }) |
+            @Html.ActionLink("Details", "Details", new { id=item.IdEstadoD }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.IdEstadoD })
         </td>
     </tr>
 }

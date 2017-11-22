@@ -180,6 +180,9 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\CENTROesController.cs" />
     <Compile Include="Controllers\CITAController.cs" />
+    <Compile Include="Controllers\DOCTORController.cs" />
+    <Compile Include="Controllers\ESTADOCUENTADOCTORController.cs" />
+    <Compile Include="Controllers\ESTADOCUENTALABORATORIOs1Controller.cs" />
     <Compile Include="Controllers\ESTADOCUENTALABORATORIOsController.cs" />
     <Compile Include="Controllers\ESTADODECUENTAController.cs" />
     <Compile Include="Controllers\ESTADOTRABAJOesController.cs" />
@@ -197,6 +200,12 @@
       <DependentUpon>Modelo.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\CITA.cs">
+      <DependentUpon>Modelo.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\DOCTOR.cs">
+      <DependentUpon>Modelo.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ESTADOCUENTADOCTOR.cs">
       <DependentUpon>Modelo.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\ESTADOCUENTALABORATORIO.cs">
@@ -511,18 +520,28 @@
     <Content Include="Views\TRABAJO\Details.cshtml" />
     <Content Include="Views\TRABAJO\Edit.cshtml" />
     <Content Include="Views\TRABAJO\Index.cshtml" />
+    <Content Include="Views\HistorialView\Index.cshtml" />
+    <Content Include="Views\Shared\_Menu.cshtml" />
+    <Content Include="Views\DOCTOR\Create.cshtml" />
+    <Content Include="Views\DOCTOR\Delete.cshtml" />
+    <Content Include="Views\DOCTOR\Details.cshtml" />
+    <Content Include="Views\DOCTOR\Edit.cshtml" />
+    <Content Include="Views\DOCTOR\Index.cshtml" />
+    <Content Include="Views\ESTADOCUENTADOCTOR\Create.cshtml" />
+    <Content Include="Views\ESTADOCUENTADOCTOR\Delete.cshtml" />
+    <Content Include="Views\ESTADOCUENTADOCTOR\Details.cshtml" />
+    <Content Include="Views\ESTADOCUENTADOCTOR\Edit.cshtml" />
+    <Content Include="Views\ESTADOCUENTADOCTOR\Index.cshtml" />
+    <Content Include="Views\ESTADOCUENTALABORATORIOs1\Create.cshtml" />
+    <Content Include="Views\ESTADOCUENTALABORATORIOs1\Delete.cshtml" />
+    <Content Include="Views\ESTADOCUENTALABORATORIOs1\Details.cshtml" />
+    <Content Include="Views\ESTADOCUENTALABORATORIOs1\Edit.cshtml" />
+    <Content Include="Views\ESTADOCUENTALABORATORIOs1\Index.cshtml" />
     <Content Include="Views\ESTADODECUENTA\Create.cshtml" />
     <Content Include="Views\ESTADODECUENTA\Delete.cshtml" />
     <Content Include="Views\ESTADODECUENTA\Details.cshtml" />
     <Content Include="Views\ESTADODECUENTA\Edit.cshtml" />
     <Content Include="Views\ESTADODECUENTA\Index.cshtml" />
-    <Content Include="Views\ESTADOCUENTALABORATORIOs\Create.cshtml" />
-    <Content Include="Views\ESTADOCUENTALABORATORIOs\Delete.cshtml" />
-    <Content Include="Views\ESTADOCUENTALABORATORIOs\Details.cshtml" />
-    <Content Include="Views\ESTADOCUENTALABORATORIOs\Edit.cshtml" />
-    <Content Include="Views\ESTADOCUENTALABORATORIOs\Index.cshtml" />
-    <Content Include="Views\HistorialView\Index.cshtml" />
-    <Content Include="Views\Shared\_Menu.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

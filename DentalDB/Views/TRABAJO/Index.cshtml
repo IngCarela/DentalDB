@@ -5,7 +5,7 @@
     Layout = "~/Views/Shared/_MasterPrincipal.cshtml";
 }
 
-
+<h2>Index</h2>
 
 <p>
     @Html.ActionLink("Create New", "Create")
@@ -60,9 +60,9 @@
             @Html.DisplayFor(modelItem => item.PACIENTE.Nombre)
         </td>
         <td>
-            @Html.ActionLink("Editar", "Edit", new { id=item.IdTrabajo }) |
-            @Html.ActionLink("Detalle", "Details", new { id=item.IdTrabajo }) |
-            @Html.ActionLink("Eliminar", "Delete", new { id=item.IdTrabajo })
+            @Html.ActionLink("Edit", "Edit", new { id=item.IdTrabajo }) |
+            @Html.ActionLink("Details", "Details", new { id=item.IdTrabajo }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.IdTrabajo })
         </td>
     </tr>
 }

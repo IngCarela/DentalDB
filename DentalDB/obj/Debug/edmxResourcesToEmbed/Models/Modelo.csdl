@@ -21,6 +21,7 @@
     <Property Name="IdEstadoT" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="Estado" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
     <NavigationProperty Name="RELACIONTRALA" Relationship="DentalDBModel.FK_RELACIONTRALA_ESTADOTRABAJO" FromRole="ESTADOTRABAJO" ToRole="RELACIONTRALA" />
+    <NavigationProperty Name="TRABAJO" Relationship="DentalDBModel.FK_TRABAJO_ESTADOTRABAJO" FromRole="ESTADOTRABAJO" ToRole="TRABAJO" />
   </EntityType>
   <EntityType Name="LABORATORIO">
     <Key>
@@ -54,6 +55,8 @@
     <NavigationProperty Name="CENTRO" Relationship="DentalDBModel.FK_PACIENTE_CENTRO" FromRole="PACIENTE" ToRole="CENTRO" />
     <NavigationProperty Name="ESTADODECUENTA" Relationship="DentalDBModel.FK_ESTADODECUENTA_PACIENTE" FromRole="PACIENTE" ToRole="ESTADODECUENTA" />
     <NavigationProperty Name="TRABAJO" Relationship="DentalDBModel.FK_TRABAJO_PACIENTE" FromRole="PACIENTE" ToRole="TRABAJO" />
+    <NavigationProperty Name="DOCTOR" Relationship="DentalDBModel.FK_DOCTOR_PACIENTE" FromRole="PACIENTE" ToRole="DOCTOR" />
+    <NavigationProperty Name="ESTADOCUENTADOCTOR" Relationship="DentalDBModel.FK_ESTADOCUENTADOCTOR_PACIENTE" FromRole="PACIENTE" ToRole="ESTADOCUENTADOCTOR" />
   </EntityType>
   <EntityType Name="USUARIO">
     <Key>
@@ -117,6 +120,24 @@
       <End Role="TRABAJO" EntitySet="TRABAJO" />
       <End Role="RELACIONTRALA" EntitySet="RELACIONTRALA" />
     </AssociationSet>
+    <EntitySet Name="DOCTOR" EntityType="DentalDBModel.DOCTOR" />
+    <EntitySet Name="ESTADOCUENTADOCTOR" EntityType="DentalDBModel.ESTADOCUENTADOCTOR" />
+    <AssociationSet Name="FK_DOCTOR_PACIENTE" Association="DentalDBModel.FK_DOCTOR_PACIENTE">
+      <End Role="PACIENTE" EntitySet="PACIENTE" />
+      <End Role="DOCTOR" EntitySet="DOCTOR" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ESTADOCUENTADOCTOR_DOCTOR" Association="DentalDBModel.FK_ESTADOCUENTADOCTOR_DOCTOR">
+      <End Role="DOCTOR" EntitySet="DOCTOR" />
+      <End Role="ESTADOCUENTADOCTOR" EntitySet="ESTADOCUENTADOCTOR" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ESTADOCUENTADOCTOR_PACIENTE" Association="DentalDBModel.FK_ESTADOCUENTADOCTOR_PACIENTE">
+      <End Role="PACIENTE" EntitySet="PACIENTE" />
+      <End Role="ESTADOCUENTADOCTOR" EntitySet="ESTADOCUENTADOCTOR" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TRABAJO_ESTADOTRABAJO" Association="DentalDBModel.FK_TRABAJO_ESTADOTRABAJO">
+      <End Role="ESTADOTRABAJO" EntitySet="ESTADOTRABAJO" />
+      <End Role="TRABAJO" EntitySet="TRABAJO" />
+    </AssociationSet>
     <EntitySet Name="ESTADOCUENTALABORATORIO" EntityType="DentalDBModel.ESTADOCUENTALABORATORIO" />
     <AssociationSet Name="FK_ESTADOCUENTALABORATORIO_LABORATORIO" Association="DentalDBModel.FK_ESTADOCUENTALABORATORIO_LABORATORIO">
       <End Role="LABORATORIO" EntitySet="LABORATORIO" />
@@ -177,10 +198,11 @@
       <PropertyRef Name="IdEstadoP" />
     </Key>
     <Property Name="IdEstadoP" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Fecha" Type="DateTime" Precision="0" />
+    <Property Name="IdPaciente" Type="Int32" Nullable="false" />
     <Property Name="Monto" Type="Int32" Nullable="false" />
     <Property Name="Abono" Type="Int32" Nullable="false" />
     <Property Name="Faltante" Type="Int32" Nullable="false" />
-    <Property Name="IdPaciente" Type="Int32" Nullable="false" />
     <NavigationProperty Name="PACIENTE" Relationship="DentalDBModel.FK_ESTADODECUENTA_PACIENTE" FromRole="ESTADODECUENTA" ToRole="PACIENTE" />
   </EntityType>
   <Association Name="FK_CITA_CENTRO">
@@ -233,6 +255,7 @@
     <Property Name="Descripcion" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
     <NavigationProperty Name="PACIENTE" Relationship="DentalDBModel.FK_TRABAJO_PACIENTE" FromRole="TRABAJO" ToRole="PACIENTE" />
     <NavigationProperty Name="RELACIONTRALA" Relationship="DentalDBModel.FK_RELACIONTRALA_TRABAJO" FromRole="TRABAJO" ToRole="RELACIONTRALA" />
+    <NavigationProperty Name="ESTADOTRABAJO" Relationship="DentalDBModel.FK_TRABAJO_ESTADOTRABAJO" FromRole="TRABAJO" ToRole="ESTADOTRABAJO" />
   </EntityType>
   <Association Name="FK_TRABAJO_PACIENTE">
     <End Type="DentalDBModel.PACIENTE" Role="PACIENTE" Multiplicity="1" />
@@ -258,15 +281,90 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <EntityType Name="DOCTOR">
+    <Key>
+      <PropertyRef Name="IdDoctor" />
+    </Key>
+    <Property Name="IdDoctor" Type="Int32" Nullable="false" />
+    <Property Name="Nombre" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="IdPaciente" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <NavigationProperty Name="PACIENTE" Relationship="DentalDBModel.FK_DOCTOR_PACIENTE" FromRole="DOCTOR" ToRole="PACIENTE" />
+    <NavigationProperty Name="ESTADOCUENTADOCTOR" Relationship="DentalDBModel.FK_ESTADOCUENTADOCTOR_DOCTOR" FromRole="DOCTOR" ToRole="ESTADOCUENTADOCTOR" />
+  </EntityType>
+  <EntityType Name="ESTADOCUENTADOCTOR">
+    <Key>
+      <PropertyRef Name="IdEstadoD" />
+    </Key>
+    <Property Name="IdEstadoD" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Fecha" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="IdDoctor" Type="Int32" Nullable="false" />
+    <Property Name="IdPaciente" Type="Int32" Nullable="false" />
+    <Property Name="Monto" Type="Int32" Nullable="false" />
+    <Property Name="Abono" Type="Int32" Nullable="false" />
+    <Property Name="Faltante" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="DOCTOR" Relationship="DentalDBModel.FK_ESTADOCUENTADOCTOR_DOCTOR" FromRole="ESTADOCUENTADOCTOR" ToRole="DOCTOR" />
+    <NavigationProperty Name="PACIENTE" Relationship="DentalDBModel.FK_ESTADOCUENTADOCTOR_PACIENTE" FromRole="ESTADOCUENTADOCTOR" ToRole="PACIENTE" />
+  </EntityType>
+  <Association Name="FK_DOCTOR_PACIENTE">
+    <End Type="DentalDBModel.PACIENTE" Role="PACIENTE" Multiplicity="1" />
+    <End Type="DentalDBModel.DOCTOR" Role="DOCTOR" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PACIENTE">
+        <PropertyRef Name="IdPaciente" />
+      </Principal>
+      <Dependent Role="DOCTOR">
+        <PropertyRef Name="IdPaciente" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ESTADOCUENTADOCTOR_DOCTOR">
+    <End Type="DentalDBModel.DOCTOR" Role="DOCTOR" Multiplicity="1" />
+    <End Type="DentalDBModel.ESTADOCUENTADOCTOR" Role="ESTADOCUENTADOCTOR" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="DOCTOR">
+        <PropertyRef Name="IdDoctor" />
+      </Principal>
+      <Dependent Role="ESTADOCUENTADOCTOR">
+        <PropertyRef Name="IdDoctor" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ESTADOCUENTADOCTOR_PACIENTE">
+    <End Type="DentalDBModel.PACIENTE" Role="PACIENTE" Multiplicity="1" />
+    <End Type="DentalDBModel.ESTADOCUENTADOCTOR" Role="ESTADOCUENTADOCTOR" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PACIENTE">
+        <PropertyRef Name="IdPaciente" />
+      </Principal>
+      <Dependent Role="ESTADOCUENTADOCTOR">
+        <PropertyRef Name="IdPaciente" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TRABAJO_ESTADOTRABAJO">
+    <End Type="DentalDBModel.ESTADOTRABAJO" Role="ESTADOTRABAJO" Multiplicity="1" />
+    <End Type="DentalDBModel.TRABAJO" Role="TRABAJO" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ESTADOTRABAJO">
+        <PropertyRef Name="IdEstadoT" />
+      </Principal>
+      <Dependent Role="TRABAJO">
+        <PropertyRef Name="IdEstadoT" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <EntityType Name="ESTADOCUENTALABORATORIO">
     <Key>
       <PropertyRef Name="IdEstadoL" />
     </Key>
     <Property Name="IdEstadoL" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Fecha" Type="DateTime" Precision="0" />
+    <Property Name="IdLaboratorio" Type="Int32" Nullable="false" />
+    <Property Name="IdTrabajo" Type="Int32" Nullable="false" />
+    <Property Name="IdPaciente" Type="Int32" Nullable="false" />
     <Property Name="Monto" Type="Int32" Nullable="false" />
     <Property Name="Abono" Type="Int32" Nullable="false" />
     <Property Name="Faltante" Type="Int32" Nullable="false" />
-    <Property Name="IdLaboratorio" Type="Int32" Nullable="false" />
     <NavigationProperty Name="LABORATORIO" Relationship="DentalDBModel.FK_ESTADOCUENTALABORATORIO_LABORATORIO" FromRole="ESTADOCUENTALABORATORIO" ToRole="LABORATORIO" />
   </EntityType>
   <Association Name="FK_ESTADOCUENTALABORATORIO_LABORATORIO">
@@ -287,16 +385,14 @@
       <PropertyRef Name="Apellido" />
       <PropertyRef Name="AntecedentesPatologicos" />
       <PropertyRef Name="Tratamiento" />
-      <PropertyRef Name="Monto" />
-      <PropertyRef Name="Abono" />
-      <PropertyRef Name="Faltante" />
+      <PropertyRef Name="Telefono" />
+      <PropertyRef Name="Centro" />
     </Key>
     <Property Name="Nombre" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
     <Property Name="Apellido" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
     <Property Name="AntecedentesPatologicos" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
     <Property Name="Tratamiento" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-    <Property Name="Monto" Type="Int32" Nullable="false" />
-    <Property Name="Abono" Type="Int32" Nullable="false" />
-    <Property Name="Faltante" Type="Int32" Nullable="false" />
+    <Property Name="Telefono" Type="Int64" Nullable="false" />
+    <Property Name="Centro" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
   </EntityType>
 </Schema>
