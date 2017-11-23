@@ -5,7 +5,7 @@
     Layout = "~/Views/Shared/_MasterPrincipal.cshtml";
 }
 
-
+<h2>Details</h2>
 
 <div>
     <h4>PACIENTE</h4>
@@ -110,6 +110,6 @@
     </dl>
 </div>
 <p>
-    @Html.ActionLink("Editar", "Edit", new { id = Model.IdPaciente }) |
-    @Html.ActionLink("Volver al menu", "Index")
+    @Html.ActionLink("Edit", "Edit", new { id = Model.IdPaciente }) |
+    @Html.ActionLink("Back to List", "Index")
 </p>

@@ -18,36 +18,33 @@ namespace DentalDB.Models
         public PACIENTE()
         {
             this.CITA = new HashSet<CITA>();
+            this.ESTADOCUENTACENTRO = new HashSet<ESTADOCUENTACENTRO>();
             this.ESTADODECUENTA = new HashSet<ESTADODECUENTA>();
             this.TRABAJO = new HashSet<TRABAJO>();
-            this.DOCTOR = new HashSet<DOCTOR>();
-            this.ESTADOCUENTADOCTOR = new HashSet<ESTADOCUENTADOCTOR>();
         }
     
         public int IdPaciente { get; set; }
         public string Nombre { get; set; }
         public string Apellido { get; set; }
         public string Direccion { get; set; }
-        public Nullable<int> Cedula { get; set; }
+        public Nullable<long> Cedula { get; set; }
         public string Sexo { get; set; }
         public int Edad { get; set; }
-        public int Telefono { get; set; }
+        public long Telefono { get; set; }
         public string Estado { get; set; }
         public string Correo { get; set; }
         public string AntecedentesPatologicos { get; set; }
         public string Ocupacion { get; set; }
         public int IdCentro { get; set; }
     
+        public virtual CENTRO CENTRO { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<CITA> CITA { get; set; }
-        public virtual CENTRO CENTRO { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<ESTADOCUENTACENTRO> ESTADOCUENTACENTRO { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ESTADODECUENTA> ESTADODECUENTA { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<TRABAJO> TRABAJO { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<DOCTOR> DOCTOR { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<ESTADOCUENTADOCTOR> ESTADOCUENTADOCTOR { get; set; }
     }
 }

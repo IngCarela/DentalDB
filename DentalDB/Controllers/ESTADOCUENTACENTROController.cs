@@ -10,112 +10,116 @@ using DentalDB.Models;
 
 namespace DentalDB.Controllers
 {
-    public class DOCTORController : Controller
+    public class ESTADOCUENTACENTROController : Controller
     {
         private DentalDBEntities1 db = new DentalDBEntities1();
 
-        // GET: DOCTOR
+        // GET: ESTADOCUENTACENTRO
         public ActionResult Index()
         {
-            var dOCTOR = db.DOCTOR.Include(d => d.PACIENTE);
-            return View(dOCTOR.ToList());
+            var eSTADOCUENTACENTRO = db.ESTADOCUENTACENTRO.Include(e => e.CENTRO).Include(e => e.PACIENTE);
+            return View(eSTADOCUENTACENTRO.ToList());
         }
 
-        // GET: DOCTOR/Details/5
+        // GET: ESTADOCUENTACENTRO/Details/5
         public ActionResult Details(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            DOCTOR dOCTOR = db.DOCTOR.Find(id);
-            if (dOCTOR == null)
+            ESTADOCUENTACENTRO eSTADOCUENTACENTRO = db.ESTADOCUENTACENTRO.Find(id);
+            if (eSTADOCUENTACENTRO == null)
             {
                 return HttpNotFound();
             }
-            return View(dOCTOR);
+            return View(eSTADOCUENTACENTRO);
         }
 
-        // GET: DOCTOR/Create
+        // GET: ESTADOCUENTACENTRO/Create
         public ActionResult Create()
         {
+            ViewBag.IdCentro = new SelectList(db.CENTRO, "IdCentro", "Centro1");
             ViewBag.IdPaciente = new SelectList(db.PACIENTE, "IdPaciente", "Nombre");
             return View();
         }
 
-        // POST: DOCTOR/Create
+        // POST: ESTADOCUENTACENTRO/Create
         // Para protegerse de ataques de publicación excesiva, habilite las propiedades específicas a las que desea enlazarse. Para obtener 
         // más información vea https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "IdDoctor,Nombre,IdPaciente")] DOCTOR dOCTOR)
+        public ActionResult Create([Bind(Include = "IdEstadoD,Fecha,IdCentro,IdPaciente,Monto,Abono,Faltante")] ESTADOCUENTACENTRO eSTADOCUENTACENTRO)
         {
             if (ModelState.IsValid)
             {
-                db.DOCTOR.Add(dOCTOR);
+                db.ESTADOCUENTACENTRO.Add(eSTADOCUENTACENTRO);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            ViewBag.IdPaciente = new SelectList(db.PACIENTE, "IdPaciente", "Nombre", dOCTOR.IdPaciente);
-            return View(dOCTOR);
+            ViewBag.IdCentro = new SelectList(db.CENTRO, "IdCentro", "Centro1", eSTADOCUENTACENTRO.IdCentro);
+            ViewBag.IdPaciente = new SelectList(db.PACIENTE, "IdPaciente", "Nombre", eSTADOCUENTACENTRO.IdPaciente);
+            return View(eSTADOCUENTACENTRO);
         }
 
-        // GET: DOCTOR/Edit/5
+        // GET: ESTADOCUENTACENTRO/Edit/5
         public ActionResult Edit(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            DOCTOR dOCTOR = db.DOCTOR.Find(id);
-            if (dOCTOR == null)
+            ESTADOCUENTACENTRO eSTADOCUENTACENTRO = db.ESTADOCUENTACENTRO.Find(id);
+            if (eSTADOCUENTACENTRO == null)
             {
                 return HttpNotFound();
             }
-            ViewBag.IdPaciente = new SelectList(db.PACIENTE, "IdPaciente", "Nombre", dOCTOR.IdPaciente);
-            return View(dOCTOR);
+            ViewBag.IdCentro = new SelectList(db.CENTRO, "IdCentro", "Centro1", eSTADOCUENTACENTRO.IdCentro);
+            ViewBag.IdPaciente = new SelectList(db.PACIENTE, "IdPaciente", "Nombre", eSTADOCUENTACENTRO.IdPaciente);
+            return View(eSTADOCUENTACENTRO);
         }
 
-        // POST: DOCTOR/Edit/5
+        // POST: ESTADOCUENTACENTRO/Edit/5
         // Para protegerse de ataques de publicación excesiva, habilite las propiedades específicas a las que desea enlazarse. Para obtener 
         // más información vea https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "IdDoctor,Nombre,IdPaciente")] DOCTOR dOCTOR)
+        public ActionResult Edit([Bind(Include = "IdEstadoD,Fecha,IdCentro,IdPaciente,Monto,Abono,Faltante")] ESTADOCUENTACENTRO eSTADOCUENTACENTRO)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(dOCTOR).State = EntityState.Modified;
+                db.Entry(eSTADOCUENTACENTRO).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.IdPaciente = new SelectList(db.PACIENTE, "IdPaciente", "Nombre", dOCTOR.IdPaciente);
-            return View(dOCTOR);
+            ViewBag.IdCentro = new SelectList(db.CENTRO, "IdCentro", "Centro1", eSTADOCUENTACENTRO.IdCentro);
+            ViewBag.IdPaciente = new SelectList(db.PACIENTE, "IdPaciente", "Nombre", eSTADOCUENTACENTRO.IdPaciente);
+            return View(eSTADOCUENTACENTRO);
         }
 
-        // GET: DOCTOR/Delete/5
+        // GET: ESTADOCUENTACENTRO/Delete/5
         public ActionResult Delete(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            DOCTOR dOCTOR = db.DOCTOR.Find(id);
-            if (dOCTOR == null)
+            ESTADOCUENTACENTRO eSTADOCUENTACENTRO = db.ESTADOCUENTACENTRO.Find(id);
+            if (eSTADOCUENTACENTRO == null)
             {
                 return HttpNotFound();
             }
-            return View(dOCTOR);
+            return View(eSTADOCUENTACENTRO);
         }
 
-        // POST: DOCTOR/Delete/5
+        // POST: ESTADOCUENTACENTRO/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            DOCTOR dOCTOR = db.DOCTOR.Find(id);
-            db.DOCTOR.Remove(dOCTOR);
+            ESTADOCUENTACENTRO eSTADOCUENTACENTRO = db.ESTADOCUENTACENTRO.Find(id);
+            db.ESTADOCUENTACENTRO.Remove(eSTADOCUENTACENTRO);
             db.SaveChanges();
             return RedirectToAction("Index");
         }

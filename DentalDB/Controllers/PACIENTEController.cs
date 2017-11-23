@@ -15,16 +15,10 @@ namespace DentalDB.Controllers
         private DentalDBEntities1 db = new DentalDBEntities1();
 
         // GET: PACIENTE
-        public ActionResult Index(string busqueda)
+        public ActionResult Index()
         {
-            var query = from p in db.PACIENTE
-                        select p;
-
-            if (!string.IsNullOrEmpty(busqueda))
-            {
-                query = query.Where(x => x.Nombre.StartsWith(busqueda));
-            }
-            return View(query.ToList());
+            var pACIENTE = db.PACIENTE.Include(p => p.CENTRO);
+            return View(pACIENTE.ToList());
         }
 
         // GET: PACIENTE/Details/5

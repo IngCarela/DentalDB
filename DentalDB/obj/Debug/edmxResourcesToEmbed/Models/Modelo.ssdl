@@ -20,21 +20,13 @@
     <Property Name="Descripcion" Type="nvarchar" MaxLength="50" Nullable="false" />
     <Property Name="IdCentro" Type="int" Nullable="false" />
   </EntityType>
-  <EntityType Name="DOCTOR">
-    <Key>
-      <PropertyRef Name="IdDoctor" />
-    </Key>
-    <Property Name="IdDoctor" Type="int" Nullable="false" />
-    <Property Name="Nombre" Type="nvarchar" MaxLength="50" Nullable="false" />
-    <Property Name="IdPaciente" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-  </EntityType>
-  <EntityType Name="ESTADOCUENTADOCTOR">
+  <EntityType Name="ESTADOCUENTACENTRO">
     <Key>
       <PropertyRef Name="IdEstadoD" />
     </Key>
     <Property Name="IdEstadoD" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="Fecha" Type="date" Nullable="false" />
-    <Property Name="IdDoctor" Type="int" Nullable="false" />
+    <Property Name="IdCentro" Type="int" Nullable="false" />
     <Property Name="IdPaciente" Type="int" Nullable="false" />
     <Property Name="Monto" Type="int" Nullable="false" />
     <Property Name="Abono" Type="int" Nullable="false" />
@@ -45,10 +37,10 @@
       <PropertyRef Name="IdEstadoL" />
     </Key>
     <Property Name="IdEstadoL" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Fecha" Type="date" />
     <Property Name="IdLaboratorio" Type="int" Nullable="false" />
     <Property Name="IdTrabajo" Type="int" Nullable="false" />
     <Property Name="IdPaciente" Type="int" Nullable="false" />
-    <Property Name="Fecha" Type="date" />
     <Property Name="Monto" Type="int" Nullable="false" />
     <Property Name="Abono" Type="int" Nullable="false" />
     <Property Name="Faltante" Type="int" Nullable="false" />
@@ -60,6 +52,7 @@
     <Property Name="IdEstadoP" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="Fecha" Type="date" />
     <Property Name="IdPaciente" Type="int" Nullable="false" />
+    <Property Name="IdTrabajo" Type="nchar" MaxLength="10" />
     <Property Name="Monto" Type="int" Nullable="false" />
     <Property Name="Abono" Type="int" Nullable="false" />
     <Property Name="Faltante" Type="int" Nullable="false" />
@@ -172,38 +165,26 @@ advertencia 6002: La tabla o vista 'DentalDB.dbo.HistorialView' no tiene definid
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK_DOCTOR_PACIENTE">
-    <End Role="PACIENTE" Type="Self.PACIENTE" Multiplicity="1" />
-    <End Role="DOCTOR" Type="Self.DOCTOR" Multiplicity="*" />
+  <Association Name="FK_ESTADOCUENTACENTRO_CENTRO">
+    <End Role="CENTRO" Type="Self.CENTRO" Multiplicity="1" />
+    <End Role="ESTADOCUENTACENTRO" Type="Self.ESTADOCUENTACENTRO" Multiplicity="*" />
     <ReferentialConstraint>
-      <Principal Role="PACIENTE">
-        <PropertyRef Name="IdPaciente" />
+      <Principal Role="CENTRO">
+        <PropertyRef Name="IdCentro" />
       </Principal>
-      <Dependent Role="DOCTOR">
-        <PropertyRef Name="IdPaciente" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_ESTADOCUENTADOCTOR_DOCTOR">
-    <End Role="DOCTOR" Type="Self.DOCTOR" Multiplicity="1" />
-    <End Role="ESTADOCUENTADOCTOR" Type="Self.ESTADOCUENTADOCTOR" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="DOCTOR">
-        <PropertyRef Name="IdDoctor" />
-      </Principal>
-      <Dependent Role="ESTADOCUENTADOCTOR">
-        <PropertyRef Name="IdDoctor" />
+      <Dependent Role="ESTADOCUENTACENTRO">
+        <PropertyRef Name="IdCentro" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
   <Association Name="FK_ESTADOCUENTADOCTOR_PACIENTE">
     <End Role="PACIENTE" Type="Self.PACIENTE" Multiplicity="1" />
-    <End Role="ESTADOCUENTADOCTOR" Type="Self.ESTADOCUENTADOCTOR" Multiplicity="*" />
+    <End Role="ESTADOCUENTACENTRO" Type="Self.ESTADOCUENTACENTRO" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="PACIENTE">
         <PropertyRef Name="IdPaciente" />
       </Principal>
-      <Dependent Role="ESTADOCUENTADOCTOR">
+      <Dependent Role="ESTADOCUENTACENTRO">
         <PropertyRef Name="IdPaciente" />
       </Dependent>
     </ReferentialConstraint>
@@ -217,6 +198,18 @@ advertencia 6002: La tabla o vista 'DentalDB.dbo.HistorialView' no tiene definid
       </Principal>
       <Dependent Role="ESTADOCUENTALABORATORIO">
         <PropertyRef Name="IdLaboratorio" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ESTADOCUENTALABORATORIO_TRABAJO">
+    <End Role="TRABAJO" Type="Self.TRABAJO" Multiplicity="1" />
+    <End Role="ESTADOCUENTALABORATORIO" Type="Self.ESTADOCUENTALABORATORIO" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TRABAJO">
+        <PropertyRef Name="IdTrabajo" />
+      </Principal>
+      <Dependent Role="ESTADOCUENTALABORATORIO">
+        <PropertyRef Name="IdTrabajo" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -307,8 +300,7 @@ advertencia 6002: La tabla o vista 'DentalDB.dbo.HistorialView' no tiene definid
   <EntityContainer Name="DentalDBModelStoreContainer">
     <EntitySet Name="CENTRO" EntityType="Self.CENTRO" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="CITA" EntityType="Self.CITA" Schema="dbo" store:Type="Tables" />
-    <EntitySet Name="DOCTOR" EntityType="Self.DOCTOR" Schema="dbo" store:Type="Tables" />
-    <EntitySet Name="ESTADOCUENTADOCTOR" EntityType="Self.ESTADOCUENTADOCTOR" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ESTADOCUENTACENTRO" EntityType="Self.ESTADOCUENTACENTRO" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="ESTADOCUENTALABORATORIO" EntityType="Self.ESTADOCUENTALABORATORIO" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="ESTADODECUENTA" EntityType="Self.ESTADODECUENTA" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="ESTADOTRABAJO" EntityType="Self.ESTADOTRABAJO" Schema="dbo" store:Type="Tables" />
@@ -335,20 +327,20 @@ advertencia 6002: La tabla o vista 'DentalDB.dbo.HistorialView' no tiene definid
       <End Role="PACIENTE" EntitySet="PACIENTE" />
       <End Role="CITA" EntitySet="CITA" />
     </AssociationSet>
-    <AssociationSet Name="FK_DOCTOR_PACIENTE" Association="Self.FK_DOCTOR_PACIENTE">
-      <End Role="PACIENTE" EntitySet="PACIENTE" />
-      <End Role="DOCTOR" EntitySet="DOCTOR" />
-    </AssociationSet>
-    <AssociationSet Name="FK_ESTADOCUENTADOCTOR_DOCTOR" Association="Self.FK_ESTADOCUENTADOCTOR_DOCTOR">
-      <End Role="DOCTOR" EntitySet="DOCTOR" />
-      <End Role="ESTADOCUENTADOCTOR" EntitySet="ESTADOCUENTADOCTOR" />
+    <AssociationSet Name="FK_ESTADOCUENTACENTRO_CENTRO" Association="Self.FK_ESTADOCUENTACENTRO_CENTRO">
+      <End Role="CENTRO" EntitySet="CENTRO" />
+      <End Role="ESTADOCUENTACENTRO" EntitySet="ESTADOCUENTACENTRO" />
     </AssociationSet>
     <AssociationSet Name="FK_ESTADOCUENTADOCTOR_PACIENTE" Association="Self.FK_ESTADOCUENTADOCTOR_PACIENTE">
       <End Role="PACIENTE" EntitySet="PACIENTE" />
-      <End Role="ESTADOCUENTADOCTOR" EntitySet="ESTADOCUENTADOCTOR" />
+      <End Role="ESTADOCUENTACENTRO" EntitySet="ESTADOCUENTACENTRO" />
     </AssociationSet>
     <AssociationSet Name="FK_ESTADOCUENTALABORATORIO_LABORATORIO" Association="Self.FK_ESTADOCUENTALABORATORIO_LABORATORIO">
       <End Role="LABORATORIO" EntitySet="LABORATORIO" />
+      <End Role="ESTADOCUENTALABORATORIO" EntitySet="ESTADOCUENTALABORATORIO" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ESTADOCUENTALABORATORIO_TRABAJO" Association="Self.FK_ESTADOCUENTALABORATORIO_TRABAJO">
+      <End Role="TRABAJO" EntitySet="TRABAJO" />
       <End Role="ESTADOCUENTALABORATORIO" EntitySet="ESTADOCUENTALABORATORIO" />
     </AssociationSet>
     <AssociationSet Name="FK_ESTADODECUENTA_PACIENTE" Association="Self.FK_ESTADODECUENTA_PACIENTE">

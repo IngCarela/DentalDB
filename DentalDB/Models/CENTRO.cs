@@ -18,6 +18,7 @@ namespace DentalDB.Models
         public CENTRO()
         {
             this.CITA = new HashSet<CITA>();
+            this.ESTADOCUENTACENTRO = new HashSet<ESTADOCUENTACENTRO>();
             this.PACIENTE = new HashSet<PACIENTE>();
         }
     
@@ -27,6 +28,8 @@ namespace DentalDB.Models
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<CITA> CITA { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<ESTADOCUENTACENTRO> ESTADOCUENTACENTRO { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<PACIENTE> PACIENTE { get; set; }
     }

@@ -5,19 +5,11 @@
     Layout = "~/Views/Shared/_MasterPrincipal.cshtml";
 }
 
-<h3>PACIENTES</h3>
+<h2>Index</h2>
 
 <p>
-    @Html.ActionLink("Crear Nuevo", "Create")
+    @Html.ActionLink("Create New", "Create")
 </p>
-
-<div>
-    @using (Html.BeginForm())
-    {
-        @Html.TextBox("busqueda")
-        <input type="submit" value="Buscar"class="btn btn-default" />
-    }
-</div>
 <table class="table">
     <tr>
         <th>
@@ -98,9 +90,9 @@
             @Html.DisplayFor(modelItem => item.CENTRO.Centro1)
         </td>
         <td>
-            @Html.ActionLink("Editar", "Edit", new { id=item.IdPaciente }) |
-            @Html.ActionLink("Detalle", "Details", new { id=item.IdPaciente }) |
-            @Html.ActionLink("Eliminar", "Delete", new { id=item.IdPaciente })
+            @Html.ActionLink("Edit", "Edit", new { id=item.IdPaciente }) |
+            @Html.ActionLink("Details", "Details", new { id=item.IdPaciente }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.IdPaciente })
         </td>
     </tr>
 }

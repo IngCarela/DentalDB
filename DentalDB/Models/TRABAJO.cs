@@ -30,11 +30,11 @@ namespace DentalDB.Models
         public int IdEstadoT { get; set; }
         public string Descripcion { get; set; }
     
-        public virtual PACIENTE PACIENTE { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<RELACIONTRALA> RELACIONTRALA { get; set; }
         public virtual ESTADOTRABAJO ESTADOTRABAJO { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ESTADOCUENTALABORATORIO> ESTADOCUENTALABORATORIO { get; set; }
+        public virtual PACIENTE PACIENTE { get; set; }
     }
 }

@@ -22,7 +22,7 @@ namespace DentalDB.Models
         public string Descripcion { get; set; }
         public int IdCentro { get; set; }
     
-        public virtual PACIENTE PACIENTE { get; set; }
         public virtual CENTRO CENTRO { get; set; }
+        public virtual PACIENTE PACIENTE { get; set; }
     }
 }

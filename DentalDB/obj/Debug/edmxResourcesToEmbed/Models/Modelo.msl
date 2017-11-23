@@ -32,25 +32,6 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="PACIENTE">
-      <EntityTypeMapping TypeName="DentalDBModel.PACIENTE">
-        <MappingFragment StoreEntitySet="PACIENTE">
-          <ScalarProperty Name="IdPaciente" ColumnName="IdPaciente" />
-          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
-          <ScalarProperty Name="Apellido" ColumnName="Apellido" />
-          <ScalarProperty Name="Direccion" ColumnName="Direccion" />
-          <ScalarProperty Name="Cedula" ColumnName="Cedula" />
-          <ScalarProperty Name="Sexo" ColumnName="Sexo" />
-          <ScalarProperty Name="Edad" ColumnName="Edad" />
-          <ScalarProperty Name="Telefono" ColumnName="Telefono" />
-          <ScalarProperty Name="Estado" ColumnName="Estado" />
-          <ScalarProperty Name="Correo" ColumnName="Correo" />
-          <ScalarProperty Name="AntecedentesPatologicos" ColumnName="AntecedentesPatologicos" />
-          <ScalarProperty Name="Ocupacion" ColumnName="Ocupacion" />
-          <ScalarProperty Name="IdCentro" ColumnName="IdCentro" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
     <EntitySetMapping Name="USUARIO">
       <EntityTypeMapping TypeName="DentalDBModel.USUARIO">
         <MappingFragment StoreEntitySet="USUARIO">
@@ -84,6 +65,7 @@
     <EntitySetMapping Name="ESTADODECUENTA">
       <EntityTypeMapping TypeName="DentalDBModel.ESTADODECUENTA">
         <MappingFragment StoreEntitySet="ESTADODECUENTA">
+          <ScalarProperty Name="IdTrabajo" ColumnName="IdTrabajo" />
           <ScalarProperty Name="Fecha" ColumnName="Fecha" />
           <ScalarProperty Name="IdPaciente" ColumnName="IdPaciente" />
           <ScalarProperty Name="Faltante" ColumnName="Faltante" />
@@ -107,25 +89,15 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="DOCTOR">
-      <EntityTypeMapping TypeName="DentalDBModel.DOCTOR">
-        <MappingFragment StoreEntitySet="DOCTOR">
-          <ScalarProperty Name="IdPaciente" ColumnName="IdPaciente" />
+    <EntitySetMapping Name="HistorialView">
+      <EntityTypeMapping TypeName="DentalDBModel.HistorialView">
+        <MappingFragment StoreEntitySet="HistorialView">
+          <ScalarProperty Name="Centro" ColumnName="Centro" />
+          <ScalarProperty Name="Telefono" ColumnName="Telefono" />
+          <ScalarProperty Name="Tratamiento" ColumnName="Tratamiento" />
+          <ScalarProperty Name="AntecedentesPatologicos" ColumnName="AntecedentesPatologicos" />
+          <ScalarProperty Name="Apellido" ColumnName="Apellido" />
           <ScalarProperty Name="Nombre" ColumnName="Nombre" />
-          <ScalarProperty Name="IdDoctor" ColumnName="IdDoctor" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="ESTADOCUENTADOCTOR">
-      <EntityTypeMapping TypeName="DentalDBModel.ESTADOCUENTADOCTOR">
-        <MappingFragment StoreEntitySet="ESTADOCUENTADOCTOR">
-          <ScalarProperty Name="Faltante" ColumnName="Faltante" />
-          <ScalarProperty Name="Abono" ColumnName="Abono" />
-          <ScalarProperty Name="Monto" ColumnName="Monto" />
-          <ScalarProperty Name="IdPaciente" ColumnName="IdPaciente" />
-          <ScalarProperty Name="IdDoctor" ColumnName="IdDoctor" />
-          <ScalarProperty Name="Fecha" ColumnName="Fecha" />
-          <ScalarProperty Name="IdEstadoD" ColumnName="IdEstadoD" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -143,15 +115,35 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="HistorialView">
-      <EntityTypeMapping TypeName="DentalDBModel.HistorialView">
-        <MappingFragment StoreEntitySet="HistorialView">
-          <ScalarProperty Name="Centro" ColumnName="Centro" />
-          <ScalarProperty Name="Telefono" ColumnName="Telefono" />
-          <ScalarProperty Name="Tratamiento" ColumnName="Tratamiento" />
+    <EntitySetMapping Name="ESTADOCUENTACENTRO">
+      <EntityTypeMapping TypeName="DentalDBModel.ESTADOCUENTACENTRO">
+        <MappingFragment StoreEntitySet="ESTADOCUENTACENTRO">
+          <ScalarProperty Name="Faltante" ColumnName="Faltante" />
+          <ScalarProperty Name="Abono" ColumnName="Abono" />
+          <ScalarProperty Name="Monto" ColumnName="Monto" />
+          <ScalarProperty Name="IdPaciente" ColumnName="IdPaciente" />
+          <ScalarProperty Name="IdCentro" ColumnName="IdCentro" />
+          <ScalarProperty Name="Fecha" ColumnName="Fecha" />
+          <ScalarProperty Name="IdEstadoD" ColumnName="IdEstadoD" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PACIENTE">
+      <EntityTypeMapping TypeName="DentalDBModel.PACIENTE">
+        <MappingFragment StoreEntitySet="PACIENTE">
+          <ScalarProperty Name="IdCentro" ColumnName="IdCentro" />
+          <ScalarProperty Name="Ocupacion" ColumnName="Ocupacion" />
           <ScalarProperty Name="AntecedentesPatologicos" ColumnName="AntecedentesPatologicos" />
+          <ScalarProperty Name="Correo" ColumnName="Correo" />
+          <ScalarProperty Name="Estado" ColumnName="Estado" />
+          <ScalarProperty Name="Telefono" ColumnName="Telefono" />
+          <ScalarProperty Name="Edad" ColumnName="Edad" />
+          <ScalarProperty Name="Sexo" ColumnName="Sexo" />
+          <ScalarProperty Name="Cedula" ColumnName="Cedula" />
+          <ScalarProperty Name="Direccion" ColumnName="Direccion" />
           <ScalarProperty Name="Apellido" ColumnName="Apellido" />
           <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+          <ScalarProperty Name="IdPaciente" ColumnName="IdPaciente" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

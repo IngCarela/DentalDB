@@ -20,6 +20,7 @@ namespace DentalDB.Models
         public int Monto { get; set; }
         public int Abono { get; set; }
         public int Faltante { get; set; }
+        public string IdTrabajo { get; set; }
     
         public virtual PACIENTE PACIENTE { get; set; }
     }

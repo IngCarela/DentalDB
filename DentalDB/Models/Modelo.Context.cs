@@ -28,15 +28,14 @@ namespace DentalDB.Models
         public virtual DbSet<CITA> CITA { get; set; }
         public virtual DbSet<ESTADOTRABAJO> ESTADOTRABAJO { get; set; }
         public virtual DbSet<LABORATORIO> LABORATORIO { get; set; }
-        public virtual DbSet<PACIENTE> PACIENTE { get; set; }
         public virtual DbSet<USUARIO> USUARIO { get; set; }
         public virtual DbSet<RELACIONTRALA> RELACIONTRALA { get; set; }
         public virtual DbSet<CENTRO> CENTRO { get; set; }
         public virtual DbSet<ESTADODECUENTA> ESTADODECUENTA { get; set; }
         public virtual DbSet<TRABAJO> TRABAJO { get; set; }
-        public virtual DbSet<DOCTOR> DOCTOR { get; set; }
-        public virtual DbSet<ESTADOCUENTADOCTOR> ESTADOCUENTADOCTOR { get; set; }
         public virtual DbSet<HistorialView> HistorialView { get; set; }
         public virtual DbSet<ESTADOCUENTALABORATORIO> ESTADOCUENTALABORATORIO { get; set; }
+        public virtual DbSet<ESTADOCUENTACENTRO> ESTADOCUENTACENTRO { get; set; }
+        public virtual DbSet<PACIENTE> PACIENTE { get; set; }
     }
 }

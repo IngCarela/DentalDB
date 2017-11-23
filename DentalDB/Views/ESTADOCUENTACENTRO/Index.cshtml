@@ -1,4 +1,4 @@
-﻿@model IEnumerable<DentalDB.Models.ESTADOCUENTADOCTOR>
+﻿@model IEnumerable<DentalDB.Models.ESTADOCUENTACENTRO>
 
 @{
     ViewBag.Title = "Index";
@@ -15,6 +15,13 @@
         <th>
             @Html.DisplayNameFor(model => model.Fecha)
         </th>
+        
+        <th>
+            @Html.DisplayNameFor(model => model.CENTRO.Centro1)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PACIENTE.Nombre)
+        </th>
         <th>
             @Html.DisplayNameFor(model => model.Monto)
         </th>
@@ -23,12 +30,6 @@
         </th>
         <th>
             @Html.DisplayNameFor(model => model.Faltante)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.DOCTOR.Nombre)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.PACIENTE.Nombre)
         </th>
         <th></th>
     </tr>
@@ -48,7 +49,7 @@
             @Html.DisplayFor(modelItem => item.Faltante)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.DOCTOR.Nombre)
+            @Html.DisplayFor(modelItem => item.CENTRO.Centro1)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.PACIENTE.Nombre)

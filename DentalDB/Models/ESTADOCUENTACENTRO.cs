@@ -12,20 +12,17 @@ namespace DentalDB.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class DOCTOR
+    public partial class ESTADOCUENTACENTRO
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public DOCTOR()
-        {
-            this.ESTADOCUENTADOCTOR = new HashSet<ESTADOCUENTADOCTOR>();
-        }
-    
-        public int IdDoctor { get; set; }
-        public string Nombre { get; set; }
+        public int IdEstadoD { get; set; }
+        public System.DateTime Fecha { get; set; }
+        public int IdCentro { get; set; }
         public int IdPaciente { get; set; }
+        public int Monto { get; set; }
+        public int Abono { get; set; }
+        public int Faltante { get; set; }
     
+        public virtual CENTRO CENTRO { get; set; }
         public virtual PACIENTE PACIENTE { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<ESTADOCUENTADOCTOR> ESTADOCUENTADOCTOR { get; set; }
     }
 }

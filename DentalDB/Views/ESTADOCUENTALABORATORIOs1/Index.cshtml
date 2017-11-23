@@ -5,10 +5,10 @@
     Layout = "~/Views/Shared/_MasterPrincipal.cshtml";
 }
 
-<h2>Index</h2>
+<h2>ESTADO DE CUENTA DE LOS LABORATORIOS</h2>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    @Html.ActionLink("Crear Nuevo", "Create")
 </p>
 <table class="table">
     <tr>
@@ -17,6 +17,9 @@
         </th>
         <th>
             @Html.DisplayNameFor(model => model.IdTrabajo)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.LABORATORIO.Nombre)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.IdPaciente)
@@ -30,9 +33,7 @@
         <th>
             @Html.DisplayNameFor(model => model.Faltante)
         </th>
-        <th>
-            @Html.DisplayNameFor(model => model.LABORATORIO.Nombre)
-        </th>
+        
         <th></th>
     </tr>
 
