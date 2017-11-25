@@ -7,106 +7,72 @@
 
 <h2>Details</h2>
 
-<div id="formulario">
-
-    
-        <script>
-            strid = ClientId
-            function CallPrint(strid) {
-                var prtContent = document.getElementById(strid);
-                var WinPrint = window.open("", "", "left=100,top=100,width=600,height=600");
-                WinPrint.document.write(prtContent.innerHTML);
-                WinPrint.document.close();
-                WinPrint.focus();
-                WinPrint.print();
-            }
-        </script>
-    
+<div>
     <h4>TRABAJO</h4>
-    
+    <hr />
     <dl class="dl-horizontal">
         <dt>
-            <font>
-                @Html.DisplayNameFor(model => model.Tratamiento)
-            </font>
+            @Html.DisplayNameFor(model => model.Tratamiento)
         </dt>
 
         <dd>
-            <font>
-                @Html.DisplayFor(model => model.Tratamiento)
-            </font>
+            @Html.DisplayFor(model => model.Tratamiento)
         </dd>
 
         <dt>
-            <font>
-                @Html.DisplayNameFor(model => model.Monto)
-            </font>
+            @Html.DisplayNameFor(model => model.Monto)
         </dt>
 
         <dd>
-            <font>
-                @Html.DisplayFor(model => model.Monto)
-            </font>
+            @Html.DisplayFor(model => model.Monto)
         </dd>
 
         <dt>
-            <font>
-                @Html.DisplayNameFor(model => model.Fecha)
-            </font>
+            @Html.DisplayNameFor(model => model.Fecha)
         </dt>
 
         <dd>
-            <font>
-                @Html.DisplayFor(model => model.Fecha)
-            </font>
+            @Html.DisplayFor(model => model.Fecha)
         </dd>
 
         <dt>
-            <font>
-                @Html.DisplayNameFor(model => model.Hora)
-            </font>
+            @Html.DisplayNameFor(model => model.Hora)
         </dt>
 
         <dd>
-            <font>
-                @Html.DisplayFor(model => model.Hora)
-            </font>
-        </dd>
-
-        @*<dt>
-            <font>
-                @Html.DisplayNameFor(model => model.IdEstadoT)
-            </font>
-        </dt>*@
-
-        @*<dd>
-            <font>
-                @Html.DisplayFor(model => model.IdEstadoT)
-            </font>
-        </dd>*@
-
-        <dt>
-            <font>
-                @Html.DisplayNameFor(model => model.Descripcion)
-            </font>
-        </dt>
-
-        <dd>
-            <font>
-                @Html.DisplayFor(model => model.Descripcion)
-            </font>
+            @Html.DisplayFor(model => model.Hora)
         </dd>
 
         <dt>
-            <font>
-                @Html.DisplayNameFor(model => model.PACIENTE.Nombre)
-            </font>
+            @Html.DisplayNameFor(model => model.Descripcion)
         </dt>
 
         <dd>
-            <font>
-                @Html.DisplayFor(model => model.PACIENTE.Nombre)
-            </font>
+            @Html.DisplayFor(model => model.Descripcion)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ESTADOTRABAJO.Estado)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ESTADOTRABAJO.Estado)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ESTADOTRABAJO1.Estado)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ESTADOTRABAJO1.Estado)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PACIENTE.Nombre)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PACIENTE.Nombre)
         </dd>
 
     </dl>
@@ -115,5 +81,3 @@
     @Html.ActionLink("Edit", "Edit", new { id = Model.IdTrabajo }) |
     @Html.ActionLink("Back to List", "Index")
 </p>
-
-<input type="submit" value="Imprimir" onclick="CallPrint('formulario')" class="btn btn-default" />

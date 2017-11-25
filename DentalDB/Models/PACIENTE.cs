@@ -21,6 +21,7 @@ namespace DentalDB.Models
             this.ESTADOCUENTACENTRO = new HashSet<ESTADOCUENTACENTRO>();
             this.ESTADODECUENTA = new HashSet<ESTADODECUENTA>();
             this.TRABAJO = new HashSet<TRABAJO>();
+            this.LABORATORIO = new HashSet<LABORATORIO>();
         }
     
         public int IdPaciente { get; set; }
@@ -46,5 +47,7 @@ namespace DentalDB.Models
         public virtual ICollection<ESTADODECUENTA> ESTADODECUENTA { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<TRABAJO> TRABAJO { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<LABORATORIO> LABORATORIO { get; set; }
     }
 }

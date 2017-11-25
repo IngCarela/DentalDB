@@ -23,7 +23,7 @@ namespace DentalDB.Models
         public int Abono { get; set; }
         public int Faltante { get; set; }
     
-        public virtual LABORATORIO LABORATORIO { get; set; }
         public virtual TRABAJO TRABAJO { get; set; }
+        public virtual LABORATORIO LABORATORIO { get; set; }
     }
 }

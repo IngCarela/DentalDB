@@ -17,7 +17,8 @@ namespace DentalDB.Controllers
         // GET: LABORATORIO
         public ActionResult Index()
         {
-            return View(db.LABORATORIO.ToList());
+            var lABORATORIO = db.LABORATORIO.Include(l => l.PACIENTE);
+            return View(lABORATORIO.ToList());
         }
 
         // GET: LABORATORIO/Details/5
@@ -38,6 +39,7 @@ namespace DentalDB.Controllers
         // GET: LABORATORIO/Create
         public ActionResult Create()
         {
+            ViewBag.IdPaciente = new SelectList(db.PACIENTE, "IdPaciente", "Nombre");
             return View();
         }
 
@@ -46,7 +48,7 @@ namespace DentalDB.Controllers
         // más información vea https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "IdLaboratorio,Nombre,Fecha,Hora")] LABORATORIO lABORATORIO)
+        public ActionResult Create([Bind(Include = "IdLaboratorio,Fecha,Nombre,IdPaciente")] LABORATORIO lABORATORIO)
         {
             if (ModelState.IsValid)
             {
@@ -55,6 +57,7 @@ namespace DentalDB.Controllers
                 return RedirectToAction("Index");
             }
 
+            ViewBag.IdPaciente = new SelectList(db.PACIENTE, "IdPaciente", "Nombre", lABORATORIO.IdPaciente);
             return View(lABORATORIO);
         }
 
@@ -70,6 +73,7 @@ namespace DentalDB.Controllers
             {
                 return HttpNotFound();
             }
+            ViewBag.IdPaciente = new SelectList(db.PACIENTE, "IdPaciente", "Nombre", lABORATORIO.IdPaciente);
             return View(lABORATORIO);
         }
 
@@ -78,7 +82,7 @@ namespace DentalDB.Controllers
         // más información vea https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "IdLaboratorio,Nombre,Fecha,Hora")] LABORATORIO lABORATORIO)
+        public ActionResult Edit([Bind(Include = "IdLaboratorio,Fecha,Nombre,IdPaciente")] LABORATORIO lABORATORIO)
         {
             if (ModelState.IsValid)
             {
@@ -86,6 +90,7 @@ namespace DentalDB.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
+            ViewBag.IdPaciente = new SelectList(db.PACIENTE, "IdPaciente", "Nombre", lABORATORIO.IdPaciente);
             return View(lABORATORIO);
         }
 

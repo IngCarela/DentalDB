@@ -25,10 +25,13 @@
             @Html.DisplayNameFor(model => model.Hora)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.IdEstadoT)
+            @Html.DisplayNameFor(model => model.Descripcion)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Descripcion)
+            @Html.DisplayNameFor(model => model.ESTADOTRABAJO.Estado)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ESTADOTRABAJO1.Estado)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.PACIENTE.Nombre)
@@ -51,10 +54,13 @@
             @Html.DisplayFor(modelItem => item.Hora)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.IdEstadoT)
+            @Html.DisplayFor(modelItem => item.Descripcion)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.Descripcion)
+            @Html.DisplayFor(modelItem => item.ESTADOTRABAJO.Estado)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ESTADOTRABAJO1.Estado)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.PACIENTE.Nombre)

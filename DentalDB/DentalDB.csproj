@@ -490,11 +490,6 @@
     <Content Include="Views\RELACIONTRALA\Details.cshtml" />
     <Content Include="Views\RELACIONTRALA\Edit.cshtml" />
     <Content Include="Views\RELACIONTRALA\Index.cshtml" />
-    <Content Include="Views\LABORATORIO\Create.cshtml" />
-    <Content Include="Views\LABORATORIO\Delete.cshtml" />
-    <Content Include="Views\LABORATORIO\Details.cshtml" />
-    <Content Include="Views\LABORATORIO\Edit.cshtml" />
-    <Content Include="Views\LABORATORIO\Index.cshtml" />
     <Content Include="Views\ESTADOTRABAJOes\Create.cshtml" />
     <Content Include="Views\ESTADOTRABAJOes\Delete.cshtml" />
     <Content Include="Views\ESTADOTRABAJOes\Details.cshtml" />
@@ -505,11 +500,6 @@
     <Content Include="Views\CITA\Details.cshtml" />
     <Content Include="Views\CITA\Edit.cshtml" />
     <Content Include="Views\CITA\Index.cshtml" />
-    <Content Include="Views\TRABAJO\Create.cshtml" />
-    <Content Include="Views\TRABAJO\Delete.cshtml" />
-    <Content Include="Views\TRABAJO\Details.cshtml" />
-    <Content Include="Views\TRABAJO\Edit.cshtml" />
-    <Content Include="Views\TRABAJO\Index.cshtml" />
     <Content Include="Views\HistorialView\Index.cshtml" />
     <Content Include="Views\Shared\_Menu.cshtml" />
     <Content Include="Views\ESTADOCUENTALABORATORIOs1\Create.cshtml" />
@@ -532,6 +522,16 @@
     <Content Include="Views\ESTADOCUENTACENTRO\Details.cshtml" />
     <Content Include="Views\ESTADOCUENTACENTRO\Edit.cshtml" />
     <Content Include="Views\ESTADOCUENTACENTRO\Index.cshtml" />
+    <Content Include="Views\LABORATORIO\Create.cshtml" />
+    <Content Include="Views\LABORATORIO\Delete.cshtml" />
+    <Content Include="Views\LABORATORIO\Details.cshtml" />
+    <Content Include="Views\LABORATORIO\Edit.cshtml" />
+    <Content Include="Views\LABORATORIO\Index.cshtml" />
+    <Content Include="Views\TRABAJO\Create.cshtml" />
+    <Content Include="Views\TRABAJO\Delete.cshtml" />
+    <Content Include="Views\TRABAJO\Details.cshtml" />
+    <Content Include="Views\TRABAJO\Edit.cshtml" />
+    <Content Include="Views\TRABAJO\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

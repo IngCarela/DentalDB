@@ -17,7 +17,7 @@ namespace DentalDB.Controllers
         // GET: TRABAJO
         public ActionResult Index()
         {
-            var tRABAJO = db.TRABAJO.Include(t => t.PACIENTE);
+            var tRABAJO = db.TRABAJO.Include(t => t.ESTADOTRABAJO).Include(t => t.ESTADOTRABAJO1).Include(t => t.PACIENTE);
             return View(tRABAJO.ToList());
         }
 
@@ -39,6 +39,8 @@ namespace DentalDB.Controllers
         // GET: TRABAJO/Create
         public ActionResult Create()
         {
+            ViewBag.IdEstadoT = new SelectList(db.ESTADOTRABAJO, "IdEstadoT", "Estado");
+            ViewBag.IdEstadoT = new SelectList(db.ESTADOTRABAJO, "IdEstadoT", "Estado");
             ViewBag.IdPaciente = new SelectList(db.PACIENTE, "IdPaciente", "Nombre");
             return View();
         }
@@ -57,6 +59,8 @@ namespace DentalDB.Controllers
                 return RedirectToAction("Index");
             }
 
+            ViewBag.IdEstadoT = new SelectList(db.ESTADOTRABAJO, "IdEstadoT", "Estado", tRABAJO.IdEstadoT);
+            ViewBag.IdEstadoT = new SelectList(db.ESTADOTRABAJO, "IdEstadoT", "Estado", tRABAJO.IdEstadoT);
             ViewBag.IdPaciente = new SelectList(db.PACIENTE, "IdPaciente", "Nombre", tRABAJO.IdPaciente);
             return View(tRABAJO);
         }
@@ -73,6 +77,8 @@ namespace DentalDB.Controllers
             {
                 return HttpNotFound();
             }
+            ViewBag.IdEstadoT = new SelectList(db.ESTADOTRABAJO, "IdEstadoT", "Estado", tRABAJO.IdEstadoT);
+            ViewBag.IdEstadoT = new SelectList(db.ESTADOTRABAJO, "IdEstadoT", "Estado", tRABAJO.IdEstadoT);
             ViewBag.IdPaciente = new SelectList(db.PACIENTE, "IdPaciente", "Nombre", tRABAJO.IdPaciente);
             return View(tRABAJO);
         }
@@ -90,6 +96,8 @@ namespace DentalDB.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
+            ViewBag.IdEstadoT = new SelectList(db.ESTADOTRABAJO, "IdEstadoT", "Estado", tRABAJO.IdEstadoT);
+            ViewBag.IdEstadoT = new SelectList(db.ESTADOTRABAJO, "IdEstadoT", "Estado", tRABAJO.IdEstadoT);
             ViewBag.IdPaciente = new SelectList(db.PACIENTE, "IdPaciente", "Nombre", tRABAJO.IdPaciente);
             return View(tRABAJO);
         }

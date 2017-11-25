@@ -17,8 +17,8 @@ namespace DentalDB.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public TRABAJO()
         {
-            this.RELACIONTRALA = new HashSet<RELACIONTRALA>();
             this.ESTADOCUENTALABORATORIO = new HashSet<ESTADOCUENTALABORATORIO>();
+            this.RELACIONTRALA = new HashSet<RELACIONTRALA>();
         }
     
         public int IdTrabajo { get; set; }
@@ -31,10 +31,11 @@ namespace DentalDB.Models
         public string Descripcion { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<RELACIONTRALA> RELACIONTRALA { get; set; }
-        public virtual ESTADOTRABAJO ESTADOTRABAJO { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ESTADOCUENTALABORATORIO> ESTADOCUENTALABORATORIO { get; set; }
+        public virtual ESTADOTRABAJO ESTADOTRABAJO { get; set; }
+        public virtual ESTADOTRABAJO ESTADOTRABAJO1 { get; set; }
         public virtual PACIENTE PACIENTE { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<RELACIONTRALA> RELACIONTRALA { get; set; }
     }
 }

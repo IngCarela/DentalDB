@@ -5,20 +5,12 @@
     Layout = "~/Views/Shared/_MasterPrincipal.cshtml";
 }
 
-
+<h2>Details</h2>
 
 <div>
     <h4>LABORATORIO</h4>
     <hr />
     <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.Nombre)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Nombre)
-        </dd>
-
         <dt>
             @Html.DisplayNameFor(model => model.Fecha)
         </dt>
@@ -28,16 +20,24 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.Hora)
+            @Html.DisplayNameFor(model => model.Nombre)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Hora)
+            @Html.DisplayFor(model => model.Nombre)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PACIENTE.Nombre)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PACIENTE.Nombre)
         </dd>
 
     </dl>
 </div>
 <p>
-    @Html.ActionLink("Editar", "Edit", new { id = Model.IdLaboratorio }) |
-    @Html.ActionLink("Volver al menu", "Index")
+    @Html.ActionLink("Edit", "Edit", new { id = Model.IdLaboratorio }) |
+    @Html.ActionLink("Back to List", "Index")
 </p>

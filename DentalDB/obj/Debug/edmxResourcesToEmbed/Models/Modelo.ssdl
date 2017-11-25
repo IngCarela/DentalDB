@@ -69,9 +69,9 @@
       <PropertyRef Name="IdLaboratorio" />
     </Key>
     <Property Name="IdLaboratorio" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="Nombre" Type="nvarchar" MaxLength="50" Nullable="false" />
     <Property Name="Fecha" Type="date" Nullable="false" />
-    <Property Name="Hora" Type="time" Precision="7" Nullable="false" />
+    <Property Name="Nombre" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="IdPaciente" Type="int" />
   </EntityType>
   <EntityType Name="PACIENTE">
     <Key>
@@ -225,6 +225,18 @@ advertencia 6002: La tabla o vista 'DentalDB.dbo.HistorialView' no tiene definid
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="FK_LABORATORIO_PACIENTE">
+    <End Role="PACIENTE" Type="Self.PACIENTE" Multiplicity="0..1" />
+    <End Role="LABORATORIO" Type="Self.LABORATORIO" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PACIENTE">
+        <PropertyRef Name="IdPaciente" />
+      </Principal>
+      <Dependent Role="LABORATORIO">
+        <PropertyRef Name="IdPaciente" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Association Name="FK_PACIENTE_CENTRO">
     <End Role="CENTRO" Type="Self.CENTRO" Multiplicity="1" />
     <End Role="PACIENTE" Type="Self.PACIENTE" Multiplicity="*" />
@@ -274,6 +286,18 @@ advertencia 6002: La tabla o vista 'DentalDB.dbo.HistorialView' no tiene definid
     </ReferentialConstraint>
   </Association>
   <Association Name="FK_TRABAJO_ESTADOTRABAJO">
+    <End Role="ESTADOTRABAJO" Type="Self.ESTADOTRABAJO" Multiplicity="1" />
+    <End Role="TRABAJO" Type="Self.TRABAJO" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ESTADOTRABAJO">
+        <PropertyRef Name="IdEstadoT" />
+      </Principal>
+      <Dependent Role="TRABAJO">
+        <PropertyRef Name="IdEstadoT" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TRABAJO_ESTADOTRABAJO1">
     <End Role="ESTADOTRABAJO" Type="Self.ESTADOTRABAJO" Multiplicity="1" />
     <End Role="TRABAJO" Type="Self.TRABAJO" Multiplicity="*" />
     <ReferentialConstraint>
@@ -347,6 +371,10 @@ advertencia 6002: La tabla o vista 'DentalDB.dbo.HistorialView' no tiene definid
       <End Role="PACIENTE" EntitySet="PACIENTE" />
       <End Role="ESTADODECUENTA" EntitySet="ESTADODECUENTA" />
     </AssociationSet>
+    <AssociationSet Name="FK_LABORATORIO_PACIENTE" Association="Self.FK_LABORATORIO_PACIENTE">
+      <End Role="PACIENTE" EntitySet="PACIENTE" />
+      <End Role="LABORATORIO" EntitySet="LABORATORIO" />
+    </AssociationSet>
     <AssociationSet Name="FK_PACIENTE_CENTRO" Association="Self.FK_PACIENTE_CENTRO">
       <End Role="CENTRO" EntitySet="CENTRO" />
       <End Role="PACIENTE" EntitySet="PACIENTE" />
@@ -364,6 +392,10 @@ advertencia 6002: La tabla o vista 'DentalDB.dbo.HistorialView' no tiene definid
       <End Role="RELACIONTRALA" EntitySet="RELACIONTRALA" />
     </AssociationSet>
     <AssociationSet Name="FK_TRABAJO_ESTADOTRABAJO" Association="Self.FK_TRABAJO_ESTADOTRABAJO">
+      <End Role="ESTADOTRABAJO" EntitySet="ESTADOTRABAJO" />
+      <End Role="TRABAJO" EntitySet="TRABAJO" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TRABAJO_ESTADOTRABAJO1" Association="Self.FK_TRABAJO_ESTADOTRABAJO1">
       <End Role="ESTADOTRABAJO" EntitySet="ESTADOTRABAJO" />
       <End Role="TRABAJO" EntitySet="TRABAJO" />
     </AssociationSet>
