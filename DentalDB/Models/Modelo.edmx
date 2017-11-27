@@ -23,6 +23,7 @@
           <Property Name="Fecha" Type="date" Nullable="false" />
           <Property Name="Hora" Type="time" Precision="7" Nullable="false" />
           <Property Name="Descripcion" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="FuturaCita" Type="nvarchar" MaxLength="50" />
           <Property Name="IdCentro" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="ESTADOCUENTACENTRO">
@@ -426,6 +427,7 @@ advertencia 6002: La tabla o vista 'DentalDB.dbo.HistorialView' no tiene definid
           <Property Name="IdCentro" Type="Int32" Nullable="false" />
           <NavigationProperty Name="CENTRO" Relationship="DentalDBModel.FK_CITA_CENTRO" FromRole="CITA" ToRole="CENTRO" />
           <NavigationProperty Name="PACIENTE" Relationship="DentalDBModel.FK_CITA_PACIENTE" FromRole="CITA" ToRole="PACIENTE" />
+          <Property Name="FuturaCita" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="ESTADOTRABAJO">
           <Key>
@@ -845,6 +847,7 @@ advertencia 6002: La tabla o vista 'DentalDB.dbo.HistorialView' no tiene definid
           <EntitySetMapping Name="CITA">
             <EntityTypeMapping TypeName="DentalDBModel.CITA">
               <MappingFragment StoreEntitySet="CITA">
+                <ScalarProperty Name="FuturaCita" ColumnName="FuturaCita" />
                 <ScalarProperty Name="IdCita" ColumnName="IdCita" />
                 <ScalarProperty Name="NumeroCitas" ColumnName="NumeroCitas" />
                 <ScalarProperty Name="IdPaciente" ColumnName="IdPaciente" />

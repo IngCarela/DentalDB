@@ -4,6 +4,7 @@
     <EntitySetMapping Name="CITA">
       <EntityTypeMapping TypeName="DentalDBModel.CITA">
         <MappingFragment StoreEntitySet="CITA">
+          <ScalarProperty Name="FuturaCita" ColumnName="FuturaCita" />
           <ScalarProperty Name="IdCita" ColumnName="IdCita" />
           <ScalarProperty Name="NumeroCitas" ColumnName="NumeroCitas" />
           <ScalarProperty Name="IdPaciente" ColumnName="IdPaciente" />

@@ -495,11 +495,6 @@
     <Content Include="Views\ESTADOTRABAJOes\Details.cshtml" />
     <Content Include="Views\ESTADOTRABAJOes\Edit.cshtml" />
     <Content Include="Views\ESTADOTRABAJOes\Index.cshtml" />
-    <Content Include="Views\CITA\Create.cshtml" />
-    <Content Include="Views\CITA\Delete.cshtml" />
-    <Content Include="Views\CITA\Details.cshtml" />
-    <Content Include="Views\CITA\Edit.cshtml" />
-    <Content Include="Views\CITA\Index.cshtml" />
     <Content Include="Views\HistorialView\Index.cshtml" />
     <Content Include="Views\Shared\_Menu.cshtml" />
     <Content Include="Views\ESTADOCUENTALABORATORIOs1\Create.cshtml" />
@@ -532,6 +527,11 @@
     <Content Include="Views\TRABAJO\Details.cshtml" />
     <Content Include="Views\TRABAJO\Edit.cshtml" />
     <Content Include="Views\TRABAJO\Index.cshtml" />
+    <Content Include="Views\CITA\Create.cshtml" />
+    <Content Include="Views\CITA\Delete.cshtml" />
+    <Content Include="Views\CITA\Details.cshtml" />
+    <Content Include="Views\CITA\Edit.cshtml" />
+    <Content Include="Views\CITA\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

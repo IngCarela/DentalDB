@@ -7,8 +7,6 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using DentalDB.Models;
-using Rotativa;
-
 
 namespace DentalDB.Controllers
 {
@@ -17,19 +15,10 @@ namespace DentalDB.Controllers
         private DentalDBEntities1 db = new DentalDBEntities1();
 
         // GET: CITA
-        public ActionResult Index(string busqueda)
+        public ActionResult Index()
         {
-            //var cITA = db.CITA.Include(c => c.PACIENTE).Include(c => c.CENTRO);
-
-            var query = from c in db.CITA
-                        select c;
-
-            if (!string.IsNullOrEmpty(busqueda))
-            {
-                query = query.Where(x=>x.Descripcion.Contains(busqueda));
-            }
-
-            return View(query.ToList());
+            var cITA = db.CITA.Include(c => c.CENTRO).Include(c => c.PACIENTE);
+            return View(cITA.ToList());
         }
 
         // GET: CITA/Details/5
@@ -50,8 +39,8 @@ namespace DentalDB.Controllers
         // GET: CITA/Create
         public ActionResult Create()
         {
-            ViewBag.IdPaciente = new SelectList(db.PACIENTE, "IdPaciente", "Nombre");
             ViewBag.IdCentro = new SelectList(db.CENTRO, "IdCentro", "Centro1");
+            ViewBag.IdPaciente = new SelectList(db.PACIENTE, "IdPaciente", "Nombre");
             return View();
         }
 
@@ -60,7 +49,7 @@ namespace DentalDB.Controllers
         // más información vea https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "IdCita,NumeroCitas,IdPaciente,Fecha,Hora,Descripcion,IdCentro")] CITA cITA)
+        public ActionResult Create([Bind(Include = "IdCita,NumeroCitas,IdPaciente,Fecha,Hora,Descripcion,IdCentro,FuturaCita")] CITA cITA)
         {
             if (ModelState.IsValid)
             {
@@ -69,8 +58,8 @@ namespace DentalDB.Controllers
                 return RedirectToAction("Index");
             }
 
-            ViewBag.IdPaciente = new SelectList(db.PACIENTE, "IdPaciente", "Nombre", cITA.IdPaciente);
             ViewBag.IdCentro = new SelectList(db.CENTRO, "IdCentro", "Centro1", cITA.IdCentro);
+            ViewBag.IdPaciente = new SelectList(db.PACIENTE, "IdPaciente", "Nombre", cITA.IdPaciente);
             return View(cITA);
         }
 
@@ -86,8 +75,8 @@ namespace DentalDB.Controllers
             {
                 return HttpNotFound();
             }
-            ViewBag.IdPaciente = new SelectList(db.PACIENTE, "IdPaciente", "Nombre", cITA.IdPaciente);
             ViewBag.IdCentro = new SelectList(db.CENTRO, "IdCentro", "Centro1", cITA.IdCentro);
+            ViewBag.IdPaciente = new SelectList(db.PACIENTE, "IdPaciente", "Nombre", cITA.IdPaciente);
             return View(cITA);
         }
 
@@ -96,7 +85,7 @@ namespace DentalDB.Controllers
         // más información vea https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "IdCita,NumeroCitas,IdPaciente,Fecha,Hora,Descripcion,IdCentro")] CITA cITA)
+        public ActionResult Edit([Bind(Include = "IdCita,NumeroCitas,IdPaciente,Fecha,Hora,Descripcion,IdCentro,FuturaCita")] CITA cITA)
         {
             if (ModelState.IsValid)
             {
@@ -104,8 +93,8 @@ namespace DentalDB.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.IdPaciente = new SelectList(db.PACIENTE, "IdPaciente", "Nombre", cITA.IdPaciente);
             ViewBag.IdCentro = new SelectList(db.CENTRO, "IdCentro", "Centro1", cITA.IdCentro);
+            ViewBag.IdPaciente = new SelectList(db.PACIENTE, "IdPaciente", "Nombre", cITA.IdPaciente);
             return View(cITA);
         }
 
@@ -142,39 +131,6 @@ namespace DentalDB.Controllers
                 db.Dispose();
             }
             base.Dispose(disposing);
-        }
-
-
-        [HttpGet]
-        public ActionResult citasPasadas()
-        {
-            //CITA.ToList();
-            return View();
-        }
-
-        [HttpPost]
-
-        public ActionResult citasPasadas(CITA cita)
-        {
-
-            if (ModelState.IsValid)
-            {
-                var query = db.CITA.Where(x => x.Fecha.Equals(cita.Fecha)).LastOrDefault();
-            }
-
-            return View(cita);
-        }
-
-        [HttpGet]
-
-        public ActionResult imprimir()
-        {
-            return new ActionAsPdf("Index", "CITA");
-        }
-
-        public ActionResult imprimirDetalle()
-        {
-            return new ActionAsPdf("Delete", "CITA");
         }
     }
 }

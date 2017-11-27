@@ -5,20 +5,11 @@
     Layout = "~/Views/Shared/_MasterPrincipal.cshtml";
 }
 
-<h3>CITAS</h3>
+<h2>Index</h2>
 
 <p>
-    @Html.ActionLink("Crear Nuevo", "Create")
+    @Html.ActionLink("Create New", "Create")
 </p>
-
-<div>
-    @using (Html.BeginForm("Index","CITA",FormMethod.Get))
-    {
-        @Html.TextBox("busqueda")
-        <input type="submit" value="Buscar" class="btn btn-default" />
-    }
-</div>
-<br />
 <table class="table">
     <tr>
         <th>
@@ -34,10 +25,13 @@
             @Html.DisplayNameFor(model => model.Descripcion)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.PACIENTE.Nombre)
+            @Html.DisplayNameFor(model => model.FuturaCita)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.CENTRO.Centro1)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PACIENTE.Nombre)
         </th>
         <th></th>
     </tr>
@@ -57,16 +51,18 @@
             @Html.DisplayFor(modelItem => item.Descripcion)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.PACIENTE.Nombre)
+            @Html.DisplayFor(modelItem => item.FuturaCita)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.CENTRO.Centro1)
         </td>
         <td>
-            @Html.ActionLink("Editar", "Edit", new { id=item.IdCita }) |
-            @Html.ActionLink("Detalle", "Details", new { id=item.IdCita }) |
-            @Html.ActionLink("Eliminar", "Delete", new { id=item.IdCita }) |
-            
+            @Html.DisplayFor(modelItem => item.PACIENTE.Nombre)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.IdCita }) |
+            @Html.ActionLink("Details", "Details", new { id=item.IdCita }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.IdCita })
         </td>
     </tr>
 }

@@ -5,20 +5,9 @@
     Layout = "~/Views/Shared/_MasterPrincipal.cshtml";
 }
 
+<h2>Details</h2>
 
-
-<div id="formulario">
-    <script>
-        strid= ClientId
-        function CallPrint(strid) {
-            var prtContent = document.getElementById(strid);
-            var WinPrint = window.open("", "", "left=100,top=100,width=600,height=600");
-            WinPrint.document.write(prtContent.innerHTML);
-            WinPrint.document.close();
-            WinPrint.focus();
-            WinPrint.print();
-        }
-    </script>
+<div>
     <h4>CITA</h4>
     <hr />
     <dl class="dl-horizontal">
@@ -55,11 +44,11 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.PACIENTE.Nombre)
+            @Html.DisplayNameFor(model => model.FuturaCita)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.PACIENTE.Nombre)
+            @Html.DisplayFor(model => model.FuturaCita)
         </dd>
 
         <dt>
@@ -70,11 +59,17 @@
             @Html.DisplayFor(model => model.CENTRO.Centro1)
         </dd>
 
+        <dt>
+            @Html.DisplayNameFor(model => model.PACIENTE.Nombre)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PACIENTE.Nombre)
+        </dd>
+
     </dl>
 </div>
 <p>
-    @Html.ActionLink("Editar", "Edit", new { id = Model.IdCita }) |
-    @Html.ActionLink("Volver al menu", "Index")
+    @Html.ActionLink("Edit", "Edit", new { id = Model.IdCita }) |
+    @Html.ActionLink("Back to List", "Index")
 </p>
-
-<input type="button" onclick="CallPrint('formulario')" value="Imprimir"  class="btn btn-default" />
