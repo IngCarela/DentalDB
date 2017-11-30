@@ -11,7 +11,9 @@ namespace DentalDB.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel;
+    using System.ComponentModel.DataAnnotations;
+
     public partial class TRABAJO
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -21,13 +23,33 @@ namespace DentalDB.Models
             this.RELACIONTRALA = new HashSet<RELACIONTRALA>();
         }
     
+        [Key]
         public int IdTrabajo { get; set; }
+
+        [Required(ErrorMessage = "No se aceptan campos vacios")]
+        [DataType(DataType.Text)]
         public string Tratamiento { get; set; }
+
+        [Required(ErrorMessage = "No se aceptan campos vacios")]
         public int Monto { get; set; }
+
+        [Required(ErrorMessage = "No se aceptan campos vacios")]
         public int IdPaciente { get; set; }
+
+        [Required(ErrorMessage = "No se aceptan campos vacios")]
+        [DataType(DataType.Date)]
         public System.DateTime Fecha { get; set; }
+
+        [Required(ErrorMessage = "No se aceptan campos vacios")]
+        [DataType(DataType.Time)]
         public System.TimeSpan Hora { get; set; }
+
+        [Required(ErrorMessage = "No se aceptan campos vacios")]
+        [DisplayName("Estado")]
         public int IdEstadoT { get; set; }
+
+        [Required(ErrorMessage = "No se aceptan campos vacios")]
+        [DataType(DataType.Text)]
         public string Descripcion { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

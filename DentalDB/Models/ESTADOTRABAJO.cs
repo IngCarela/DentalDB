@@ -11,7 +11,8 @@ namespace DentalDB.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class ESTADOTRABAJO
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -22,7 +23,11 @@ namespace DentalDB.Models
             this.TRABAJO1 = new HashSet<TRABAJO>();
         }
     
+        [Key]
         public int IdEstadoT { get; set; }
+
+        [Required(ErrorMessage = "No se aceptan campos vacios")]
+        [DataType(DataType.Text)]
         public string Estado { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
