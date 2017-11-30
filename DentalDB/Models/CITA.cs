@@ -19,7 +19,7 @@ namespace DentalDB.Models
         [Key]
         public int IdCita { get; set; }
 
-        [DataType(DataType.Text)]
+        
         [Required(ErrorMessage = "No se aceptan campos vacios")]
         [DisplayName("Numero de cita")]
         public int NumeroCitas { get; set; }
@@ -37,17 +37,18 @@ namespace DentalDB.Models
         [Required(ErrorMessage = "No se aceptan campos vacios")]
         public System.TimeSpan Hora { get; set; }
 
-        
-        [Required(ErrorMessage = "No se aceptan campos vacios")]
         [DataType(DataType.Text)]
+        [Required(ErrorMessage = "No se aceptan campos vacios")]
         public string Descripcion { get; set; }
 
-        [DisplayName("Centro")]
+        [DataType(DataType.Text)]
         [Required(ErrorMessage = "No se aceptan campos vacios")]
+        [DisplayName("Centro")]
         public int IdCentro { get; set; }
 
+        [DataType(DataType.Text)]
+        [Required(ErrorMessage = "No se aceptan campos vacios")]
         [DisplayName("Proxima cita")]
-        [Required(ErrorMessage ="No se aceptan campos vacios")]
         public string FuturaCita { get; set; }
     
         public virtual CENTRO CENTRO { get; set; }

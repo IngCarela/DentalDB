@@ -485,11 +485,6 @@
     <Content Include="Views\CENTROes\Index.cshtml" />
     <Content Include="Views\Shared\_Login.cshtml" />
     <Content Include="Views\USUARIO\Index.cshtml" />
-    <Content Include="Views\RELACIONTRALA\Create.cshtml" />
-    <Content Include="Views\RELACIONTRALA\Delete.cshtml" />
-    <Content Include="Views\RELACIONTRALA\Details.cshtml" />
-    <Content Include="Views\RELACIONTRALA\Edit.cshtml" />
-    <Content Include="Views\RELACIONTRALA\Index.cshtml" />
     <Content Include="Views\ESTADOTRABAJOes\Create.cshtml" />
     <Content Include="Views\ESTADOTRABAJOes\Delete.cshtml" />
     <Content Include="Views\ESTADOTRABAJOes\Details.cshtml" />
@@ -532,6 +527,11 @@
     <Content Include="Views\CITA\Details.cshtml" />
     <Content Include="Views\CITA\Edit.cshtml" />
     <Content Include="Views\CITA\Index.cshtml" />
+    <Content Include="Views\RELACIONTRALA\Create.cshtml" />
+    <Content Include="Views\RELACIONTRALA\Delete.cshtml" />
+    <Content Include="Views\RELACIONTRALA\Details.cshtml" />
+    <Content Include="Views\RELACIONTRALA\Edit.cshtml" />
+    <Content Include="Views\RELACIONTRALA\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -25,12 +25,12 @@ namespace DentalDB.Models
             this.TRABAJO = new HashSet<TRABAJO>();
             this.LABORATORIO = new HashSet<LABORATORIO>();
         }
-
+    
         [Key]
         public int IdPaciente { get; set; }
 
         [DataType(DataType.Text)]
-        [Required(ErrorMessage = "No se aceptan campos vacios")]
+        [Required(ErrorMessage ="No se aceptan campos vacios")]
         public string Nombre { get; set; }
 
         [DataType(DataType.Text)]
@@ -41,16 +41,18 @@ namespace DentalDB.Models
         [Required(ErrorMessage = "No se aceptan campos vacios")]
         public string Direccion { get; set; }
 
-        [Required(ErrorMessage = "No se aceptan campos vacios")]
+        [Required(ErrorMessage ="No se aceptan campos vacios")]
         public Nullable<long> Cedula { get; set; }
 
         [DataType(DataType.Text)]
         [Required(ErrorMessage = "No se aceptan campos vacios")]
         public string Sexo { get; set; }
 
-        [Required(ErrorMessage = "No se aceptan campos")]
+       
+        [Required(ErrorMessage = "No se aceptan campos vacios")]
         public int Edad { get; set; }
 
+        
         [Required(ErrorMessage = "No se aceptan campos vacios")]
         public long Telefono { get; set; }
 
@@ -58,7 +60,7 @@ namespace DentalDB.Models
         [Required(ErrorMessage = "No se aceptan campos vacios")]
         public string Estado { get; set; }
 
-        [DataType(DataType.Text)]
+        [DataType(DataType.EmailAddress)]
         [Required(ErrorMessage = "No se aceptan campos vacios")]
         public string Correo { get; set; }
 
@@ -71,9 +73,8 @@ namespace DentalDB.Models
         [Required(ErrorMessage = "No se aceptan campos vacios")]
         public string Ocupacion { get; set; }
 
-        [DataType(DataType.Text)]
-        [Required(ErrorMessage = "No se aceptan campos vacios")]
         [DisplayName("Centro")]
+        [Required(ErrorMessage = "No se aceptan campos vacios")]
         public int IdCentro { get; set; }
     
         public virtual CENTRO CENTRO { get; set; }

@@ -20,13 +20,12 @@ namespace DentalDB.Models
         {
             this.RELACIONTRALA = new HashSet<RELACIONTRALA>();
             this.TRABAJO = new HashSet<TRABAJO>();
-            this.TRABAJO1 = new HashSet<TRABAJO>();
         }
     
         [Key]
         public int IdEstadoT { get; set; }
 
-        [Required(ErrorMessage = "No se aceptan campos vacios")]
+        [Required(ErrorMessage ="No se aceptan campos vacios")]
         [DataType(DataType.Text)]
         public string Estado { get; set; }
     
@@ -34,7 +33,5 @@ namespace DentalDB.Models
         public virtual ICollection<RELACIONTRALA> RELACIONTRALA { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<TRABAJO> TRABAJO { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<TRABAJO> TRABAJO1 { get; set; }
     }
 }

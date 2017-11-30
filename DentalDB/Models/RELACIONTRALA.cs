@@ -16,6 +16,7 @@ namespace DentalDB.Models
 
     public partial class RELACIONTRALA
     {
+
         [Key]
         public int IdRelacion { get; set; }
 
@@ -39,8 +40,8 @@ namespace DentalDB.Models
         [DisplayName("Laboratorio")]
         public int IdLaboratorio { get; set; }
     
-        public virtual ESTADOTRABAJO ESTADOTRABAJO { get; set; }
         public virtual TRABAJO TRABAJO { get; set; }
         public virtual LABORATORIO LABORATORIO { get; set; }
+        public virtual ESTADOTRABAJO ESTADOTRABAJO { get; set; }
     }
 }

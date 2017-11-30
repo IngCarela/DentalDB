@@ -303,18 +303,6 @@ advertencia 6002: La tabla o vista 'DentalDB.dbo.HistorialView' no tiene definid
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_TRABAJO_ESTADOTRABAJO1">
-          <End Role="ESTADOTRABAJO" Type="Self.ESTADOTRABAJO" Multiplicity="1" />
-          <End Role="TRABAJO" Type="Self.TRABAJO" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="ESTADOTRABAJO">
-              <PropertyRef Name="IdEstadoT" />
-            </Principal>
-            <Dependent Role="TRABAJO">
-              <PropertyRef Name="IdEstadoT" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_TRABAJO_PACIENTE">
           <End Role="PACIENTE" Type="Self.PACIENTE" Multiplicity="1" />
           <End Role="TRABAJO" Type="Self.TRABAJO" Multiplicity="*" />
@@ -401,10 +389,6 @@ advertencia 6002: La tabla o vista 'DentalDB.dbo.HistorialView' no tiene definid
             <End Role="ESTADOTRABAJO" EntitySet="ESTADOTRABAJO" />
             <End Role="TRABAJO" EntitySet="TRABAJO" />
           </AssociationSet>
-          <AssociationSet Name="FK_TRABAJO_ESTADOTRABAJO1" Association="Self.FK_TRABAJO_ESTADOTRABAJO1">
-            <End Role="ESTADOTRABAJO" EntitySet="ESTADOTRABAJO" />
-            <End Role="TRABAJO" EntitySet="TRABAJO" />
-          </AssociationSet>
           <AssociationSet Name="FK_TRABAJO_PACIENTE" Association="Self.FK_TRABAJO_PACIENTE">
             <End Role="PACIENTE" EntitySet="PACIENTE" />
             <End Role="TRABAJO" EntitySet="TRABAJO" />
@@ -429,16 +413,6 @@ advertencia 6002: La tabla o vista 'DentalDB.dbo.HistorialView' no tiene definid
           <NavigationProperty Name="PACIENTE" Relationship="DentalDBModel.FK_CITA_PACIENTE" FromRole="CITA" ToRole="PACIENTE" />
           <Property Name="FuturaCita" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
         </EntityType>
-        <EntityType Name="ESTADOTRABAJO">
-          <Key>
-            <PropertyRef Name="IdEstadoT" />
-          </Key>
-          <Property Name="IdEstadoT" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Estado" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <NavigationProperty Name="RELACIONTRALA" Relationship="DentalDBModel.FK_RELACIONTRALA_ESTADOTRABAJO" FromRole="ESTADOTRABAJO" ToRole="RELACIONTRALA" />
-          <NavigationProperty Name="TRABAJO" Relationship="DentalDBModel.FK_TRABAJO_ESTADOTRABAJO" FromRole="ESTADOTRABAJO" ToRole="TRABAJO" />
-          <NavigationProperty Name="TRABAJO1" Relationship="DentalDBModel.FK_TRABAJO_ESTADOTRABAJO1" FromRole="ESTADOTRABAJO" ToRole="TRABAJO" />
-        </EntityType>
         <EntityType Name="USUARIO">
           <Key>
             <PropertyRef Name="IdUsuario" />
@@ -449,13 +423,8 @@ advertencia 6002: La tabla o vista 'DentalDB.dbo.HistorialView' no tiene definid
         </EntityType>
         <EntityContainer Name="DentalDBEntities1" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="CITA" EntityType="Self.CITA" />
-          <EntitySet Name="ESTADOTRABAJO" EntityType="Self.ESTADOTRABAJO" />
           <EntitySet Name="USUARIO" EntityType="Self.USUARIO" />
           <EntitySet Name="RELACIONTRALA" EntityType="DentalDBModel.RELACIONTRALA" />
-          <AssociationSet Name="FK_RELACIONTRALA_ESTADOTRABAJO" Association="DentalDBModel.FK_RELACIONTRALA_ESTADOTRABAJO">
-            <End Role="ESTADOTRABAJO" EntitySet="ESTADOTRABAJO" />
-            <End Role="RELACIONTRALA" EntitySet="RELACIONTRALA" />
-          </AssociationSet>
           <EntitySet Name="CENTRO" EntityType="DentalDBModel.CENTRO" />
           <EntitySet Name="ESTADODECUENTA" EntityType="DentalDBModel.ESTADODECUENTA" />
           <AssociationSet Name="FK_CITA_CENTRO" Association="DentalDBModel.FK_CITA_CENTRO">
@@ -491,14 +460,6 @@ advertencia 6002: La tabla o vista 'DentalDB.dbo.HistorialView' no tiene definid
             <End Role="TRABAJO" EntitySet="TRABAJO" />
             <End Role="ESTADOCUENTALABORATORIO" EntitySet="ESTADOCUENTALABORATORIO" />
           </AssociationSet>
-          <AssociationSet Name="FK_TRABAJO_ESTADOTRABAJO" Association="DentalDBModel.FK_TRABAJO_ESTADOTRABAJO">
-            <End Role="ESTADOTRABAJO" EntitySet="ESTADOTRABAJO" />
-            <End Role="TRABAJO" EntitySet="TRABAJO" />
-          </AssociationSet>
-          <AssociationSet Name="FK_TRABAJO_ESTADOTRABAJO1" Association="DentalDBModel.FK_TRABAJO_ESTADOTRABAJO1">
-            <End Role="ESTADOTRABAJO" EntitySet="ESTADOTRABAJO" />
-            <End Role="TRABAJO" EntitySet="TRABAJO" />
-          </AssociationSet>
           <AssociationSet Name="FK_TRABAJO_PACIENTE" Association="DentalDBModel.FK_TRABAJO_PACIENTE">
             <End Role="PACIENTE" EntitySet="PACIENTE" />
             <End Role="TRABAJO" EntitySet="TRABAJO" />
@@ -520,6 +481,15 @@ advertencia 6002: La tabla o vista 'DentalDB.dbo.HistorialView' no tiene definid
             <End Role="LABORATORIO" EntitySet="LABORATORIO" />
             <End Role="RELACIONTRALA" EntitySet="RELACIONTRALA" />
           </AssociationSet>
+          <EntitySet Name="ESTADOTRABAJO" EntityType="DentalDBModel.ESTADOTRABAJO" />
+          <AssociationSet Name="FK_RELACIONTRALA_ESTADOTRABAJO" Association="DentalDBModel.FK_RELACIONTRALA_ESTADOTRABAJO">
+            <End Role="ESTADOTRABAJO" EntitySet="ESTADOTRABAJO" />
+            <End Role="RELACIONTRALA" EntitySet="RELACIONTRALA" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TRABAJO_ESTADOTRABAJO" Association="DentalDBModel.FK_TRABAJO_ESTADOTRABAJO">
+            <End Role="ESTADOTRABAJO" EntitySet="ESTADOTRABAJO" />
+            <End Role="TRABAJO" EntitySet="TRABAJO" />
+          </AssociationSet>
           </EntityContainer>
         <EntityType Name="RELACIONTRALA">
           <Key>
@@ -531,22 +501,10 @@ advertencia 6002: La tabla o vista 'DentalDB.dbo.HistorialView' no tiene definid
           <Property Name="Fecha" Type="DateTime" Nullable="false" Precision="0" />
           <Property Name="Hora" Type="Time" Nullable="false" Precision="7" />
           <Property Name="IdLaboratorio" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="ESTADOTRABAJO" Relationship="DentalDBModel.FK_RELACIONTRALA_ESTADOTRABAJO" FromRole="RELACIONTRALA" ToRole="ESTADOTRABAJO" />
           <NavigationProperty Name="TRABAJO" Relationship="DentalDBModel.FK_RELACIONTRALA_TRABAJO" FromRole="RELACIONTRALA" ToRole="TRABAJO" />
           <NavigationProperty Name="LABORATORIO" Relationship="DentalDBModel.FK_RELACIONTRALA_LABORATORIO" FromRole="RELACIONTRALA" ToRole="LABORATORIO" />
+          <NavigationProperty Name="ESTADOTRABAJO" Relationship="DentalDBModel.FK_RELACIONTRALA_ESTADOTRABAJO" FromRole="RELACIONTRALA" ToRole="ESTADOTRABAJO" />
         </EntityType>
-        <Association Name="FK_RELACIONTRALA_ESTADOTRABAJO">
-          <End Type="DentalDBModel.ESTADOTRABAJO" Role="ESTADOTRABAJO" Multiplicity="1" />
-          <End Type="DentalDBModel.RELACIONTRALA" Role="RELACIONTRALA" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="ESTADOTRABAJO">
-              <PropertyRef Name="IdEstadoT" />
-            </Principal>
-            <Dependent Role="RELACIONTRALA">
-              <PropertyRef Name="IdEstadoT" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <EntityType Name="CENTRO">
           <Key>
             <PropertyRef Name="IdCentro" />
@@ -725,10 +683,9 @@ advertencia 6002: La tabla o vista 'DentalDB.dbo.HistorialView' no tiene definid
           <Property Name="IdEstadoT" Type="Int32" Nullable="false" />
           <Property Name="Descripcion" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="ESTADOCUENTALABORATORIO" Relationship="DentalDBModel.FK_ESTADOCUENTALABORATORIO_TRABAJO" FromRole="TRABAJO" ToRole="ESTADOCUENTALABORATORIO" />
-          <NavigationProperty Name="ESTADOTRABAJO" Relationship="DentalDBModel.FK_TRABAJO_ESTADOTRABAJO" FromRole="TRABAJO" ToRole="ESTADOTRABAJO" />
-          <NavigationProperty Name="ESTADOTRABAJO1" Relationship="DentalDBModel.FK_TRABAJO_ESTADOTRABAJO1" FromRole="TRABAJO" ToRole="ESTADOTRABAJO" />
           <NavigationProperty Name="PACIENTE" Relationship="DentalDBModel.FK_TRABAJO_PACIENTE" FromRole="TRABAJO" ToRole="PACIENTE" />
           <NavigationProperty Name="RELACIONTRALA" Relationship="DentalDBModel.FK_RELACIONTRALA_TRABAJO" FromRole="TRABAJO" ToRole="RELACIONTRALA" />
+          <NavigationProperty Name="ESTADOTRABAJO" Relationship="DentalDBModel.FK_TRABAJO_ESTADOTRABAJO" FromRole="TRABAJO" ToRole="ESTADOTRABAJO" />
         </EntityType>
         <Association Name="FK_ESTADOCUENTALABORATORIO_TRABAJO">
           <End Type="DentalDBModel.TRABAJO" Role="TRABAJO" Multiplicity="1" />
@@ -739,30 +696,6 @@ advertencia 6002: La tabla o vista 'DentalDB.dbo.HistorialView' no tiene definid
             </Principal>
             <Dependent Role="ESTADOCUENTALABORATORIO">
               <PropertyRef Name="IdTrabajo" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_TRABAJO_ESTADOTRABAJO">
-          <End Type="DentalDBModel.ESTADOTRABAJO" Role="ESTADOTRABAJO" Multiplicity="1" />
-          <End Type="DentalDBModel.TRABAJO" Role="TRABAJO" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="ESTADOTRABAJO">
-              <PropertyRef Name="IdEstadoT" />
-            </Principal>
-            <Dependent Role="TRABAJO">
-              <PropertyRef Name="IdEstadoT" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_TRABAJO_ESTADOTRABAJO1">
-          <End Type="DentalDBModel.ESTADOTRABAJO" Role="ESTADOTRABAJO" Multiplicity="1" />
-          <End Type="DentalDBModel.TRABAJO" Role="TRABAJO" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="ESTADOTRABAJO">
-              <PropertyRef Name="IdEstadoT" />
-            </Principal>
-            <Dependent Role="TRABAJO">
-              <PropertyRef Name="IdEstadoT" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -838,6 +771,39 @@ advertencia 6002: La tabla o vista 'DentalDB.dbo.HistorialView' no tiene definid
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <EntityType Name="ESTADOTRABAJO">
+          <Key>
+            <PropertyRef Name="IdEstadoT" />
+          </Key>
+          <Property Name="IdEstadoT" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Estado" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="RELACIONTRALA" Relationship="DentalDBModel.FK_RELACIONTRALA_ESTADOTRABAJO" FromRole="ESTADOTRABAJO" ToRole="RELACIONTRALA" />
+          <NavigationProperty Name="TRABAJO" Relationship="DentalDBModel.FK_TRABAJO_ESTADOTRABAJO" FromRole="ESTADOTRABAJO" ToRole="TRABAJO" />
+        </EntityType>
+        <Association Name="FK_RELACIONTRALA_ESTADOTRABAJO">
+          <End Type="DentalDBModel.ESTADOTRABAJO" Role="ESTADOTRABAJO" Multiplicity="1" />
+          <End Type="DentalDBModel.RELACIONTRALA" Role="RELACIONTRALA" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ESTADOTRABAJO">
+              <PropertyRef Name="IdEstadoT" />
+            </Principal>
+            <Dependent Role="RELACIONTRALA">
+              <PropertyRef Name="IdEstadoT" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TRABAJO_ESTADOTRABAJO">
+          <End Type="DentalDBModel.ESTADOTRABAJO" Role="ESTADOTRABAJO" Multiplicity="1" />
+          <End Type="DentalDBModel.TRABAJO" Role="TRABAJO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ESTADOTRABAJO">
+              <PropertyRef Name="IdEstadoT" />
+            </Principal>
+            <Dependent Role="TRABAJO">
+              <PropertyRef Name="IdEstadoT" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -855,14 +821,6 @@ advertencia 6002: La tabla o vista 'DentalDB.dbo.HistorialView' no tiene definid
                 <ScalarProperty Name="Hora" ColumnName="Hora" />
                 <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
                 <ScalarProperty Name="IdCentro" ColumnName="IdCentro" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="ESTADOTRABAJO">
-            <EntityTypeMapping TypeName="DentalDBModel.ESTADOTRABAJO">
-              <MappingFragment StoreEntitySet="ESTADOTRABAJO">
-                <ScalarProperty Name="IdEstadoT" ColumnName="IdEstadoT" />
-                <ScalarProperty Name="Estado" ColumnName="Estado" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -988,6 +946,14 @@ advertencia 6002: La tabla o vista 'DentalDB.dbo.HistorialView' no tiene definid
                 <ScalarProperty Name="Nombre" ColumnName="Nombre" />
                 <ScalarProperty Name="Fecha" ColumnName="Fecha" />
                 <ScalarProperty Name="IdLaboratorio" ColumnName="IdLaboratorio" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ESTADOTRABAJO">
+            <EntityTypeMapping TypeName="DentalDBModel.ESTADOTRABAJO">
+              <MappingFragment StoreEntitySet="ESTADOTRABAJO">
+                <ScalarProperty Name="Estado" ColumnName="Estado" />
+                <ScalarProperty Name="IdEstadoT" ColumnName="IdEstadoT" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

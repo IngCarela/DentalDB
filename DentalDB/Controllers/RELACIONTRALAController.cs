@@ -17,7 +17,7 @@ namespace DentalDB.Controllers
         // GET: RELACIONTRALA
         public ActionResult Index()
         {
-            var rELACIONTRALA = db.RELACIONTRALA.Include(r => r.ESTADOTRABAJO).Include(r => r.LABORATORIO).Include(r => r.TRABAJO);
+            var rELACIONTRALA = db.RELACIONTRALA.Include(r => r.TRABAJO).Include(r => r.LABORATORIO).Include(r => r.ESTADOTRABAJO);
             return View(rELACIONTRALA.ToList());
         }
 
@@ -39,9 +39,9 @@ namespace DentalDB.Controllers
         // GET: RELACIONTRALA/Create
         public ActionResult Create()
         {
-            ViewBag.IdEstadoT = new SelectList(db.ESTADOTRABAJO, "IdEstadoT", "Estado");
+            ViewBag.IdTrabajo = new SelectList(db.TRABAJO, "IdTrabajo", "Tratamiento");
             ViewBag.IdLaboratorio = new SelectList(db.LABORATORIO, "IdLaboratorio", "Nombre");
-            ViewBag.IdTrabajo = new SelectList(db.TRABAJO, "IdTrabajo", "Trabajo1");
+            ViewBag.IdEstadoT = new SelectList(db.ESTADOTRABAJO, "IdEstadoT", "Estado");
             return View();
         }
 
@@ -59,9 +59,9 @@ namespace DentalDB.Controllers
                 return RedirectToAction("Index");
             }
 
-            ViewBag.IdEstadoT = new SelectList(db.ESTADOTRABAJO, "IdEstadoT", "Estado", rELACIONTRALA.IdEstadoT);
+            ViewBag.IdTrabajo = new SelectList(db.TRABAJO, "IdTrabajo", "Tratamiento", rELACIONTRALA.IdTrabajo);
             ViewBag.IdLaboratorio = new SelectList(db.LABORATORIO, "IdLaboratorio", "Nombre", rELACIONTRALA.IdLaboratorio);
-            ViewBag.IdTrabajo = new SelectList(db.TRABAJO, "IdTrabajo", "Trabajo1", rELACIONTRALA.IdTrabajo);
+            ViewBag.IdEstadoT = new SelectList(db.ESTADOTRABAJO, "IdEstadoT", "Estado", rELACIONTRALA.IdEstadoT);
             return View(rELACIONTRALA);
         }
 
@@ -77,9 +77,9 @@ namespace DentalDB.Controllers
             {
                 return HttpNotFound();
             }
-            ViewBag.IdEstadoT = new SelectList(db.ESTADOTRABAJO, "IdEstadoT", "Estado", rELACIONTRALA.IdEstadoT);
+            ViewBag.IdTrabajo = new SelectList(db.TRABAJO, "IdTrabajo", "Tratamiento", rELACIONTRALA.IdTrabajo);
             ViewBag.IdLaboratorio = new SelectList(db.LABORATORIO, "IdLaboratorio", "Nombre", rELACIONTRALA.IdLaboratorio);
-            ViewBag.IdTrabajo = new SelectList(db.TRABAJO, "IdTrabajo", "Trabajo1", rELACIONTRALA.IdTrabajo);
+            ViewBag.IdEstadoT = new SelectList(db.ESTADOTRABAJO, "IdEstadoT", "Estado", rELACIONTRALA.IdEstadoT);
             return View(rELACIONTRALA);
         }
 
@@ -96,9 +96,9 @@ namespace DentalDB.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.IdEstadoT = new SelectList(db.ESTADOTRABAJO, "IdEstadoT", "Estado", rELACIONTRALA.IdEstadoT);
+            ViewBag.IdTrabajo = new SelectList(db.TRABAJO, "IdTrabajo", "Tratamiento", rELACIONTRALA.IdTrabajo);
             ViewBag.IdLaboratorio = new SelectList(db.LABORATORIO, "IdLaboratorio", "Nombre", rELACIONTRALA.IdLaboratorio);
-            ViewBag.IdTrabajo = new SelectList(db.TRABAJO, "IdTrabajo", "Trabajo1", rELACIONTRALA.IdTrabajo);
+            ViewBag.IdEstadoT = new SelectList(db.ESTADOTRABAJO, "IdEstadoT", "Estado", rELACIONTRALA.IdEstadoT);
             return View(rELACIONTRALA);
         }
 

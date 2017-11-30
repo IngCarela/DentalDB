@@ -17,12 +17,8 @@ namespace DentalDB.Models
     {
         [Key]
         public int IdUsuario { get; set; }
-
-        [DataType(DataType.Text)]
-        [Required(ErrorMessage = "No se aceptan campos vacios")]
         public string Nombre { get; set; }
 
-        [Required(ErrorMessage = "No se aceptan campos vacios")]
         [DataType(DataType.Password)]
         public string Contrasena { get; set; }
     }

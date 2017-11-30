@@ -23,21 +23,25 @@ namespace DentalDB.Models
         [Required(ErrorMessage = "No se aceptan campos vacios")]
         public System.DateTime Fecha { get; set; }
 
+        
+        [Required(ErrorMessage = "No se aceptan campos vacios")]
         [DisplayName("Centro")]
-        [Required(ErrorMessage ="No se aceptan campos vacios")]
         public int IdCentro { get; set; }
 
-
-        [DisplayName("Centro")]
+        
         [Required(ErrorMessage = "No se aceptan campos vacios")]
+        [DisplayName("Paciente")]
         public int IdPaciente { get; set; }
 
-        [Required(ErrorMessage ="No se aceptan campos vacios")]
+        
+        [Required(ErrorMessage = "No se aceptan campos vacios")]
         public int Monto { get; set; }
 
+        
         [Required(ErrorMessage = "No se aceptan campos vacios")]
         public int Abono { get; set; }
 
+        
         [Required(ErrorMessage = "No se aceptan campos vacios")]
         public int Faltante { get; set; }
     

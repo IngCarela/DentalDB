@@ -5,10 +5,10 @@
     Layout = "~/Views/Shared/_MasterPrincipal.cshtml";
 }
 
-
+<h2>Index</h2>
 
 <p>
-    @Html.ActionLink("Crear Nuevo", "Create")
+    @Html.ActionLink("Create New", "Create")
 </p>
 <table class="table">
     <tr>
@@ -19,13 +19,13 @@
             @Html.DisplayNameFor(model => model.Hora)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.ESTADOTRABAJO.Estado)
+            @Html.DisplayNameFor(model => model.TRABAJO.Tratamiento)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.LABORATORIO.Nombre)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.TRABAJO.IdTrabajo)
+            @Html.DisplayNameFor(model => model.ESTADOTRABAJO.Estado)
         </th>
         <th></th>
     </tr>
@@ -39,18 +39,18 @@
             @Html.DisplayFor(modelItem => item.Hora)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.ESTADOTRABAJO.Estado)
+            @Html.DisplayFor(modelItem => item.TRABAJO.Tratamiento)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.LABORATORIO.Nombre)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.TRABAJO.IdTrabajo)
+            @Html.DisplayFor(modelItem => item.ESTADOTRABAJO.Estado)
         </td>
         <td>
-            @Html.ActionLink("Editar", "Edit", new { id=item.IdRelacion }) |
-            @Html.ActionLink("Detalle", "Details", new { id=item.IdRelacion }) |
-            @Html.ActionLink("Eliminar", "Delete", new { id=item.IdRelacion })
+            @Html.ActionLink("Edit", "Edit", new { id=item.IdRelacion }) |
+            @Html.ActionLink("Details", "Details", new { id=item.IdRelacion }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.IdRelacion })
         </td>
     </tr>
 }

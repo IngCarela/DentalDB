@@ -5,10 +5,10 @@
     Layout = "~/Views/Shared/_MasterPrincipal.cshtml";
 }
 
-
+<h2>Details</h2>
 
 <div>
-    <h4>MONITOREO</h4>
+    <h4>RELACIONTRALA</h4>
     <hr />
     <dl class="dl-horizontal">
         <dt>
@@ -28,11 +28,11 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.ESTADOTRABAJO.Estado)
+            @Html.DisplayNameFor(model => model.TRABAJO.Tratamiento)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.ESTADOTRABAJO.Estado)
+            @Html.DisplayFor(model => model.TRABAJO.Tratamiento)
         </dd>
 
         <dt>
@@ -44,16 +44,16 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.TRABAJO.Trabajo1)
+            @Html.DisplayNameFor(model => model.ESTADOTRABAJO.Estado)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.TRABAJO.Trabajo1)
+            @Html.DisplayFor(model => model.ESTADOTRABAJO.Estado)
         </dd>
 
     </dl>
 </div>
 <p>
-    @Html.ActionLink("Editar", "Edit", new { id = Model.IdRelacion }) |
-    @Html.ActionLink("Volver", "Index")
+    @Html.ActionLink("Edit", "Edit", new { id = Model.IdRelacion }) |
+    @Html.ActionLink("Back to List", "Index")
 </p>

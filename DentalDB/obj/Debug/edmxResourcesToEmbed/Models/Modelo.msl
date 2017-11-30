@@ -15,14 +15,6 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="ESTADOTRABAJO">
-      <EntityTypeMapping TypeName="DentalDBModel.ESTADOTRABAJO">
-        <MappingFragment StoreEntitySet="ESTADOTRABAJO">
-          <ScalarProperty Name="IdEstadoT" ColumnName="IdEstadoT" />
-          <ScalarProperty Name="Estado" ColumnName="Estado" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
     <EntitySetMapping Name="USUARIO">
       <EntityTypeMapping TypeName="DentalDBModel.USUARIO">
         <MappingFragment StoreEntitySet="USUARIO">
@@ -145,6 +137,14 @@
           <ScalarProperty Name="Nombre" ColumnName="Nombre" />
           <ScalarProperty Name="Fecha" ColumnName="Fecha" />
           <ScalarProperty Name="IdLaboratorio" ColumnName="IdLaboratorio" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ESTADOTRABAJO">
+      <EntityTypeMapping TypeName="DentalDBModel.ESTADOTRABAJO">
+        <MappingFragment StoreEntitySet="ESTADOTRABAJO">
+          <ScalarProperty Name="Estado" ColumnName="Estado" />
+          <ScalarProperty Name="IdEstadoT" ColumnName="IdEstadoT" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

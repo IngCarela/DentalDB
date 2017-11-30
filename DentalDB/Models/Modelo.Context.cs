@@ -26,7 +26,6 @@ namespace DentalDB.Models
         }
     
         public virtual DbSet<CITA> CITA { get; set; }
-        public virtual DbSet<ESTADOTRABAJO> ESTADOTRABAJO { get; set; }
         public virtual DbSet<USUARIO> USUARIO { get; set; }
         public virtual DbSet<RELACIONTRALA> RELACIONTRALA { get; set; }
         public virtual DbSet<CENTRO> CENTRO { get; set; }
@@ -37,5 +36,6 @@ namespace DentalDB.Models
         public virtual DbSet<PACIENTE> PACIENTE { get; set; }
         public virtual DbSet<TRABAJO> TRABAJO { get; set; }
         public virtual DbSet<LABORATORIO> LABORATORIO { get; set; }
+        public virtual DbSet<ESTADOTRABAJO> ESTADOTRABAJO { get; set; }
     }
 }
