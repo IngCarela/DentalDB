@@ -34,8 +34,9 @@ namespace DentalDB.Models
         [DataType(DataType.Text)]
         public string Nombre { get; set; }
 
-        [Required(ErrorMessage = "No se aceptan campos vacios")]
+
         [DisplayName("Paciente")]
+        [Required(ErrorMessage = "No se aceptan campos vacios")]
         public Nullable<int> IdPaciente { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

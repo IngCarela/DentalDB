@@ -13,14 +13,18 @@
 <table class="table">
     <tr>
         <th>
+            @Html.DisplayNameFor(model => model.Fecha)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PACIENTE.Nombre)
+        </th>
+        <th>
             @Html.DisplayNameFor(model => model.Tratamiento)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.Monto)
         </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Fecha)
-        </th>
+        
         <th>
             @Html.DisplayNameFor(model => model.Hora)
         </th>
@@ -31,25 +35,28 @@
             @Html.DisplayNameFor(model => model.ESTADOTRABAJO.Estado)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.ESTADOTRABAJO1.Estado)
+            @Html.DisplayNameFor(model => model.ESTADOTRABAJO.Estado)
         </th>
-        <th>
-            @Html.DisplayNameFor(model => model.PACIENTE.Nombre)
-        </th>
+        
         <th></th>
     </tr>
 
 @foreach (var item in Model) {
     <tr>
         <td>
+            @Html.DisplayFor(modelItem => item.Fecha)
+        </td>
+
+        <td>
+            @Html.DisplayFor(modelItem => item.PACIENTE.Nombre)
+        </td>
+        <td>
             @Html.DisplayFor(modelItem => item.Tratamiento)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.Monto)
         </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Fecha)
-        </td>
+       
         <td>
             @Html.DisplayFor(modelItem => item.Hora)
         </td>
@@ -60,11 +67,9 @@
             @Html.DisplayFor(modelItem => item.ESTADOTRABAJO.Estado)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.ESTADOTRABAJO1.Estado)
+            @Html.DisplayFor(modelItem => item.ESTADOTRABAJO.Estado)
         </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.PACIENTE.Nombre)
-        </td>
+       
         <td>
             @Html.ActionLink("Edit", "Edit", new { id=item.IdTrabajo }) |
             @Html.ActionLink("Details", "Details", new { id=item.IdTrabajo }) |

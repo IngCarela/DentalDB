@@ -17,8 +17,8 @@ namespace DentalDB.Controllers
         // GET: TRABAJO
         public ActionResult Index()
         {
-            var tRABAJO = db.TRABAJO.Include(t => t.ESTADOTRABAJO).Include(t => t.ESTADOTRABAJO).Include(t => t.PACIENTE);
-            return View(tRABAJO.ToList());
+            //var tRABAJO = db.TRABAJO.Include(t => t.ESTADOTRABAJO).Include(t => t.ESTADOTRABAJO).Include(t => t.PACIENTE);
+            return View(db.TRABAJO.ToList());
         }
 
         // GET: TRABAJO/Details/5
