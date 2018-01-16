@@ -29,6 +29,7 @@ namespace DentalDB.Models
         [Key]
         public int IdPaciente { get; set; }
 
+        [DisplayName("Nombre del paciente")]
         [DataType(DataType.Text)]
         [Required(ErrorMessage ="No se aceptan campos vacios")]
         public string Nombre { get; set; }
