@@ -115,5 +115,11 @@ namespace DentalDB.Controllers
                         select new { p.Nombre, t.Tratamiento };
             return View();
         }
+
+        [HttpGet]
+        public ActionResult inicio()
+        {
+            return View();
+        }
     }
 }

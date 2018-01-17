@@ -1,0 +1,96 @@
+﻿@model DentalDB.Models.USUARIO
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Inicio</title>
+    <link href="~/Content/bootstrap.css" rel="stylesheet" />
+    
+
+    <style>
+
+        #foto {
+           width:300px;
+           height:300px;
+           margin-bottom:15px;
+           margin-left:10px;
+           
+        }
+       
+
+        #menu{
+            
+           height:50px;
+           margin-bottom:15px;
+           margin-left:10px;
+        }
+
+        
+
+        #cuerpo{
+            margin-left:10px;
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <div id="Contenedor">
+            <div id="foto">
+                <img src="~/bloggif_5a5eb769bbbcb.jpeg" />
+            </div>
+            <div id="menu" class="nav navbar-inverse" style="text-align:right;">
+                <font size="5" style="margin-right:5px;">
+                    @Html.ActionLink("Iniciar", "Index", "USUARIO")
+                </font> 
+            </div>
+
+            <div id="cuerpo">
+                <img src="~/iconos-contactos-google-1-6-700x300.jpg" />
+                <br />
+                <div style="text-align:center;" class="col-lg-2">
+                    <p>
+                        <strong>ACERCA DE</strong><br />
+                        Miguel Angel Carela estudió en la Universidad Central del Este(UCE),
+                        donde se graduó de Doctor en Odontologia en el año 2009
+                    </p>
+                </div>
+
+                <div style="text-align:center" class="col-lg-2">
+                    <p>
+                        <strong>SERVICIOS</strong><br />
+                        Prótesis sobre Implante
+                    </p>
+                </div>
+
+                <div style="text-align:center" class="col-lg-3">
+                    <p>
+                        <strong>CONTACTOS</strong><br />
+                        Telefono: 829-865-0432 <br />
+                        Correo: doctorcarelagutierrez@gmail.com
+                    </p>
+                </div>
+
+                <div style="text-align:center" class="col-lg-4">
+                    <p>
+                        <strong>LUGARES DONDE LABORA</strong><br />
+                        IODE- Instituito Odontologico del Este <br />
+                        DISPENSARIO MEDICO MADRE CARMEN <br />
+                        POLICIA NACIONAL- UNAPEC <br />
+                        CONSULTORIO DENTAL DRA. MAGARITE BRASSAN <br />
+                    </p>
+                </div>
+            </div>
+            
+            <div id="pie">
+                
+            </div>
+        </div>
+    </div>
+</body>
+</html>

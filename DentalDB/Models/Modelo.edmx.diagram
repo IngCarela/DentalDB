@@ -14,23 +14,23 @@
         <EntityTypeShape EntityType="DentalDBModel.HistorialView" Width="1.5" PointX="7.375" PointY="0.75" />
         <EntityTypeShape EntityType="DentalDBModel.ESTADOCUENTALABORATORIO" Width="1.5" PointX="10.75" PointY="2" />
         <EntityTypeShape EntityType="DentalDBModel.ESTADOCUENTACENTRO" Width="1.5" PointX="8.5" PointY="6" />
-        <EntityTypeShape EntityType="DentalDBModel.PACIENTE" Width="1.5" PointX="3.375" PointY="16.5" />
         <AssociationConnector Association="DentalDBModel.FK_ESTADOCUENTACENTRO_CENTRO" />
-        <AssociationConnector Association="DentalDBModel.FK_PACIENTE_CENTRO" />
-        <AssociationConnector Association="DentalDBModel.FK_CITA_PACIENTE" />
-        <AssociationConnector Association="DentalDBModel.FK_ESTADOCUENTADOCTOR_PACIENTE" />
-        <AssociationConnector Association="DentalDBModel.FK_ESTADODECUENTA_PACIENTE" />
         <EntityTypeShape EntityType="DentalDBModel.TRABAJO" Width="1.5" PointX="11.375" PointY="11.25" />
         <AssociationConnector Association="DentalDBModel.FK_ESTADOCUENTALABORATORIO_TRABAJO" />
-        <AssociationConnector Association="DentalDBModel.FK_TRABAJO_PACIENTE" />
         <AssociationConnector Association="DentalDBModel.FK_RELACIONTRALA_TRABAJO" />
         <EntityTypeShape EntityType="DentalDBModel.LABORATORIO" Width="1.5" PointX="7.875" PointY="9.5" />
         <AssociationConnector Association="DentalDBModel.FK_ESTADOCUENTALABORATORIO_LABORATORIO" />
-        <AssociationConnector Association="DentalDBModel.FK_LABORATORIO_PACIENTE" />
         <AssociationConnector Association="DentalDBModel.FK_RELACIONTRALA_LABORATORIO" />
         <EntityTypeShape EntityType="DentalDBModel.ESTADOTRABAJO" Width="1.5" PointX="0.75" PointY="7.875" />
         <AssociationConnector Association="DentalDBModel.FK_RELACIONTRALA_ESTADOTRABAJO" />
         <AssociationConnector Association="DentalDBModel.FK_TRABAJO_ESTADOTRABAJO" />
+        <EntityTypeShape EntityType="DentalDBModel.PACIENTE" Width="1.5" PointX="3.125" PointY="14.5" />
+        <AssociationConnector Association="DentalDBModel.FK_PACIENTE_CENTRO" />
+        <AssociationConnector Association="DentalDBModel.FK_CITA_PACIENTE" />
+        <AssociationConnector Association="DentalDBModel.FK_ESTADOCUENTADOCTOR_PACIENTE" />
+        <AssociationConnector Association="DentalDBModel.FK_ESTADODECUENTA_PACIENTE" />
+        <AssociationConnector Association="DentalDBModel.FK_LABORATORIO_PACIENTE" />
+        <AssociationConnector Association="DentalDBModel.FK_TRABAJO_PACIENTE" />
         </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

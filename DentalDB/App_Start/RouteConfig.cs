@@ -16,7 +16,7 @@ namespace DentalDB
             routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",
-                defaults: new { controller = "USUARIO", action = "Index", id = UrlParameter.Optional }
+                defaults: new { controller = "USUARIO", action = "inicio", id = UrlParameter.Optional }
             );
         }
     }

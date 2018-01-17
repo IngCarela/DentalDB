@@ -31,18 +31,16 @@ namespace DentalDB.Models
         public System.DateTime Fecha { get; set; }
 
         [Required(ErrorMessage = "No se aceptan campos vacios")]
-        [DataType(DataType.Text)]
         public string Nombre { get; set; }
 
-
-        [DisplayName("Paciente")]
         [Required(ErrorMessage = "No se aceptan campos vacios")]
+        [DisplayName("Paciente")]
         public Nullable<int> IdPaciente { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ESTADOCUENTALABORATORIO> ESTADOCUENTALABORATORIO { get; set; }
-        public virtual PACIENTE PACIENTE { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<RELACIONTRALA> RELACIONTRALA { get; set; }
+        public virtual PACIENTE PACIENTE { get; set; }
     }
 }

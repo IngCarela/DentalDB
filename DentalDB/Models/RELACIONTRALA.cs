@@ -16,7 +16,6 @@ namespace DentalDB.Models
 
     public partial class RELACIONTRALA
     {
-
         [Key]
         public int IdRelacion { get; set; }
 

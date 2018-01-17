@@ -82,10 +82,10 @@
     <Property Name="Nombre" Type="nvarchar" MaxLength="50" Nullable="false" />
     <Property Name="Apellido" Type="nvarchar" MaxLength="50" Nullable="false" />
     <Property Name="Direccion" Type="nvarchar" MaxLength="50" Nullable="false" />
-    <Property Name="Cedula" Type="bigint" />
+    <Property Name="Cedula" Type="nvarchar" MaxLength="50" />
     <Property Name="Sexo" Type="nvarchar" MaxLength="5" Nullable="false" />
     <Property Name="Edad" Type="int" Nullable="false" />
-    <Property Name="Telefono" Type="bigint" Nullable="false" />
+    <Property Name="Telefono" Type="nvarchar" MaxLength="50" Nullable="false" />
     <Property Name="Estado" Type="nvarchar" MaxLength="50" Nullable="false" />
     <Property Name="Correo" Type="nvarchar" MaxLength="50" Nullable="false" />
     <Property Name="AntecedentesPatologicos" Type="nvarchar" MaxLength="50" Nullable="false" />

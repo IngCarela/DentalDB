@@ -249,6 +249,7 @@
     <Compile Include="SqlServerTypes\Loader.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="bloggif_5a5eb769bbbcb.jpeg" />
     <Content Include="bootstrap\css\bootstrap.css" />
     <Content Include="bootstrap\css\bootstrap.min.css" />
     <Content Include="bootstrap\fonts\glyphicons-halflings-regular.svg" />
@@ -257,6 +258,7 @@
     <Content Include="bootstrap\js\npm.js" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\Estilo.css" />
     <Content Include="dist\css\AdminLTE.css" />
     <Content Include="dist\css\AdminLTE.min.css" />
     <Content Include="dist\css\skins\skin-black-light.css" />
@@ -322,6 +324,7 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="iconos-contactos-google-1-6-700x300.jpg" />
     <Content Include="Models\Modelo.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>Modelo.edmx</DependentUpon>
@@ -532,6 +535,7 @@
     <Content Include="Views\RELACIONTRALA\Details.cshtml" />
     <Content Include="Views\RELACIONTRALA\Edit.cshtml" />
     <Content Include="Views\RELACIONTRALA\Index.cshtml" />
+    <Content Include="Views\USUARIO\inicio.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

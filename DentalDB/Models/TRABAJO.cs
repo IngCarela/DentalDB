@@ -27,7 +27,6 @@ namespace DentalDB.Models
         public int IdTrabajo { get; set; }
 
         [Required(ErrorMessage = "No se aceptan campos vacios")]
-        [DataType(DataType.Text)]
         public string Tratamiento { get; set; }
 
         [Required(ErrorMessage = "No se aceptan campos vacios")]
@@ -50,14 +49,13 @@ namespace DentalDB.Models
         public int IdEstadoT { get; set; }
 
         [Required(ErrorMessage = "No se aceptan campos vacios")]
-        [DataType(DataType.Text)]
         public string Descripcion { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ESTADOCUENTALABORATORIO> ESTADOCUENTALABORATORIO { get; set; }
-        public virtual PACIENTE PACIENTE { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<RELACIONTRALA> RELACIONTRALA { get; set; }
         public virtual ESTADOTRABAJO ESTADOTRABAJO { get; set; }
+        public virtual PACIENTE PACIENTE { get; set; }
     }
 }

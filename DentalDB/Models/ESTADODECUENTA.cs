@@ -19,28 +19,23 @@ namespace DentalDB.Models
         [Key]
         public int IdEstadoP { get; set; }
 
-        [DataType(DataType.Date)]
         [Required(ErrorMessage = "No se aceptan campos vacios")]
+        [DataType(DataType.Date)]
         public Nullable<System.DateTime> Fecha { get; set; }
 
-        
         [Required(ErrorMessage = "No se aceptan campos vacios")]
         [DisplayName("Paciente")]
         public int IdPaciente { get; set; }
 
-        
         [Required(ErrorMessage = "No se aceptan campos vacios")]
         public int Monto { get; set; }
 
-        
         [Required(ErrorMessage = "No se aceptan campos vacios")]
         public int Abono { get; set; }
 
-        
         [Required(ErrorMessage = "No se aceptan campos vacios")]
         public int Faltante { get; set; }
 
-        [DataType(DataType.Text)]
         [Required(ErrorMessage = "No se aceptan campos vacios")]
         [DisplayName("Trabajo")]
         public string IdTrabajo { get; set; }

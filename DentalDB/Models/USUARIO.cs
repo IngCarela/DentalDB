@@ -11,15 +11,11 @@ namespace DentalDB.Models
 {
     using System;
     using System.Collections.Generic;
-    using System.ComponentModel.DataAnnotations;
-
+    
     public partial class USUARIO
     {
-        [Key]
         public int IdUsuario { get; set; }
         public string Nombre { get; set; }
-
-        [DataType(DataType.Password)]
         public string Contrasena { get; set; }
     }
 }

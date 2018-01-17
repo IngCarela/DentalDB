@@ -25,8 +25,7 @@ namespace DentalDB.Models
         [Key]
         public int IdEstadoT { get; set; }
 
-        [Required(ErrorMessage ="No se aceptan campos vacios")]
-        [DataType(DataType.Text)]
+        [Required(ErrorMessage = "No se aceptan campos vacios")]
         public string Estado { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
