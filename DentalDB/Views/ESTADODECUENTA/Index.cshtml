@@ -5,10 +5,10 @@
     Layout = "~/Views/Shared/_MasterPrincipal.cshtml";
 }
 
-<h2>Index</h2>
+<h2>Listado</h2>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    @Html.ActionLink("Crear estado", "Create")
 </p>
 <table class="table">
     <tr>
@@ -54,9 +54,9 @@
         </td>
         
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.IdEstadoP }) |
-            @Html.ActionLink("Details", "Details", new { id=item.IdEstadoP }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.IdEstadoP })
+            @Html.ActionLink("Editar", "Edit", new { id=item.IdEstadoP }) |
+            @Html.ActionLink("Detalle", "Details", new { id=item.IdEstadoP }) |
+            @Html.ActionLink("Eliminar", "Delete", new { id=item.IdEstadoP })
         </td>
     </tr>
 }

@@ -63,8 +63,8 @@ namespace DentalDB.Models
         [Required(ErrorMessage = "No se aceptan campos vacios")]
         public string Ocupacion { get; set; }
 
+        [DisplayName("Centro")]
         [Required(ErrorMessage = "No se aceptan campos vacios")]
-        [DisplayName("Antecedentes patologicos")]
         public int IdCentro { get; set; }
     
         public virtual CENTRO CENTRO { get; set; }

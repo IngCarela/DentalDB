@@ -5,10 +5,10 @@
     Layout = "~/Views/Shared/_MasterPrincipal.cshtml";
 }
 
-<h2>Index</h2>
+<h2>Listado</h2>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    @Html.ActionLink("Crear laboratorio", "Create")
 </p>
 <table class="table">
     <tr>
@@ -36,9 +36,9 @@
             @Html.DisplayFor(modelItem => item.PACIENTE.Nombre)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.IdLaboratorio }) |
-            @Html.ActionLink("Details", "Details", new { id=item.IdLaboratorio }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.IdLaboratorio })
+            @Html.ActionLink("Editar", "Edit", new { id=item.IdLaboratorio }) |
+            @Html.ActionLink("Detalle", "Details", new { id=item.IdLaboratorio }) |
+            @Html.ActionLink("Eliminar", "Delete", new { id=item.IdLaboratorio })
         </td>
     </tr>
 }
