@@ -25,10 +25,11 @@ namespace DentalDB.Models
         }
     
         [Key]
+        [DisplayName("CENTRO")]
         public int IdCentro { get; set; }
 
-        [Required(ErrorMessage = "No se aceptan campos vacios")]
         [DisplayName("Centro")]
+        [Required(ErrorMessage = "No se aceptan campos vacios")]
         public string Centro1 { get; set; }
 
         [Required(ErrorMessage = "No se aceptan campos vacios")]
