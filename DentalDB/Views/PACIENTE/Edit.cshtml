@@ -52,8 +52,24 @@
         <div class="form-group">
             @Html.LabelFor(model => model.Sexo, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.Sexo, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Sexo, "", new { @class = "text-danger" })
+                
+        @{
+        List<SelectListItem> listaSexo = new List<SelectListItem>();
+
+        listaSexo.Add(new SelectListItem
+        {
+            Text = "M",
+            Value = "M"
+        });
+
+        listaSexo.Add(new SelectListItem
+        {
+            Text = "F",
+            Value = "F"
+        });
+                }
+
+         @Html.DropDownListFor(m => m.Sexo, listaSexo, "--Seleccione un campo--", new { @class = "form-control" })
             </div>
         </div>
 
@@ -76,8 +92,30 @@
         <div class="form-group">
             @Html.LabelFor(model => model.Estado, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.Estado, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Estado, "", new { @class = "text-danger" })
+
+                @{
+        List<SelectListItem> lista = new List<SelectListItem>();
+
+        lista.Add(new SelectListItem
+        {
+            Text = "CASADO",
+            Value = "CASADO"
+        });
+
+        lista.Add(new SelectListItem
+        {
+            Text = "SOLTERO",
+            Value = "SOLTERO"
+        });
+
+        lista.Add(new SelectListItem
+        {
+            Text = "UNION LIBRE",
+            Value = "UNION LIBRE"
+        });
+                }
+
+                @Html.DropDownListFor(m => m.Estado, lista, "--Selecione un campo--", new { @class = "form-control" })
             </div>
         </div>
 
